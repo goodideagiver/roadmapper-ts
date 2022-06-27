@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { userReducer } from './user-settings-slice';
 
 export const store = configureStore({
 	reducer: {
-		// reducer
+		userSettings: userReducer,
 	},
-	devTools: true,
 });
