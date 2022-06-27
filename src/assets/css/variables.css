@@ -1,3 +1,12 @@
 :root {
-  --body-color: #434343;
+	/* colors */
+	--body-base: #0c162d;
+	--body-elevated: #172237;
+	--body-highlight: #1f6feb;
+
+	--body-text: #fff;
+	--text-less-highlight: hsl(0, 0%, 85%);
+
+	/* font */
+	--font-family-base: 'Lato', sans-serif;
 }
