@@ -1,20 +1,13 @@
 import './assets/css/index.css';
 import './assets/css/variables.css';
+import { Roadmap } from './components/Roadmap/Roadmap';
+import { MainLayout } from './pages/MainLayout/MainLayout';
 
 const App = () => {
 	return (
-		<h1
-			style={{
-				width: '100%',
-				textAlign: 'center',
-				fontSize: '2rem',
-				fontWeight: 'bold',
-				color: '#fff',
-				fontFamily: '"Roboto", sans-serif',
-			}}
-		>
-			Hello world
-		</h1>
+		<MainLayout>
+			<Roadmap />
+		</MainLayout>
 	);
 };
 
