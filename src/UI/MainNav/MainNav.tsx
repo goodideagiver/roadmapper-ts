@@ -1,7 +1,8 @@
+type MainNavProps = {
+	isOpen: boolean;
+};
 
-import { CSSTransitionLibraryProps } from '../../assets/types/types';
-
-export const MainNav = ({ in: true }: CSSTransitionLibraryProps) => {
+export const MainNav = ({ isOpen = true }: MainNavProps) => {
 	return (
 		<div>
 			<a href='gith'>Link do gita</a>
