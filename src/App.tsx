@@ -9,6 +9,13 @@ const fakeRoadmapData: roadmapDataPoint[] = [
 		title: 'Siema',
 		finished: false,
 		date: new Date(2020, 20, 10),
+		midpoints: [
+			{
+				finished: false,
+				date: new Date(2020, 20, 10),
+				title: 'Siema',
+			},
+		],
 	},
 	{
 		title: 'Siema',
