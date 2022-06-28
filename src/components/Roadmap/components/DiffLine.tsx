@@ -1,7 +1,19 @@
-export const DiffLine = ({ displayDateDiff }: { displayDateDiff: string }) => {
+export const DiffLine = ({
+	displayDateDiff,
+}: {
+	displayDateDiff: string | null;
+}) => {
+	if (displayDateDiff) {
+		return (
+			<div>
+				<div>{displayDateDiff}</div>
+			</div>
+		);
+	}
+
 	return (
 		<div>
-			<div>{displayDateDiff}</div>
+			<div>Placeholder</div>
 		</div>
 	);
 };
