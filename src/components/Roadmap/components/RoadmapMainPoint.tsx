@@ -9,9 +9,11 @@ export const RoadmapMainPoint = ({
 }: roadmapDataPoint) => {
 	return (
 		<div>
-			<div>{title}</div>
-			<div>{date.toLocaleDateString()}</div>
-			{dateFinished && <div>{dateFinished.toLocaleDateString()}</div>}
+			<div>Title: {title}</div>
+			<div>Start date: {date.toLocaleDateString()}</div>
+			{dateFinished && (
+				<div>Date finished: {dateFinished.toLocaleDateString()}</div>
+			)}
 			<div>{finished ? 'Zakończono' : 'Nie zakończono'}</div>
 		</div>
 	);

@@ -13,8 +13,8 @@ export const useRoadmapDateDiff = (
 
 	if (previousDate && currentDate) {
 		const diffBetweenDatesInMiliseconds: number = getMilisecondsBetweenDates(
-			previousDate,
-			currentDate
+			currentDate,
+			previousDate
 		);
 
 		diffDate = milisecondsToBiggestTimeUnit(diffBetweenDatesInMiliseconds);

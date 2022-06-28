@@ -1,10 +1,7 @@
-export const getMilisecondsBetweenDates = (startDate: Date, endDate: Date) => {
-	if (startDate instanceof Date && endDate instanceof Date) {
-		const diff = endDate.getTime() - startDate.getTime();
-		if (diff < 0) {
-			throw new Error('End date must be greater than start date');
-		}
-		return diff;
+export const getMilisecondsBetweenDates = (date1: Date, date2: Date) => {
+	if (date1 instanceof Date && date2 instanceof Date) {
+		const diff = date2.getTime() - date1.getTime();
+		return Math.abs(diff);
 	} else {
 		throw new Error('Invalid date passed as argument');
 	}
