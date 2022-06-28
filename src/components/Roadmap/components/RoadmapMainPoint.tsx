@@ -1,22 +1,18 @@
-type RoadmapMainPointProps = {
-	title: string;
-	dateStarted: Date;
-	dateFinished: Date;
-	isFinished: boolean;
-};
+import { roadmapDataPoint } from '../Roadmap.types';
 
 export const RoadmapMainPoint = ({
-	title,
-	dateStarted,
+	finished,
+	date,
 	dateFinished,
-	isFinished,
-}: RoadmapMainPointProps) => {
+	title,
+	midpoints,
+}: roadmapDataPoint) => {
 	return (
 		<div>
 			<div>{title}</div>
-			<div>{dateStarted.toLocaleDateString()}</div>
-			<div>{dateFinished.toLocaleDateString()}</div>
-			<div>{isFinished ? 'Zakończono' : 'Nie zakończono'}</div>
+			<div>{date.toLocaleDateString()}</div>
+			{dateFinished && <div>{dateFinished.toLocaleDateString()}</div>}
+			<div>{finished ? 'Zakończono' : 'Nie zakończono'}</div>
 		</div>
 	);
 };

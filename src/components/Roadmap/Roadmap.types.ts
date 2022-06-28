@@ -1,14 +1,15 @@
-type roadmapMidpoint = {
+export type roadmapMidpoint = {
 	finished: boolean;
 	title: string;
 	date: Date;
 };
 
-type roadmapDataPoint = {
+export type roadmapDataPoint = {
 	finished: boolean;
 	title: string;
 	date: Date;
-	midpoints: roadmapMidpoint[];
+	dateFinished?: Date;
+	midpoints?: roadmapMidpoint[];
 };
 
 export type roadmapArray = Array<roadmapDataPoint>;
