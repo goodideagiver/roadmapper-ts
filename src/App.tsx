@@ -6,32 +6,16 @@ import { MainLayout } from './pages/MainLayout/MainLayout';
 
 const fakeRoadmapData: roadmapDataPoint[] = [
 	{
-		title: 'Siema',
+		title: 'Zaczynamy',
+		daysToComplete: 0,
 		finished: false,
-		date: new Date(2020, 20, 10),
-		dateFinished: new Date(2020, 20, 12),
 		midpoints: [
 			{
+				daysToComplete: 0,
 				finished: false,
-				date: new Date(2020, 20, 10),
-				title: 'Siema',
+				title: 'Zaczynamy',
 			},
 		],
-	},
-	{
-		title: 'Siema',
-		finished: false,
-		date: new Date(2020, 20, 10),
-	},
-	{
-		title: 'Siema',
-		finished: false,
-		date: new Date(2020, 20, 10),
-	},
-	{
-		title: 'Siema',
-		finished: false,
-		date: new Date(2020, 20, 10),
 	},
 ];
 
