@@ -14,10 +14,12 @@ export const ModalContent = ({
 	return (
 		<div className={classes.root}>
 			<header className={classes.header}>
-				<p>{title}</p>
-				<button onClick={onClose}>Close modal</button>
+				<p className={classes.title}>{title}</p>
+				<button className={classes.closeButton} onClick={onClose}>
+					Close modal
+				</button>
 			</header>
-			<main>{children}</main>
+			<main className={classes.content}>{children}</main>
 		</div>
 	);
 };

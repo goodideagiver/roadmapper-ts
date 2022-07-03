@@ -8,9 +8,10 @@
 	display: flex;
 	justify-content: space-between;
 	transform: translate(-50%, -50%);
-	background-color: white;
 	flex-direction: column;
 	background-color: var(--body-elevated);
+	border-radius: 1rem;
+	box-shadow: rgba(0, 0, 0, 0.46) 0 15px 20px 20px;
 }
 
 .header {
@@ -18,5 +19,28 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding: 1rem;
+	border-bottom: 2px solid var(--body-highlight);
+}
+
+.closeButton {
+	color: purple;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	border: none;
+	cursor: pointer;
+	min-width: var(--min-button-dim);
+	min-height: var(--min-button-dim);
+}
+
+.title {
+	font-size: 1.5rem;
+	text-align: center;
+	flex: 1;
+}
+
+.content {
+	overflow-y: auto;
+	flex: 1;
 	padding: 1rem;
 }
