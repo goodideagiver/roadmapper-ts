@@ -9,4 +9,7 @@
 
 	/* font */
 	--font-family-base: 'Lato', sans-serif;
+
+	--overlay-index: 2137;
+	--backdrop-index: 2136;
 }

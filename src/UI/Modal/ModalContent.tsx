@@ -1,3 +1,5 @@
+import classes from './ModalContent.module.css';
+
 type ModalContentProps = {
 	children: React.ReactNode;
 	title: string;
@@ -10,8 +12,8 @@ export const ModalContent = ({
 	onClose,
 }: ModalContentProps) => {
 	return (
-		<div>
-			<header>
+		<div className={classes.root}>
+			<header className={classes.header}>
 				<p>{title}</p>
 				<button onClick={onClose}>Close modal</button>
 			</header>
