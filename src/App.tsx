@@ -1,5 +1,6 @@
 import './assets/css/index.css';
 import './assets/css/variables.css';
+import { AddRoadmapPoint } from './components/AddRoadmapPoint/AddRoadmapPoint';
 import { Roadmap } from './components/Roadmap/Roadmap';
 import { roadmapDataPoint } from './components/Roadmap/Roadmap.types';
 import { MainLayout } from './pages/MainLayout/MainLayout';
@@ -23,6 +24,7 @@ const App = () => {
 	return (
 		<MainLayout>
 			<Roadmap roadmapArray={fakeRoadmapData} />
+			<AddRoadmapPoint />
 		</MainLayout>
 	);
 };
