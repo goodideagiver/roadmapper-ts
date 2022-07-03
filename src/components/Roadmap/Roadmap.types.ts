@@ -1,28 +1,13 @@
 export type roadmapMidpoint = {
 	finished: boolean;
 	title: string;
-	date: Date;
+	days: number;
 };
-
-export type timeAmount =
-	| {
-			days: number;
-	  }
-	| {
-			weeks: number;
-	  }
-	| {
-			months: number;
-	  }
-	| {
-			years: number;
-	  }
-	| 'unset';
 
 export type roadmapDataPoint = {
 	finished: boolean;
 	title: string;
-	timeToComplete: timeAmount;
+	daysToComplete: number;
 	midpoints?: roadmapMidpoint[];
 };
 
