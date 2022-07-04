@@ -1,8 +1,8 @@
-import * as classes from './InputWithLabel.module.css'; 
+import * as classes from './InputWithLabel.module.css';
 
 type InputWithLabelProps = {
 	inputId: string;
-	inputValue: string;
+	inputValue: string | number;
 	label: string;
 };
 
