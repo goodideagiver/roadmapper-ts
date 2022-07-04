@@ -1,0 +1,29 @@
+.button {
+	min-height: var(--mid-button-dim);
+	background-color: var(--body-highlight);
+	border-radius: 0.4rem;
+	border: 0;
+	color: var(--body-text);
+	cursor: pointer;
+	padding: 0 1rem;
+	width: 100%;
+}
+
+.danger {
+	background-color: gray;
+}
+
+.success {
+	background-color: rgb(55, 136, 55);
+	font-weight: bold;
+}
+
+@media screen and (min-width: 768px) {
+	.button {
+		transition: 0.2s;
+	}
+
+	.button:hover {
+		filter: brightness(1.2);
+	}
+}
