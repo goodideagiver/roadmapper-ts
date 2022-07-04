@@ -35,12 +35,20 @@ export const AddPointInput = ({
 					value={inputValue}
 				/>
 			</div>
-			<div className={classes.suggestions}>
-				{suggestedPoints &&
-					suggestedPoints.map((point) => (
-						<SuggestedPoint onChoose={pickSuggestionHandler} label={point} />
-					))}
-			</div>
+			{suggestedPoints && (
+				<>
+					<p>Suggestions:</p>
+					<div className={classes.suggestions}>
+						{suggestedPoints &&
+							suggestedPoints.map((point) => (
+								<SuggestedPoint
+									onChoose={pickSuggestionHandler}
+									label={point}
+								/>
+							))}
+					</div>{' '}
+				</>
+			)}
 		</div>
 	);
 };

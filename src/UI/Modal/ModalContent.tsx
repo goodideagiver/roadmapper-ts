@@ -1,4 +1,5 @@
-import classes from './ModalContent.module.css';
+import * as classes from './ModalContent.module.css';
+import { IoMdClose } from 'react-icons/io';
 
 type ModalContentProps = {
 	children: React.ReactNode;
@@ -16,7 +17,7 @@ export const ModalContent = ({
 			<header className={classes.header}>
 				<p className={classes.title}>{title}</p>
 				<button className={classes.closeButton} onClick={onClose}>
-					Close modal
+					<IoMdClose />
 				</button>
 			</header>
 			<main className={classes.content}>{children}</main>

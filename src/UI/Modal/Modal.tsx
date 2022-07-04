@@ -2,6 +2,8 @@ import { CSSTransition } from 'react-transition-group';
 import { Backdrop } from '../Backdrop/Backdrop';
 import { ModalContent } from './ModalContent';
 import ReactDOM from 'react-dom';
+import * as ModalAnimation from './ModalAnimation.module.css';
+import * as BackdropAnimation from './BackdropAnimation.module.css';
 
 type ModalProps = {
 	visible: boolean;
@@ -19,12 +21,24 @@ export const Modal = ({ title, children, visible, onClose }: ModalProps) => {
 
 	return ReactDOM.createPortal(
 		<>
-			<CSSTransition in={visible} mountOnEnter unmountOnExit timeout={300}>
+			<CSSTransition
+				classNames={ModalAnimation}
+				in={visible}
+				mountOnEnter
+				unmountOnExit
+				timeout={300}
+			>
 				<ModalContent title={title} onClose={onClose}>
 					{children}
 				</ModalContent>
 			</CSSTransition>
-			<CSSTransition in={visible} mountOnEnter unmountOnExit timeout={300}>
+			<CSSTransition
+				classNames={BackdropAnimation}
+				in={visible}
+				mountOnEnter
+				unmountOnExit
+				timeout={300}
+			>
 				<Backdrop onClose={onClose} />
 			</CSSTransition>
 		</>,

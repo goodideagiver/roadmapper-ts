@@ -2,25 +2,27 @@
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	width: min(90%, 600px);
-	height: min(90%,fit-content);
+	width: min(90%, 600px, 90vw);
+	height: min(95%, 95vh, 800px);
 	z-index: var(--overlay-index);
 	display: flex;
 	justify-content: space-between;
 	transform: translate(-50%, -50%);
 	flex-direction: column;
-	background-color: var(--body-elevated);
+	background-color: var(--body-base);
 	border-radius: 1rem;
-	box-shadow: rgba(0, 0, 0, 0.46) 0 15px 20px 20px;
+	box-shadow: rgba(0, 0, 0, 0.26) 0 15px 50px 20px;
+	overflow: hidden;
+	border: 1px solid var(--body-highlight);
 }
 
 .header {
+	background-color: var(--body-elevated);
 	gap: 1rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem;
-	border-bottom: 2px solid var(--body-highlight);
 }
 
 .closeButton {
@@ -31,6 +33,14 @@
 	cursor: pointer;
 	min-width: var(--min-button-dim);
 	min-height: var(--min-button-dim);
+	display: grid;
+	place-items: center;
+	background-color: var(--body-highlight);
+	font-size: 1.5rem;
+}
+
+.closeButton svg {
+	fill: white;
 }
 
 .title {
@@ -43,4 +53,5 @@
 	overflow-y: auto;
 	flex: 1;
 	padding: 1.5rem;
+	overflow-y: auto;
 }

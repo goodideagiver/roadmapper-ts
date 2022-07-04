@@ -12,7 +12,7 @@ export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 			<AddPointInput
 				label='Roadmap point title'
 				value=''
-				suggestedPoints={['JS', 'CSS', 'HTML']}
+				suggestedPoints={['JS', 'CSS', 'HTML', 'React', 'Redux', 'TypeScript']}
 			/>
 			<AddPointInput
 				label='How much time to complete?'

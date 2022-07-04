@@ -8,8 +8,8 @@
 .input {
 	display: grid;
 	column-gap: var(--large-spacing);
-  row-gap: var(--small-spacing);
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	row-gap: var(--small-spacing);
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 	align-items: center;
 }
 
@@ -25,4 +25,7 @@
 	flex-wrap: wrap;
 	gap: var(--medium-spacing);
 	margin-bottom: 3rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(81px, 1fr));
+	word-break: break-all;
 }
