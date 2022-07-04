@@ -1,6 +1,5 @@
+import { Button } from '../../UI/Button/Button';
 import { Suggestion } from './AddPointInput';
-
-import * as classes from './SuggestedPoint.module.css';
 
 type SuggestedPointProps = {
 	label: Suggestion;
@@ -12,9 +11,5 @@ export const SuggestedPoint = ({ label, onChoose }: SuggestedPointProps) => {
 		onChoose(label);
 	};
 
-	return (
-		<button className={classes.suggestion} onClick={buttonClickHandler}>
-			{label}
-		</button>
-	);
+	return <Button onClick={buttonClickHandler}>{label}</Button>;
 };
