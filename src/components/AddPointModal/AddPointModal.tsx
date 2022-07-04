@@ -1,4 +1,5 @@
 import { Modal } from '../../UI/Modal/Modal';
+import { AddPointInput } from './AddPointInput';
 
 type AddPointModalProps = {
 	visible: boolean;
@@ -8,7 +9,16 @@ type AddPointModalProps = {
 export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 	return (
 		<Modal onClose={onClose} visible={visible} title='Add roadmap point'>
-			<p>siema</p>
+			<AddPointInput
+				label='Roadmap point title'
+				value=''
+				suggestedPoints={['JS', 'CSS', 'HTML']}
+			/>
+			<AddPointInput
+				label='How much time to complete?'
+				value=''
+				suggestedPoints={['1 day', '1 month', '1 year']}
+			/>
 		</Modal>
 	);
 };

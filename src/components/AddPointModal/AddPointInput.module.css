@@ -1,0 +1,28 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: var(--small-spacing);
+	margin-bottom: var(--large-spacing);
+}
+
+.input {
+	display: grid;
+	column-gap: var(--large-spacing);
+  row-gap: var(--small-spacing);
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	align-items: center;
+}
+
+.field {
+	height: 100%;
+	border-radius: 0.5rem;
+	border: 0;
+	min-height: var(--min-button-dim);
+}
+
+.suggestions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--medium-spacing);
+	margin-bottom: 3rem;
+}

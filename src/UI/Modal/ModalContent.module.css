@@ -3,7 +3,7 @@
 	top: 50%;
 	left: 50%;
 	width: min(90%, 600px);
-	height: 90%;
+	height: min(90%,fit-content);
 	z-index: var(--overlay-index);
 	display: flex;
 	justify-content: space-between;
@@ -42,5 +42,5 @@
 .content {
 	overflow-y: auto;
 	flex: 1;
-	padding: 1rem;
+	padding: 1.5rem;
 }

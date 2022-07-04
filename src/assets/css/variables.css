@@ -13,5 +13,11 @@
 	--overlay-index: 2137;
 	--backdrop-index: 2136;
 
-	--min-button-dim: 38px;
+	--small-spacing: 12px;
+	--medium-spacing: 24px;
+	--large-spacing: 36px;
+
+	--min-button-dim: 42px;
+	--mid-button-dim: 60px;
+	--max-button-dim: 72px;
 }
