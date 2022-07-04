@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { uuid } from 'uuidv4';
 import { SuggestedPoint } from './SuggestedPoint';
 import * as classes from './AddPointInput.module.css';
+import { InputWithLabel } from '../../UI/InputWithLabel/InputWithLabel';
 
 export type Suggestion = string | number;
 
@@ -26,15 +27,7 @@ export const AddPointInput = ({
 
 	return (
 		<div className={classes.root}>
-			<div className={classes.input}>
-				<label htmlFor={inputId}>{label}</label>
-				<input
-					className={classes.field}
-					type='text'
-					id={inputId}
-					value={inputValue}
-				/>
-			</div>
+			<InputWithLabel inputId={inputId} inputValue={inputValue} label={label} />
 			{suggestedPoints && (
 				<>
 					<p>Suggestions:</p>
@@ -42,6 +35,7 @@ export const AddPointInput = ({
 						{suggestedPoints &&
 							suggestedPoints.map((point) => (
 								<SuggestedPoint
+									key={point}
 									onChoose={pickSuggestionHandler}
 									label={point}
 								/>
