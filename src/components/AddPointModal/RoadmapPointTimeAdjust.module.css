@@ -4,4 +4,5 @@
 	gap: var(--small-spacing);
 	text-align: center;
 	margin: var(--small-spacing) 0;
+	align-items: center;
 }
