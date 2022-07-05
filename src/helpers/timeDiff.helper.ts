@@ -1,3 +1,5 @@
+import { isPlural } from './isPlural.helper';
+
 export const getMilisecondsBetweenDates = (date1: Date, date2: Date) => {
 	if (date1 instanceof Date && date2 instanceof Date) {
 		const diff = date2.getTime() - date1.getTime();
@@ -29,4 +31,40 @@ export const milisecondsToBiggestTimeUnit = (miliseconds: number): string => {
 	} else {
 		return `${miliseconds} miliseconds`;
 	}
+};
+
+export const daysToYrsMthWeekDayString = (days: number): string => {
+	const years = Math.floor(days / 365);
+	const months = Math.floor((days % 365) / 30);
+	const weeks = Math.floor(((days % 365) % 30) / 7);
+	const daysLeft = Math.floor(((days % 365) % 30) % 7);
+
+	let result = '';
+
+	if (years > 0) {
+		result += `${years} year${isPlural(years)}`;
+	}
+
+	if (months > 0) {
+		if (result.length > 0) {
+			result += ', ';
+		}
+		result += `${months} month${isPlural(months)}`;
+	}
+
+	if (weeks > 0) {
+		if (result.length > 0) {
+			result += ', ';
+		}
+		result += `${weeks} week${isPlural(weeks)}`;
+	}
+
+	if (daysLeft > 0) {
+		if (result.length > 0) {
+			result += ', ';
+		}
+		result += `${daysLeft} day${isPlural(daysLeft)}`;
+	}
+
+	return result;
 };
