@@ -4,14 +4,16 @@ type InputWithLabelProps = {
 	inputId: string;
 	inputValue: string | number;
 	label: string;
+	className?: string;
 };
 
 export const InputWithLabel = ({
 	label,
 	inputId,
 	inputValue,
+	className,
 }: InputWithLabelProps) => (
-	<div className={classes.input}>
+	<div className={`${classes.input} ${className ? className : ''}`}>
 		<label htmlFor={inputId}>{label}</label>
 		<input
 			className={classes.field}

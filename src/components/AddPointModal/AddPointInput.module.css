@@ -8,9 +8,15 @@
 .suggestions {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--medium-spacing);
+	gap: var(--small-spacing);
 	margin-bottom: 3rem;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(81px, 1fr));
 	word-break: break-all;
+}
+
+.inputHighlight {
+	background-color: var(--body-elevated);
+	padding: var(--small-spacing) var(--medium-spacing);
+	border-radius: 0.4rem;
 }

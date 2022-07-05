@@ -5,6 +5,9 @@
 	min-height: var(--min-button-dim);
 	padding: 0.5rem 1rem;
 	font-size: 1rem;
+	background-color: rgba(59, 59, 59, 0.524);
+	color: white;
+	border: 1px var(--body-highlight) solid;
 }
 
 .input {

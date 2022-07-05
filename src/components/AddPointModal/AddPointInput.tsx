@@ -27,7 +27,12 @@ export const AddPointInput = ({
 
 	return (
 		<div className={classes.root}>
-			<InputWithLabel inputId={inputId} inputValue={inputValue} label={label} />
+			<InputWithLabel
+				className={classes.inputHighlight}
+				inputId={inputId}
+				inputValue={inputValue}
+				label={label}
+			/>
 			{suggestedPoints && (
 				<>
 					<p>Suggestions:</p>
