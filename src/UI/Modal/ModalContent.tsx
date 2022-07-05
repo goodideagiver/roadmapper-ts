@@ -15,7 +15,7 @@ export const ModalContent = ({
 	return (
 		<div className={classes.root}>
 			<header className={classes.header}>
-				<p className={classes.title}>{title}</p>
+				<h2 className={classes.title}>{title}</h2>
 				<button
 					aria-label='Close'
 					className={classes.closeButton}

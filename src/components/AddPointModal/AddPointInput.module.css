@@ -9,7 +9,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: var(--small-spacing);
-	margin-bottom: 3rem;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(81px, 1fr));
 	word-break: break-all;

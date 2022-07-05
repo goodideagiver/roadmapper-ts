@@ -22,7 +22,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0.3rem 1rem;
+	padding: 1rem;
 }
 
 .closeButton {
@@ -44,9 +44,13 @@
 }
 
 .title {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	text-align: center;
 	flex: 1;
+	margin: 0;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .content {
