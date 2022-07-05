@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { uuid } from 'uuidv4';
 import { SuggestedPoint } from './SuggestedPoint';
 import * as classes from './AddPointInput.module.css';
@@ -10,19 +9,28 @@ type AddPointInputProps = {
 	suggestedPoints?: Suggestion[];
 	label: string;
 	value: string;
+	onInput: (title: string) => void;
 };
 
 export const AddPointInput = ({
 	suggestedPoints,
 	label,
 	value = '',
+	onInput,
 }: AddPointInputProps) => {
 	const inputId = uuid();
 
-	const [inputValue, setInputValue] = useState(value);
-
 	const pickSuggestionHandler = (label: Suggestion) => {
-		setInputValue(label.toString());
+		onInput(label.toString());
+	};
+
+	const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (!event) {
+			return;
+		}
+		const value =( event && event.target) && event.target.value;
+
+		onInput(value);
 	};
 
 	return (
@@ -30,8 +38,9 @@ export const AddPointInput = ({
 			<InputWithLabel
 				className={classes.inputHighlight}
 				inputId={inputId}
-				inputValue={inputValue}
+				inputValue={value}
 				label={label}
+				onChange={inputHandler}
 			/>
 			{suggestedPoints && (
 				<>
