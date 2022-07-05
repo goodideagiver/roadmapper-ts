@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../UI/Button/Button';
 import { Modal } from '../../UI/Modal/Modal';
 import { AddPointInput } from './AddPointInput';
@@ -11,24 +11,64 @@ type AddPointModalProps = {
 	onClose: () => void;
 };
 
+type ModalError = {
+	timeError: string;
+	titleError: string;
+};
+
 export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 	const [days, setDays] = useState(0);
 	const [title, setTitle] = useState('');
-	const [error, setError] = useState('');
+	const [error, setError] = useState<ModalError>({
+		timeError: '',
+		titleError: '',
+	});
+
+	const titleErrorRef = useRef<HTMLDivElement>(null);
+	const timeErrorRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		if (error.titleError) {
+			titleErrorRef.current?.scrollIntoView({ block: 'start' });
+		}
+	}, [error.titleError.length]);
+
+	const cancelHandler = () => {
+		onClose();
+		setError({
+			timeError: '',
+			titleError: '',
+		});
+		setTitle('');
+		setDays(0);
+	};
 
 	const confirmPointHandler = () => {
-		if (title.trim().length === 0) {
-			setError('title is a required field');
+		if (error.titleError) {
+			titleErrorRef.current?.scrollIntoView({ block: 'start' });
 			return;
+		}
+		if (error.timeError) {
+			timeErrorRef.current?.scrollIntoView({ block: 'start' });
+			return;
+		}
+
+		if (title.trim().length === 0) {
+			setError((error) => {
+				const newError = 'title is a required field';
+				return { ...error, titleError: newError };
+			});
 		}
 
 		if (days < 1) {
-			setError('days is a required field');
-			return;
+			setError((error) => {
+				const newError = 'days is a required field';
+				return { ...error, timeError: newError };
+			});
 		}
 
 		if (title.length > 0 && days > 0) {
-			setError('');
+			setError({ timeError: '', titleError: '' });
 			console.log(days, title);
 			setDays(0);
 			setTitle('');
@@ -42,11 +82,20 @@ export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 			if (oldDaysValue + daysAmount < 0) {
 				return 0;
 			}
+			setError((error) => {
+				const newError = '';
+				return { ...error, timeError: newError };
+			});
+
 			return oldDaysValue + daysAmount;
 		});
 	};
 
 	const handleInputTitle = (title: string) => {
+		setError((error) => {
+			const newError = '';
+			return { ...error, titleError: newError };
+		});
 		setTitle(title);
 	};
 
@@ -55,13 +104,23 @@ export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 	};
 
 	return (
-		<Modal onClose={onClose} visible={visible} title='Add roadmap point'>
+		<Modal onClose={cancelHandler} visible={visible} title='Add roadmap point'>
+			{error.titleError && (
+				<div ref={titleErrorRef} className={classes.error}>
+					Can&apos;t confirm, because {error.titleError}
+				</div>
+			)}
 			<AddPointInput
 				label='Roadmap point title'
 				value={title}
 				suggestedPoints={['JS', 'CSS', 'HTML', 'React', 'Redux', 'TypeScript']}
 				onInput={handleInputTitle}
 			/>
+			{error.timeError && (
+				<div ref={timeErrorRef} className={classes.error}>
+					Can&apos;t confirm, because {error.timeError}
+				</div>
+			)}
 			<PointTimeInput
 				onReset={handleResetDays}
 				daysValue={days}
@@ -74,9 +133,6 @@ export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 			>
 				Confirm roadmap point
 			</Button>
-			{error && (
-				<div className={classes.error}>Can&apos;t confirm, because {error}</div>
-			)}
 		</Modal>
 	);
 };
