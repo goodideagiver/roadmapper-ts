@@ -16,7 +16,11 @@ export const ModalContent = ({
 		<div className={classes.root}>
 			<header className={classes.header}>
 				<p className={classes.title}>{title}</p>
-				<button className={classes.closeButton} onClick={onClose}>
+				<button
+					aria-label='Close'
+					className={classes.closeButton}
+					onClick={onClose}
+				>
 					<IoMdClose />
 				</button>
 			</header>

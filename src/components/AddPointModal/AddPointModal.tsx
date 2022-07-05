@@ -48,16 +48,17 @@ export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 			titleErrorRef.current?.scrollIntoView({ block: 'start' });
 			return;
 		}
-		if (error.timeError) {
-			timeErrorRef.current?.scrollIntoView({ block: 'start' });
-			return;
-		}
 
 		if (title.trim().length === 0) {
 			setError((error) => {
 				const newError = 'title is a required field';
 				return { ...error, titleError: newError };
 			});
+		}
+
+		if (error.timeError) {
+			timeErrorRef.current?.scrollIntoView({ block: 'start' });
+			return;
 		}
 
 		if (days < 1) {
@@ -115,6 +116,7 @@ export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 				value={title}
 				suggestedPoints={['JS', 'CSS', 'HTML', 'React', 'Redux', 'TypeScript']}
 				onInput={handleInputTitle}
+				hasError={error.titleError.length > 0}
 			/>
 			{error.timeError && (
 				<div ref={timeErrorRef} className={classes.error}>

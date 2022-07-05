@@ -6,6 +6,7 @@ type InputWithLabelProps = {
 	label: string;
 	className?: string;
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	hasError?: boolean;
 };
 
 export const InputWithLabel = ({
@@ -14,11 +15,12 @@ export const InputWithLabel = ({
 	inputValue,
 	className,
 	onChange,
+	hasError,
 }: InputWithLabelProps) => (
-	<div className={`${classes.input} ${className ? className : ''}`}>
+	<div className={`${classes.input} ${className ? className : ''} `}>
 		<label htmlFor={inputId}>{label}</label>
 		<input
-			className={classes.field}
+			className={`${classes.field} ${hasError ? classes.error : ''}`}
 			type='text'
 			id={inputId}
 			value={inputValue}

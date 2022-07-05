@@ -10,6 +10,7 @@ type AddPointInputProps = {
 	label: string;
 	value: string;
 	onInput: (title: string) => void;
+	hasError: boolean;
 };
 
 export const AddPointInput = ({
@@ -17,6 +18,7 @@ export const AddPointInput = ({
 	label,
 	value = '',
 	onInput,
+	hasError
 }: AddPointInputProps) => {
 	const inputId = uuid();
 
@@ -28,7 +30,7 @@ export const AddPointInput = ({
 		if (!event) {
 			return;
 		}
-		const value =( event && event.target) && event.target.value;
+		const value = event && event.target && event.target.value;
 
 		onInput(value);
 	};
@@ -41,6 +43,7 @@ export const AddPointInput = ({
 				inputValue={value}
 				label={label}
 				onChange={inputHandler}
+				hasError={hasError}
 			/>
 			{suggestedPoints && (
 				<>
