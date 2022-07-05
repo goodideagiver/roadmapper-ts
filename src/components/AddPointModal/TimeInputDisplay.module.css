@@ -1,0 +1,9 @@
+.root {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--medium-spacing);
+	background-color: var(--body-elevated);
+	padding: var(--small-spacing) var(--medium-spacing);
+	border-radius: 0.4rem;
+}

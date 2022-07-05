@@ -1,7 +1,7 @@
-import { useId } from 'react';
 import { Button } from '../../UI/Button/Button';
-import { InputWithLabel } from '../../UI/InputWithLabel/InputWithLabel';
+
 import { RoadmapPointTimeAdjust } from './RoadmapPointTimeAdjust';
+import { TimeInputDisplay } from './TimeInputDisplay';
 
 type PointTimeInputProps = {
 	onChangeDays: (daysAmount: number) => void;
@@ -24,16 +24,20 @@ export const PointTimeInput = ({
 		onChangeDays(amount * 7);
 	};
 
+	const handleChangeYears = (amount: number) => {
+		onChangeDays(amount * 365);
+	};
+
 	return (
 		<div>
-			<InputWithLabel
-				label='Time to complete'
-				inputId={useId()}
-				inputValue={daysValue}
+			<TimeInputDisplay
+				daysValue={daysValue}
+				daysFallback='No time specified'
 			/>
 			<RoadmapPointTimeAdjust onTimeAdjust={handleChangeDays} label='Day' />
 			<RoadmapPointTimeAdjust onTimeAdjust={handleChangeWeeks} label='Week' />
 			<RoadmapPointTimeAdjust onTimeAdjust={handleChangeMonths} label='Month' />
+			<RoadmapPointTimeAdjust onTimeAdjust={handleChangeYears} label='Year' />
 			<Button variant='danger' onClick={onReset}>
 				Reset point time
 			</Button>
