@@ -5,6 +5,7 @@ import { AddPointInput } from './AddPointInput';
 import { PointTimeInput } from './PointTimeInput';
 
 import * as classes from './AddPointModal.module.css';
+import { useKey } from '../../hooks/useKey.hook';
 
 type AddPointModalProps = {
 	visible: boolean;

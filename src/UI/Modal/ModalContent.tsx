@@ -1,5 +1,6 @@
 import * as classes from './ModalContent.module.css';
 import { IoMdClose } from 'react-icons/io';
+import { useKey } from '../../hooks/useKey.hook';
 
 type ModalContentProps = {
 	children: React.ReactNode;
@@ -12,6 +13,7 @@ export const ModalContent = ({
 	title,
 	onClose,
 }: ModalContentProps) => {
+	useKey('Escape', onClose);
 	return (
 		<div className={classes.root}>
 			<header className={classes.header}>
