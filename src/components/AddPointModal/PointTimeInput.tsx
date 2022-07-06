@@ -1,7 +1,7 @@
 import { Button } from '../../UI/Button/Button';
 
-import { RoadmapPointTimeAdjust } from './RoadmapPointTimeAdjust';
-import { TimeInputDisplay } from './TimeInputDisplay';
+import { RoadmapPointTimeAdjust } from './components/RoadmapPointTimeAdjust/RoadmapPointTimeAdjust';
+import { TimeInputDisplay } from './components/TimeInputDisplay/TimeInputDisplay';
 
 type PointTimeInputProps = {
 	onChangeDays: (daysAmount: number) => void;

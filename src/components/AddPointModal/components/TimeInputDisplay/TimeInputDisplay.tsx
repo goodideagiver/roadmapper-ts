@@ -1,5 +1,4 @@
-import { daysToYrsMthWeekDayString } from '../../helpers/timeDiff.helper';
-
+import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
 import * as classes from './TimeInputDisplay.module.css';
 
 type TimeInputDisplayProps = {

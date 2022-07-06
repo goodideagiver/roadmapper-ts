@@ -1,6 +1,6 @@
 import { Button } from '../../UI/Button/Button';
 import { Modal } from '../../UI/Modal/Modal';
-import { AddPointInput } from './AddPointInput';
+import { AddPointInput } from './components/AddPointInput/AddPointInput';
 import { PointTimeInput } from './PointTimeInput';
 
 import * as classes from './AddPointModal.module.css';

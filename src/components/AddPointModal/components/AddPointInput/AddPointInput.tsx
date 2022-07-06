@@ -1,7 +1,7 @@
 import { uuid } from 'uuidv4';
 import { SuggestedPoint } from './SuggestedPoint';
 import * as classes from './AddPointInput.module.css';
-import { InputWithLabel } from '../../UI/InputWithLabel/InputWithLabel';
+import { InputWithLabel } from '../../../../UI/InputWithLabel/InputWithLabel';
 
 export type Suggestion = string | number;
 

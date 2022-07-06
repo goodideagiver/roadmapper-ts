@@ -1,6 +1,6 @@
 import * as classes from './RoadmapPointTimeAdjust.module.css';
 import * as common from '../../assets/css/common.module.css';
-import { Button } from '../../UI/Button/Button';
+import { Button } from '../../../../UI/Button/Button';
 
 type RoadmapPoinTimeAdjustProps = {
 	onTimeAdjust: (amount: number) => void;
