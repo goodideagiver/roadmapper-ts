@@ -24,7 +24,7 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 			return roadmapPoint;
 		});
 	} else {
-		roadmapData = <div>Brak danych</div>;
+		roadmapData = <div className={classes.info}>No roadmap data</div>;
 	}
 
 	return <div className={classes.root}>{Children.toArray(roadmapData)}</div>;

@@ -4,3 +4,11 @@
 	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 	gap: var(--small-spacing);
 }
+
+.info {
+	width: fit-content;
+	background-color: var(--body-elevated);
+	padding: var(--medium-spacing);
+	border-radius: var(--small-spacing);
+	margin: auto;
+}
