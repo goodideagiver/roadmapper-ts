@@ -10,7 +10,7 @@ type ButtonVariants =
 
 type ButtonProps = {
 	onClick: () => void;
-	children: React.ReactNode;
+	children: React.ReactNode | React.ReactNode[];
 	className?: string;
 	variant?: ButtonVariants;
 	roundness?: number;

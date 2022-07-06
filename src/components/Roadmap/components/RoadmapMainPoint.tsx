@@ -1,4 +1,7 @@
+import { isPlural } from '../../../helpers/isPlural.helper';
 import { roadmapDataPoint } from '../Roadmap.types';
+
+import * as classes from './RoadmapMainPoint.module.css';
 
 export const RoadmapMainPoint = ({
 	finished,
@@ -7,19 +10,15 @@ export const RoadmapMainPoint = ({
 	midpoints,
 }: roadmapDataPoint) => {
 	return (
-		<div>
-			<div>Title: {title}</div>
+		<div className={classes.root}>
+			<div className={classes.title}>Title: {title}</div>
 			<div>Days to complete: {daysToComplete}</div>
 			<div>{finished ? 'Zakończono' : 'Nie zakończono'}</div>
-			{midpoints &&
-				midpoints.length > 0 &&
-				midpoints.map((midpoint) => (
-					<li key={midpoint.title}>
-						<p>{midpoint.title}</p>
-						<p>{midpoint.finished}</p>
-						<p>{midpoint.daysToComplete}</p>
-					</li>
-				))}
+			{midpoints && (
+				<p className={classes.steps}>
+					Has {midpoints.length} step{isPlural(midpoints.length)} inside{' '}
+				</p>
+			)}
 		</div>
 	);
 };

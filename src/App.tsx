@@ -8,11 +8,28 @@ import { MainLayout } from './pages/MainLayout/MainLayout';
 const fakeRoadmapData: roadmapDataPoint[] = [
 	{
 		title: 'Zaczynamy',
-		daysToComplete: 0,
+		daysToComplete: 5,
 		finished: false,
 		midpoints: [
 			{
-				daysToComplete: 0,
+				daysToComplete: 5,
+				finished: false,
+				title: 'Zaczynamy',
+			},
+		],
+	},
+	{
+		title: 'Zaczynamy',
+		daysToComplete: 5,
+		finished: false,
+	},
+	{
+		title: 'Zaczynamy',
+		daysToComplete: 5,
+		finished: false,
+		midpoints: [
+			{
+				daysToComplete: 5,
 				finished: false,
 				title: 'Zaczynamy',
 			},

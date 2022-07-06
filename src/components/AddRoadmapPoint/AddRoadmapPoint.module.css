@@ -1,0 +1,13 @@
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.icon {
+	width: 1.5rem;
+	height: 1.5rem;
+}

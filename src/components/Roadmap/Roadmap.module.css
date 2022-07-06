@@ -1,0 +1,6 @@
+.root {
+	padding: var(--medium-spacing);
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: var(--small-spacing);
+}

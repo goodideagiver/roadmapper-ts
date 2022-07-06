@@ -1,0 +1,17 @@
+.root {
+	background-color: var(--body-elevated);
+	padding: var(--small-spacing);
+	border-radius: var(--small-spacing);
+	box-shadow: rgba(10, 10, 10, 0.2) 0px 2px 8px 0px;
+	border: 1px var(--body-highlight) solid;
+}
+
+.title {
+	font-weight: bold;
+}
+
+.steps {
+	background-color: var(--body-highlight);
+	padding: 0.2rem var(--small-spacing);
+	border-radius: 0.6rem;
+}

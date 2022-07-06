@@ -3,6 +3,8 @@ import { Children } from 'react';
 import { RoadmapMainPoint } from './components/RoadmapMainPoint';
 import { roadmapArray, roadmapDataPoint } from './Roadmap.types';
 
+import * as classes from './Roadmap.module.css';
+
 export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 	let roadmapData;
 
@@ -25,5 +27,5 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 		roadmapData = <div>Brak danych</div>;
 	}
 
-	return <div>{Children.toArray(roadmapData)}</div>;
+	return <div className={classes.root}>{Children.toArray(roadmapData)}</div>;
 };
