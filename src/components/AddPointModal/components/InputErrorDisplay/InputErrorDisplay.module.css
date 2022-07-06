@@ -1,0 +1,13 @@
+.error {
+	text-align: center;
+	color: rgb(250, 246, 246);
+	padding: 1rem;
+	background-color: rgb(145, 42, 42);
+	margin: 0;
+	margin-bottom: 1rem;
+	border-radius: 0.4rem;
+}
+
+.noError {
+  background-color: rgb(30, 87, 30);
+}
