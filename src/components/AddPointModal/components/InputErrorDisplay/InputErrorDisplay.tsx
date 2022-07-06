@@ -11,10 +11,8 @@ type Props = {
 	errorMessage: string;
 };
 
-export const InputErrorDisplay = forwardRef<HTMLParagraphElement>(
-	(props, ref) => {
-		const { hasError, errorMessage } = props;
-
+export const InputErrorDisplay = forwardRef<HTMLParagraphElement, Props>(
+	({ hasError, errorMessage }, ref) => {
 		const hasErrorContent = `Can't confirm, because ${errorMessage}`;
 		const hasNoErrorContent = 'Ok';
 		const displayClasses = `${classes.error} ${
