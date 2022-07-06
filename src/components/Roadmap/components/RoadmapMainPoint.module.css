@@ -8,10 +8,18 @@
 
 .title {
 	font-weight: bold;
+	margin-bottom: 0.5rem;
 }
 
 .steps {
 	background-color: var(--body-highlight);
 	padding: 0.2rem var(--small-spacing);
 	border-radius: 0.6rem;
+}
+
+.textAndIcon {
+	display: flex;
+	gap: 1px;
+	align-items: center;
+	flex-wrap: wrap;
 }
