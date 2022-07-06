@@ -4,6 +4,7 @@ import { AddRoadmapPoint } from './components/AddRoadmapPoint/AddRoadmapPoint';
 import { Roadmap } from './components/Roadmap/Roadmap';
 import { roadmapDataPoint } from './components/Roadmap/Roadmap.types';
 import { MainLayout } from './pages/MainLayout/MainLayout';
+import { useRoadmap } from './store/roadmap-slice';
 
 const fakeRoadmapData: roadmapDataPoint[] = [
 	{
@@ -38,9 +39,11 @@ const fakeRoadmapData: roadmapDataPoint[] = [
 ];
 
 const App = () => {
+	const { roadmap } = useRoadmap();
+
 	return (
 		<MainLayout>
-			<Roadmap roadmapArray={fakeRoadmapData} />
+			<Roadmap roadmapArray={roadmap.roadmap} />
 			<AddRoadmapPoint />
 		</MainLayout>
 	);

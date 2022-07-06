@@ -2,8 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { roadmapArray } from '../../components/Roadmap/Roadmap.types';
-
 type roadmapMidpoint = {
 	finished: boolean;
 	title: string;
@@ -39,6 +37,9 @@ const roadmapSlice = createSlice({
 		setDaysDuration: (state, action: PayloadAction<number>) => {
 			state.daysDuration = action.payload;
 		},
+		addRoadmapPoint: (state, action: PayloadAction<roadmapDataPoint>) => {
+			state.roadmap.push(action.payload);
+		},
 	},
 });
 
@@ -57,10 +58,15 @@ export const useRoadmap = () => {
 		dispatch(roadmapSlice.actions.setDaysDuration(daysDuration));
 	};
 
+	const addRoadmapPoint = (roadmapPoint: roadmapDataPoint) => {
+		dispatch(roadmapSlice.actions.addRoadmapPoint(roadmapPoint));
+	};
+
 	return {
 		roadmap,
 		daysDuration,
 		setRoadmap,
 		setDaysDuration,
+		addRoadmapPoint,
 	};
 };

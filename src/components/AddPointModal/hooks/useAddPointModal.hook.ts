@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useRoadmap } from '../../../store/roadmap-slice';
 
 type ModalError = {
 	timeError: string;
@@ -6,6 +7,8 @@ type ModalError = {
 };
 
 export const useAddPointModal = (onClose: () => void) => {
+	const { addRoadmapPoint } = useRoadmap();
+
 	const [days, setDays] = useState(0);
 	const [title, setTitle] = useState('');
 	const [error, setError] = useState<ModalError>({
@@ -60,11 +63,11 @@ export const useAddPointModal = (onClose: () => void) => {
 		if (title.length > 0 && days > 0) {
 			setError({ timeError: '', titleError: '' });
 			console.log(days, title);
+			addRoadmapPoint({ daysToComplete: days, title, finished: false });
 			setDays(0);
 			setTitle('');
 			onClose();
 		}
-		//add point logic
 	};
 
 	const handleSetDays = (daysAmount: number) => {
