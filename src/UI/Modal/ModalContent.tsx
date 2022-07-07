@@ -6,16 +6,18 @@ type ModalContentProps = {
 	children: React.ReactNode;
 	title: string;
 	onClose: () => void;
+	className?: string;
 };
 
 export const ModalContent = ({
 	children,
 	title,
 	onClose,
+	className,
 }: ModalContentProps) => {
 	useKey('Escape', onClose);
 	return (
-		<div className={classes.root}>
+		<div className={`${classes.root} ${className ? className : ''}`}>
 			<header className={classes.header}>
 				<h2 className={classes.title}>{title}</h2>
 				<button

@@ -12,6 +12,7 @@ export const RoadmapMainPoint = ({
 	daysToComplete,
 	title,
 	midpoints,
+	onChoose,
 }: roadmapDataPoint) => {
 	const unfinishedContent = (
 		<>
@@ -27,7 +28,7 @@ export const RoadmapMainPoint = ({
 	);
 
 	return (
-		<div className={classes.root}>
+		<div className={classes.root} onClick={onChoose}>
 			<div className={classes.title}>{title}</div>
 			<div className={classes.textAndIcon}>
 				<BiTimer />

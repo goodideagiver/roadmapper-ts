@@ -10,6 +10,7 @@ type roadmapMidpoint = {
 };
 
 type roadmapDataPoint = {
+	id: string;
 	finished: boolean;
 	title: string;
 	daysToComplete: number;

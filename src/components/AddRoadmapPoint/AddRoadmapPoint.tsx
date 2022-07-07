@@ -7,7 +7,7 @@ import { Button } from '../../UI/Button/Button';
 import * as classes from './AddRoadmapPoint.module.css';
 
 export const AddRoadmapPoint = () => {
-	const [modalVisible, setModalVisible] = useState(true);
+	const [modalVisible, setModalVisible] = useState(false);
 
 	const handleToggleModal = () => setModalVisible(!modalVisible);
 

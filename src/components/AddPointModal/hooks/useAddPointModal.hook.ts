@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { uuid } from 'uuidv4';
 import { useRoadmap } from '../../../store/roadmap-slice';
 
 type ModalError = {
@@ -63,7 +64,12 @@ export const useAddPointModal = (onClose: () => void) => {
 		if (title.length > 0 && days > 0) {
 			setError({ timeError: '', titleError: '' });
 			console.log(days, title);
-			addRoadmapPoint({ daysToComplete: days, title, finished: false });
+			addRoadmapPoint({
+				daysToComplete: days,
+				title,
+				finished: false,
+				id: uuid(),
+			});
 			setDays(0);
 			setTitle('');
 			onClose();

@@ -18,7 +18,7 @@ export const AddPointInput = ({
 	label,
 	value = '',
 	onInput,
-	hasError
+	hasError,
 }: AddPointInputProps) => {
 	const inputId = uuid();
 
