@@ -17,7 +17,7 @@ export const RoadmapMainPoint = ({
 	onChoose,
 }: roadmapDataPoint) => {
 	return (
-		<div className={classes.root} onClick={onChoose}>
+		<button className={classes.root} onClick={onChoose}>
 			<div className={classes.title}>{title}</div>
 			<div className={classes.textAndIcon}>
 				<BiTimer />
@@ -29,6 +29,6 @@ export const RoadmapMainPoint = ({
 					Has {midpoints.length} step{isPlural(midpoints.length)} inside{' '}
 				</p>
 			)}
-		</div>
+		</button>
 	);
 };

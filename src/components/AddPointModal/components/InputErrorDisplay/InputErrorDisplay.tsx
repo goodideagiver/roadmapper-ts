@@ -25,7 +25,7 @@ export const InputErrorDisplay = forwardRef<HTMLParagraphElement, Props>(
 				in={hasError}
 				mountOnEnter
 				unmountOnExit
-				timeout={2000}
+				timeout={{ appear: 0, enter: 2000, exit: 200 }}
 			>
 				<p className={displayClasses} ref={ref}>
 					{errorMessage ? hasErrorContent : hasNoErrorContent}

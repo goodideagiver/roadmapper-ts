@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
 import * as classes from './TimeInputDisplay.module.css';
 
@@ -11,11 +12,25 @@ export const TimeInputDisplay = ({
 	daysFallback,
 }: TimeInputDisplayProps) => {
 	const formattedDaysDisplay = daysToYrsMthWeekDayString(daysValue);
+	const [highlight, setHighlight] = useState('');
+
+	useEffect(() => {
+		if (daysValue > 0) {
+			setHighlight(classes.highlight);
+
+			const days = setTimeout(() => {
+				setHighlight('');
+			}, 200);
+			return () => {
+				clearTimeout(days);
+			};
+		}
+	}, [daysValue]);
 
 	return (
 		<div className={classes.root}>
 			<p>Time to complete:</p>
-			<span>{formattedDaysDisplay || daysFallback}</span>
+			<span className={`${classes.time} ${highlight}`}>{formattedDaysDisplay || daysFallback}</span>
 		</div>
 	);
 };

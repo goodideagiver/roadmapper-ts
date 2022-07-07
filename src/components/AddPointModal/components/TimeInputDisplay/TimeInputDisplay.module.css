@@ -7,3 +7,11 @@
 	padding: var(--small-spacing) var(--medium-spacing);
 	border-radius: 0.4rem;
 }
+.time {
+	transition: 200ms;
+}
+
+.highlight {
+	text-shadow: rgba(255, 255, 255, 0.336) 0 0 10px;
+	transform: scale(1.02);
+}

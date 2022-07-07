@@ -4,6 +4,7 @@
 	border-radius: var(--small-spacing);
 	box-shadow: rgba(10, 10, 10, 0.2) 0px 2px 8px 0px;
 	border: 1px var(--body-highlight) solid;
+	color: var(--body-text);
 }
 
 .title {
@@ -20,8 +21,12 @@
 .textAndIcon {
 	display: flex;
 	gap: 1px;
-	align-items: center;
-	flex-wrap: wrap;
+	align-items: flex-start;
+	text-align: left;
+}
+
+.textAndIcon svg {
+	font-size: 1rem;
 }
 
 @media (min-width: 768px) {
