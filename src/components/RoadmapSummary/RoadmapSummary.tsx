@@ -2,15 +2,12 @@ import { daysToYrsMthWeekDayString } from '../../helpers/timeDiff.helper';
 import { useRoadmap } from '../../store/roadmap-slice';
 
 export const RoadmapSummary = () => {
-	const { roadmap } = useRoadmap();
-	if (roadmap.roadmap.length > 1) {
-		const daysSum = roadmap.roadmap.reduce((acc, curr) => {
-			return acc.daysToComplete + curr.daysToComplete;
-		});
+	const { mainRoadmapPoints } = useRoadmap();
 
-		console.log(daysSum);
-    return <p>Roadmap duration: {daysToYrsMthWeekDayString(daysSum)}</p>
-	}
+	const days = mainRoadmapPoints.filter((point) => point.daysToComplete);
+	console.log(days);
 
-	return <div></div>;
+	const totalDays = days.reduce((acc, curr) => acc + curr.daysToComplete, 0);
+
+	return <div>{totalDays}</div>;
 };

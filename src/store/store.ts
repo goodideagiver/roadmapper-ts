@@ -8,3 +8,5 @@ export const store = configureStore({
 		roadmap: roadmapReducer,
 	},
 });
+
+export type RootState = ReturnType<typeof store.getState>;

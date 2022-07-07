@@ -8,12 +8,12 @@ import { MainLayout } from './pages/MainLayout/MainLayout';
 import { useRoadmap } from './store/roadmap-slice';
 
 const App = () => {
-	const { roadmap } = useRoadmap();
+	const { mainRoadmapPoints } = useRoadmap();
 
 	return (
 		<MainLayout>
 			<RoadmapSummary />
-			<Roadmap roadmapArray={roadmap.roadmap} />
+			<Roadmap roadmapArray={mainRoadmapPoints} />
 			<AddRoadmapPoint />
 		</MainLayout>
 	);

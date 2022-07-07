@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './store';
 
 type roadmapMidpoint = {
 	finished: boolean;
@@ -18,12 +19,12 @@ type roadmapDataPoint = {
 type roadmapArray = Array<roadmapDataPoint>;
 
 type roadmapState = {
-	roadmap: roadmapArray;
+	mainRoadmapPoints: roadmapArray;
 	daysDuration: number;
 };
 
 const initialState: roadmapState = {
-	roadmap: [],
+	mainRoadmapPoints: [],
 	daysDuration: 0,
 };
 
@@ -32,13 +33,13 @@ const roadmapSlice = createSlice({
 	initialState,
 	reducers: {
 		setRoadmap: (state, action: PayloadAction<roadmapArray>) => {
-			state.roadmap = action.payload;
+			state.mainRoadmapPoints = action.payload;
 		},
 		setDaysDuration: (state, action: PayloadAction<number>) => {
 			state.daysDuration = action.payload;
 		},
 		addRoadmapPoint: (state, action: PayloadAction<roadmapDataPoint>) => {
-			state.roadmap.push(action.payload);
+			state.mainRoadmapPoints.push(action.payload);
 		},
 	},
 });
@@ -48,7 +49,9 @@ export const roadmapReducer = roadmapSlice.reducer;
 export const useRoadmap = () => {
 	const dispatch = useDispatch();
 
-	const { roadmap, daysDuration } = useSelector((state: roadmapState) => state);
+	const { mainRoadmapPoints, daysDuration } = useSelector(
+		(state: RootState) => state.roadmap
+	);
 
 	const setRoadmap = (roadmap: roadmapArray) => {
 		dispatch(roadmapSlice.actions.setRoadmap(roadmap));
@@ -63,7 +66,7 @@ export const useRoadmap = () => {
 	};
 
 	return {
-		roadmap,
+		mainRoadmapPoints,
 		daysDuration,
 		setRoadmap,
 		setDaysDuration,
