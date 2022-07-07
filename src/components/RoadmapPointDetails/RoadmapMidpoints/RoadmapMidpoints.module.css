@@ -1,0 +1,13 @@
+.midpoints {
+	height: 100%;
+	background-color: var(--body-elevated);
+	border-radius: var(--inner-border-radius);
+	overflow: hidden;
+	padding: var(--large-spacing);
+}
+
+.noMidpoints {
+	display: grid;
+	place-items: center;
+	text-align: center;
+}

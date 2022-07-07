@@ -10,5 +10,7 @@
 	gap: 0.5rem;
 	align-items: center;
 	text-align: center;
-  background-color: var(--body-elevated);
+	background-color: var(--body-elevated);
+	border-radius: var(--inner-border-radius);
+	padding: var(--small-spacing);
 }

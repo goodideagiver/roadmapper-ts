@@ -21,14 +21,14 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 	return (
 		<div className={classes.root}>
 			<div className={classes.order}>
-				<div>
+				<div className={classes.info}>
 					<p>Title: {title}</p>
 					<p>Time: {daysToYrsMthWeekDayString(daysToComplete)}</p>
 				</div>
 				<Button>Edit name and time</Button>
 			</div>
 			<div className={classes.order}>
-				<p>{completion}</p>
+				<p className={classes.info}>{completion}</p>
 				<Button>Mark as finished</Button>
 			</div>
 			<div className={classes.order}>
@@ -37,6 +37,7 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 				<Button>Move Down</Button>
 			</div>
 			<div className={classes.order}>
+				{!midpoints || midpoints.length === 0 ? <p>0 midpoints</p> : null}
 				{midpoints && <div>Midpoints: {midpoints.length}</div>}
 				<Button variant='success'>Add midpoint</Button>
 			</div>

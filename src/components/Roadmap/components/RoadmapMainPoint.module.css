@@ -23,3 +23,14 @@
 	align-items: center;
 	flex-wrap: wrap;
 }
+
+@media (min-width: 768px) {
+	.root {
+		transition: 0.2s;
+	}
+	.root:hover {
+		transform: scale(1.01);
+		border-color: white;
+		cursor: pointer;
+	}
+}

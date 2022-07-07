@@ -3,13 +3,14 @@ import { PayloadAction } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store';
 
-type roadmapMidpoint = {
+export type roadmapMidpoint = {
 	finished: boolean;
 	title: string;
 	daysToComplete: number;
+	id: string;
 };
 
-type roadmapDataPoint = {
+export type roadmapDataPoint = {
 	id: string;
 	finished: boolean;
 	title: string;
@@ -75,6 +76,25 @@ const roadmapSlice = createSlice({
 				state.mainRoadmapPoints[index + 1] = temp;
 			}
 		},
+		addMidpointByPointId: (
+			state,
+			action: PayloadAction<{
+				pointId: string;
+				midpoint: roadmapMidpoint;
+			}>
+		) => {
+			const existingPoint = state.mainRoadmapPoints.find(
+				(point) => point.id === action.payload.pointId
+			);
+
+			if (existingPoint) {
+				if (!existingPoint.midpoints) {
+					existingPoint.midpoints = [];
+				}
+
+				existingPoint.midpoints.push(action.payload.midpoint);
+			}
+		},
 	},
 });
 
@@ -99,7 +119,14 @@ export const useRoadmap = () => {
 		dispatch(roadmapSlice.actions.addRoadmapPoint(roadmapPoint));
 	};
 
+	const addMidpointById = (id: string, midpoint: roadmapMidpoint) => {
+		dispatch(
+			roadmapSlice.actions.addMidpointByPointId({ pointId: id, midpoint })
+		);
+	};
+
 	return {
+		addMidpointById,
 		mainRoadmapPoints,
 		daysDuration,
 		setRoadmap,

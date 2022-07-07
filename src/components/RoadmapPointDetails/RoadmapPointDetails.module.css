@@ -1,0 +1,9 @@
+.modal {
+	width: min(90%, 1200px, 90vw);
+}
+
+.content {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: var(--large-spacing);
+}

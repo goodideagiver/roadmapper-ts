@@ -20,4 +20,7 @@
 	--min-button-dim: 42px;
 	--mid-button-dim: 60px;
 	--max-button-dim: 72px;
+
+	--inner-border-radius: 0.4rem;
+	--outer-border-radius: 0.8rem;
 }

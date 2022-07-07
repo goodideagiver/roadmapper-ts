@@ -2,6 +2,7 @@ export type roadmapMidpoint = {
 	finished: boolean;
 	title: string;
 	daysToComplete: number;
+	id: string;
 };
 
 export type roadmapDataPoint = {
