@@ -1,3 +1,5 @@
+import { roadmapDataPoint } from '../../Roadmap/Roadmap.types';
+import { EditControls } from './EditControls/EditControls';
 import classes from './PointControls.module.css';
 
 //change and display order
@@ -5,7 +7,14 @@ import classes from './PointControls.module.css';
 //delete midpoint from roadmap
 //add point from roadmap
 //mark as finished
+type Props = {
+	point: roadmapDataPoint;
+};
 
-export const PointControls = () => {
-	return <div>PointControls</div>;
+export const PointControls = ({ point }: Props) => {
+	return (
+		<>
+			<EditControls id={point.id} isFinished={!!point.finished} />
+		</>
+	);
 };

@@ -1,5 +1,6 @@
 import { useRoadmap } from '../../store/roadmap-slice';
 import { Modal } from '../../UI/Modal/Modal';
+import { PointControls } from './PointControls/PointControls';
 import * as classes from './RoadmapPointDetails.module.css';
 
 type Props = {
@@ -31,7 +32,7 @@ export const RoadmapPointDetails = ({ roadmapPointId, onClose }: Props) => {
 			visible={!!selectedRoadmapPoint}
 			title={selectedRoadmapPoint.title}
 		>
-			<p>{selectedRoadmapPoint.title}</p>
+			<PointControls point={selectedRoadmapPoint} />
 		</Modal>
 	);
 };

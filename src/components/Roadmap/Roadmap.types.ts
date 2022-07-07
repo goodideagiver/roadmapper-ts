@@ -9,7 +9,7 @@ export type roadmapDataPoint = {
 	title: string;
 	daysToComplete: number;
 	midpoints?: roadmapMidpoint[];
-	onChoose: () => void;
+	onChoose?: () => void;
 	id: string;
 };
 

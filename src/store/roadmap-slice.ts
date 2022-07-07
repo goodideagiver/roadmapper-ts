@@ -42,6 +42,39 @@ const roadmapSlice = createSlice({
 		addRoadmapPoint: (state, action: PayloadAction<roadmapDataPoint>) => {
 			state.mainRoadmapPoints.push(action.payload);
 		},
+		removeRoadmapPoint: (state, action: PayloadAction<string>) => {
+			state.mainRoadmapPoints = state.mainRoadmapPoints.filter(
+				(point) => point.id !== action.payload
+			);
+		},
+		updateRoadmapPoint: (state, action: PayloadAction<roadmapDataPoint>) => {
+			state.mainRoadmapPoints = state.mainRoadmapPoints.map((point) => {
+				if (point.id === action.payload.id) {
+					return action.payload;
+				}
+				return point;
+			});
+		},
+		changeOrderUp: (state, action: PayloadAction<string>) => {
+			const index = state.mainRoadmapPoints.findIndex(
+				(point) => point.id === action.payload
+			);
+			if (index > 0) {
+				const temp = state.mainRoadmapPoints[index];
+				state.mainRoadmapPoints[index] = state.mainRoadmapPoints[index - 1];
+				state.mainRoadmapPoints[index - 1] = temp;
+			}
+		},
+		changeOrderDown: (state, action: PayloadAction<string>) => {
+			const index = state.mainRoadmapPoints.findIndex(
+				(point) => point.id === action.payload
+			);
+			if (index < state.mainRoadmapPoints.length - 1) {
+				const temp = state.mainRoadmapPoints[index];
+				state.mainRoadmapPoints[index] = state.mainRoadmapPoints[index + 1];
+				state.mainRoadmapPoints[index + 1] = temp;
+			}
+		},
 	},
 });
 
