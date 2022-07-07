@@ -1,30 +1,45 @@
+import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
 import { useRoadmap } from '../../../../store/roadmap-slice';
 import { Button } from '../../../../UI/Button/Button';
+import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
 import classes from './EditControls.module.css';
 
 type Props = {
-	id: string;
-	isFinished: boolean;
+	roadmapPoint: roadmapDataPoint;
 };
 
 //mark as finished
 
-export const EditControls = ({ id, isFinished }: Props) => {
-	const completion = !isFinished ? 'unfinished' : 'finished';
+export const EditControls = ({ roadmapPoint }: Props) => {
+	const { id, finished, title, midpoints, daysToComplete } = roadmapPoint;
+	const completion = !finished ? 'Not finished' : 'Finished';
 
 	const { mainRoadmapPoints } = useRoadmap();
 
 	const orderInArray = mainRoadmapPoints.findIndex((el) => el.id === id);
 
 	return (
-		<div>
-			<p>{completion}</p>
-			<p>Id: {id}</p>
-			<p>Order: {orderInArray + 1}</p>
-			<Button>Mark as finished</Button>
-			<Button>Move up</Button>
-			<Button>Move Down</Button>
-			<Button>Edit name and time</Button>
+		<div className={classes.root}>
+			<div className={classes.order}>
+				<div>
+					<p>Title: {title}</p>
+					<p>Time: {daysToYrsMthWeekDayString(daysToComplete)}</p>
+				</div>
+				<Button>Edit name and time</Button>
+			</div>
+			<div className={classes.order}>
+				<p>{completion}</p>
+				<Button>Mark as finished</Button>
+			</div>
+			<div className={classes.order}>
+				<Button>Move up</Button>
+				<p>Order: {orderInArray + 1}</p>
+				<Button>Move Down</Button>
+			</div>
+			<div className={classes.order}>
+				{midpoints && <div>Midpoints: {midpoints.length}</div>}
+				<Button variant='success'>Add midpoint</Button>
+			</div>
 			<Button variant='danger'>Delete roadmap point</Button>
 		</div>
 	);

@@ -14,7 +14,7 @@ type Props = {
 export const PointControls = ({ point }: Props) => {
 	return (
 		<>
-			<EditControls id={point.id} isFinished={!!point.finished} />
+			<EditControls roadmapPoint={point} />
 		</>
 	);
 };

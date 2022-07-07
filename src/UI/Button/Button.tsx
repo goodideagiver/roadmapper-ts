@@ -14,6 +14,7 @@ type ButtonProps = {
 	className?: string;
 	variant?: ButtonVariants;
 	roundness?: number;
+	disabled?: boolean;
 };
 
 export const Button = ({
