@@ -1,4 +1,5 @@
 import { roadmapDataPoint } from '../../../store/roadmap-slice';
+import { Button } from '../../../UI/Button/Button';
 import * as classes from './RoadmapMidpoints.module.css';
 
 type Props = {
@@ -20,8 +21,15 @@ export const RoadmapMidpoints = ({ selectedRoadmapPoint }: Props) => {
 		<div className={classes.midpoints}>
 			{midpoints.map((midpoint) => (
 				<div className={classes.midpoint} key={midpoint.id}>
-					<p>{midpoint.title}</p>
-					<p>{midpoint.daysToComplete}</p>
+					<div>
+						<p>{midpoint.title}</p>
+						<p>{midpoint.daysToComplete}</p>
+					</div>
+					<div className={classes.controls}>
+						<Button>Finished</Button>
+						<Button>Up</Button>
+						<Button>Down</Button>
+					</div>
 				</div>
 			))}
 		</div>
