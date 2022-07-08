@@ -5,7 +5,8 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --dist-dir prod --public-url . --no-source-maps",
-    "deploy": "npm run build && gh-pages -d prod"
+    "deploy": "npm run build && gh-pages -d prod",
+    "ts-check": "tsc --noEmit"
   },
   "author": "Purple Black",
   "license": "ISC",
