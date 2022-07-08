@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
-import { useRoadmap } from '../../../../store/roadmap-slice';
+import { roadmapMidpoint, useRoadmap } from '../../../../store/roadmap-slice';
 import { Button } from '../../../../UI/Button/Button';
 import { AddPointModal } from '../../../AddPointModal/AddPointModal';
 import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
@@ -16,7 +16,7 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 	const { id, finished, title, midpoints, daysToComplete } = roadmapPoint;
 	const completion = !finished ? 'Not finished' : 'Finished';
 
-	const { mainRoadmapPoints } = useRoadmap();
+	const { mainRoadmapPoints, addMidpointById } = useRoadmap();
 
 	const orderInArray = mainRoadmapPoints.findIndex((el) => el.id === id);
 
@@ -24,6 +24,10 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 
 	const handleToggleMidpointModal = () => {
 		setMidpointModalVisible(!midpointModalVisible);
+	};
+
+	const addMidpoint = (midpoint: roadmapMidpoint) => {
+		addMidpointById(id, midpoint);
 	};
 
 	return (
@@ -48,8 +52,10 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 				{!midpoints || midpoints.length === 0 ? <p>0 midpoints</p> : null}
 				{midpoints && <div>Midpoints: {midpoints.length}</div>}
 				<AddPointModal
+					modalTitle='Add midpoint'
 					visible={midpointModalVisible}
 					onClose={handleToggleMidpointModal}
+					onConfirmPoint={addMidpoint}
 				/>
 				<Button onClick={handleToggleMidpointModal} variant='success'>
 					Add midpoint
