@@ -4,15 +4,24 @@ import { AddPointInput } from './components/AddPointInput/AddPointInput';
 import { PointTimeInput } from './PointTimeInput';
 
 import * as classes from './AddPointModal.module.css';
-import { useAddPointModal } from './hooks/useAddPointModal.hook';
+import { AddRoadmapPoint, useAddPointModal } from './hooks/useAddPointModal.hook';
 import { InputErrorDisplay } from './components/InputErrorDisplay/InputErrorDisplay';
 
 type AddPointModalProps = {
 	visible: boolean;
 	onClose: () => void;
+	modalTitle: string;
+	suggestions?: string[];
+	onConfirmPoint: AddRoadmapPoint;
 };
 
-export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
+export const AddPointModal = ({
+	visible,
+	onClose,
+	suggestions,
+	modalTitle,
+	onConfirmPoint,
+}: AddPointModalProps) => {
 	const {
 		cancelHandler,
 		titleErrorRef,
@@ -24,10 +33,10 @@ export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 		days,
 		handleSetDays,
 		confirmPointHandler,
-	} = useAddPointModal(onClose);
+	} = useAddPointModal(onClose, onConfirmPoint);
 
 	return (
-		<Modal onClose={cancelHandler} visible={visible} title='Add roadmap point'>
+		<Modal onClose={cancelHandler} visible={visible} title={modalTitle}>
 			<InputErrorDisplay
 				hasError={!!error.titleError}
 				errorMessage={error.titleError}
@@ -36,7 +45,7 @@ export const AddPointModal = ({ visible, onClose }: AddPointModalProps) => {
 			<AddPointInput
 				label='Roadmap point title'
 				value={title}
-				suggestedPoints={['JS', 'CSS', 'HTML', 'React', 'Redux', 'TypeScript']}
+				suggestedPoints={suggestions}
 				onInput={handleInputTitle}
 				hasError={error.titleError.length > 0}
 			/>

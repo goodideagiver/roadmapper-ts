@@ -1,15 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import { uuid } from 'uuidv4';
-import { useRoadmap } from '../../../store/roadmap-slice';
+import {
+	roadmapDataPoint,
+	roadmapMidpoint,
+} from '../../../store/roadmap-slice';
 
 type ModalError = {
 	timeError: string;
 	titleError: string;
 };
 
-export const useAddPointModal = (onClose: () => void) => {
-	const { addRoadmapPoint } = useRoadmap();
+export type AddRoadmapPoint =
+	| ((point: roadmapDataPoint) => void)
+	| ((point: roadmapMidpoint) => void);
 
+export const useAddPointModal = (
+	onClose: () => void,
+	onAddRoadmapPoint: AddRoadmapPoint
+) => {
 	const [days, setDays] = useState(0);
 	const [title, setTitle] = useState('');
 	const [error, setError] = useState<ModalError>({
@@ -64,7 +72,7 @@ export const useAddPointModal = (onClose: () => void) => {
 		if (title.length > 0 && days > 0) {
 			setError({ timeError: '', titleError: '' });
 			console.log(days, title);
-			addRoadmapPoint({
+			onAddRoadmapPoint({
 				daysToComplete: days,
 				title,
 				finished: false,

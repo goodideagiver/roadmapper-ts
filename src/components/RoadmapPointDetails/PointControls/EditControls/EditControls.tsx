@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
 import { useRoadmap } from '../../../../store/roadmap-slice';
 import { Button } from '../../../../UI/Button/Button';
+import { AddPointModal } from '../../../AddPointModal/AddPointModal';
 import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
 import classes from './EditControls.module.css';
 
@@ -17,6 +19,12 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 	const { mainRoadmapPoints } = useRoadmap();
 
 	const orderInArray = mainRoadmapPoints.findIndex((el) => el.id === id);
+
+	const [midpointModalVisible, setMidpointModalVisible] = useState(false);
+
+	const handleToggleMidpointModal = () => {
+		setMidpointModalVisible(!midpointModalVisible);
+	};
 
 	return (
 		<div className={classes.root}>
@@ -39,7 +47,13 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 			<div className={classes.order}>
 				{!midpoints || midpoints.length === 0 ? <p>0 midpoints</p> : null}
 				{midpoints && <div>Midpoints: {midpoints.length}</div>}
-				<Button variant='success'>Add midpoint</Button>
+				<AddPointModal
+					visible={midpointModalVisible}
+					onClose={handleToggleMidpointModal}
+				/>
+				<Button onClick={handleToggleMidpointModal} variant='success'>
+					Add midpoint
+				</Button>
 			</div>
 			<Button variant='danger'>Delete roadmap point</Button>
 		</div>
