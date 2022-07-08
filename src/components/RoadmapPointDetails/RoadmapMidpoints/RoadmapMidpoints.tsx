@@ -21,6 +21,7 @@ export const RoadmapMidpoints = ({ selectedRoadmapPoint }: Props) => {
 			{midpoints.map((midpoint) => (
 				<div className={classes.midpoint} key={midpoint.id}>
 					<p>{midpoint.title}</p>
+					<p>{midpoint.daysToComplete}</p>
 				</div>
 			))}
 		</div>
