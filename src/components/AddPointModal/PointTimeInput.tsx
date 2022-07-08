@@ -28,16 +28,39 @@ export const PointTimeInput = ({
 		onChangeDays(amount * 365);
 	};
 
+	const adjustTimeButtonsData = [
+		{
+			label: 'Day',
+			onClick: handleChangeDays,
+		},
+		{
+			label: 'Week',
+			onClick: handleChangeWeeks,
+		},
+		{
+			label: 'Month',
+			onClick: handleChangeMonths,
+		},
+		{
+			label: 'Year',
+			onClick: handleChangeYears,
+		},
+	];
+
 	return (
 		<div>
 			<TimeInputDisplay
 				daysValue={daysValue}
 				daysFallback='No time specified'
 			/>
-			<RoadmapPointTimeAdjust onTimeAdjust={handleChangeDays} label='Day' />
-			<RoadmapPointTimeAdjust onTimeAdjust={handleChangeWeeks} label='Week' />
-			<RoadmapPointTimeAdjust onTimeAdjust={handleChangeMonths} label='Month' />
-			<RoadmapPointTimeAdjust onTimeAdjust={handleChangeYears} label='Year' />
+			{adjustTimeButtonsData.map((buttonData) => (
+				<RoadmapPointTimeAdjust
+				
+					key={buttonData.label}
+					label={buttonData.label}
+					onTimeAdjust={buttonData.onClick}
+				/>
+			))}
 			<Button variant='danger' onClick={onReset}>
 				Reset point time
 			</Button>
