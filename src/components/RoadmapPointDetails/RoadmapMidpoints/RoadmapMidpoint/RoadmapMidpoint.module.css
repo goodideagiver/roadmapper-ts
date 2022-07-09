@@ -8,6 +8,13 @@
 	justify-content: space-between;
 }
 
+.finished {
+	transition: 0.5s;
+	background-color: var(--body-base);
+	color: gray;
+	border-color: gray;
+}
+
 .controls {
 	display: flex;
 	gap: var(--small-spacing);

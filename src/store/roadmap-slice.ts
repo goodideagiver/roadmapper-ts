@@ -110,6 +110,28 @@ const roadmapSlice = createSlice({
 				existingPoint.midpoints = action.payload.midpoints;
 			}
 		},
+		setMidpointFinishedByPointIdAndMidpointId: (
+			state,
+			action: PayloadAction<{
+				pointId: string;
+				midpointId: string;
+				finished: boolean;
+			}>
+		) => {
+			const existingPoint = state.mainRoadmapPoints.find(
+				(point) => point.id === action.payload.pointId
+			);
+
+			if (existingPoint) {
+				const existingMidpoint = existingPoint.midpoints.find(
+					(midpoint) => midpoint.id === action.payload.midpointId
+				);
+
+				if (existingMidpoint) {
+					existingMidpoint.finished = action.payload.finished;
+				}
+			}
+		},
 	},
 });
 
@@ -153,7 +175,22 @@ export const useRoadmap = () => {
 		}
 	};
 
+	const setMidpointFinishedByPointIdAndMidpointId = (
+		id: string,
+		midpointId: string,
+		finished: boolean
+	) => {
+		dispatch(
+			roadmapSlice.actions.setMidpointFinishedByPointIdAndMidpointId({
+				pointId: id,
+				midpointId,
+				finished,
+			})
+		);
+	};
+
 	return {
+		setMidpointFinishedByPointIdAndMidpointId,
 		getMidpointsByPointId,
 		setMidpointsByPointId,
 		addMidpointById,

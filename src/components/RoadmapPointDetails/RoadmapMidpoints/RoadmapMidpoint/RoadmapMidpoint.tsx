@@ -16,13 +16,25 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 	const [optionsOpen, setOptionsOpen] = useState(false);
 	const midpointRef = useRef(null);
 
-	const { getMidpointsByPointId, setMidpointsByPointId } = useRoadmap();
+	const {
+		getMidpointsByPointId,
+		setMidpointsByPointId,
+		setMidpointFinishedByPointIdAndMidpointId,
+	} = useRoadmap();
 
 	const toggleOptions = () => setOptionsOpen(!optionsOpen);
 
 	const formattedDays = daysToYrsMthWeekDayString(midpoint.daysToComplete);
 
 	useClickOutside(midpointRef, () => setOptionsOpen(false));
+
+	const toggleMidpointFinished = () => {
+		setMidpointFinishedByPointIdAndMidpointId(
+			mainPointId,
+			midpoint.id,
+			!midpoint.finished
+		);
+	};
 
 	const updatePointMidpoints = (newMidpoints: roadmapMidpoint[]) => {
 		setMidpointsByPointId(mainPointId, newMidpoints);
@@ -75,7 +87,13 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 	};
 
 	return (
-		<div ref={midpointRef} className={classes.midpoint} key={midpoint.id}>
+		<div
+			ref={midpointRef}
+			className={`${classes.midpoint} ${
+				midpoint.finished ? classes.finished : ''
+			}`}
+			key={midpoint.id}
+		>
 			<div className={classes.info}>
 				<p>{midpoint.title}</p>
 				<p>{formattedDays}</p>
@@ -83,7 +101,7 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 			</div>
 			{optionsOpen && (
 				<div className={classes.controls}>
-					<Button>
+					<Button onClick={toggleMidpointFinished}>
 						{midpoint.finished ? 'Mark unfinished' : 'Mark finished'}
 					</Button>
 					<Button onClick={moveMidpointUpHandler}>

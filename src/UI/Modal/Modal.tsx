@@ -13,7 +13,13 @@ type ModalProps = {
 	className?: string;
 };
 
-export const Modal = ({ title, children, visible, onClose,className }: ModalProps) => {
+export const Modal = ({
+	title,
+	children,
+	visible,
+	onClose,
+	className,
+}: ModalProps) => {
 	const overlayRoot = document.getElementById('overlay-root');
 
 	if (!overlayRoot) {
@@ -21,7 +27,7 @@ export const Modal = ({ title, children, visible, onClose,className }: ModalProp
 	}
 
 	return ReactDOM.createPortal(
-		<>
+		<div style={{ zIndex: 3000, position: 'relative' }}>
 			<CSSTransition
 				classNames={ModalAnimation}
 				in={visible}
@@ -42,7 +48,7 @@ export const Modal = ({ title, children, visible, onClose,className }: ModalProp
 			>
 				<Backdrop onClose={onClose} />
 			</CSSTransition>
-		</>,
+		</div>,
 		overlayRoot
 	);
 };
