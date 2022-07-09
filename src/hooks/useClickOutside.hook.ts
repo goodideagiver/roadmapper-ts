@@ -1,15 +1,15 @@
-import { MutableRefObject, Ref, useEffect } from 'react';
+import { RefObject, useEffect } from 'react';
 
-export const useClickOutside = <T extends MutableRefObject>(
-	ref: T,
-	onOutsideClick: (ev: MouseEvent) => void
+export const useClickOutside = <T extends HTMLElement>(
+	ref: RefObject<T>,
+	onOutsideClick: () => void
 ) => {
 	useEffect(() => {
 		const listener = (event: MouseEvent) => {
-			if (!ref.current || ref.current.contains(event.target)) {
+			if (!ref.current || ref.current.contains(event.target as Node)) {
 				return;
 			}
-			onOutsideClick(event);
+			onOutsideClick();
 		};
 		document.addEventListener('click', listener);
 		return () => {
