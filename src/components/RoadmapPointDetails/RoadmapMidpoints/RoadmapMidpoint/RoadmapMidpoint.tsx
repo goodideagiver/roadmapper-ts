@@ -51,7 +51,28 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 		updatePointMidpoints(newMidpoints);
 	};
 
-	const moveMidpointDownHandler = () => {};
+	const moveMidpointDownHandler = () => {
+		const oldMidpoints = getMidpointsByPointId(mainPointId);
+
+		if (!oldMidpoints || oldMidpoints.length === 1) return;
+
+		const thisPointIndex = oldMidpoints.findIndex(
+			(searchedMidpoint) => searchedMidpoint.id === midpoint.id
+		);
+
+		if (thisPointIndex === oldMidpoints.length - 1) {
+			return;
+		}
+
+		const newMidpoints = [...oldMidpoints];
+		const thisPoint = newMidpoints[thisPointIndex];
+		const nextPoint = newMidpoints[thisPointIndex + 1];
+
+		newMidpoints[thisPointIndex] = nextPoint;
+		newMidpoints[thisPointIndex + 1] = thisPoint;
+
+		updatePointMidpoints(newMidpoints);
+	};
 
 	return (
 		<div ref={midpointRef} className={classes.midpoint} key={midpoint.id}>
@@ -69,7 +90,7 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 						<FiArrowUp />
 						Up
 					</Button>
-					<Button>
+					<Button onClick={moveMidpointDownHandler}>
 						<FiArrowDown />
 						Down
 					</Button>
