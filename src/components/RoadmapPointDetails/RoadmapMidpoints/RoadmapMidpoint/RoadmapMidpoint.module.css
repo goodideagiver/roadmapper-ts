@@ -1,0 +1,33 @@
+.midpoint {
+	border: 1px var(--body-highlight) solid;
+	background-color: var(--body-elevated);
+	padding: var(--small-spacing);
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+	border-radius: var(--inner-border-radius);
+
+	justify-content: space-between;
+}
+
+.controls {
+	display: flex;
+	gap: var(--small-spacing);
+	margin-top: var(--small-spacing);
+	animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.info {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 1rem;
+	align-items: center;
+	justify-items: center;
+}
