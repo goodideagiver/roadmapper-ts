@@ -9,6 +9,18 @@
 	width: 100%;
 }
 
+.sm {
+	min-height: var(--min-button-dim);
+}
+
+.lg {
+	min-height: var(--max-button-dim);
+}
+
+.md {
+	min-height: var(--mid-button-dim);
+}
+
 .danger {
 	background-color: gray;
 }

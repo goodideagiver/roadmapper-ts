@@ -4,7 +4,10 @@ import { AddPointInput } from './components/AddPointInput/AddPointInput';
 import { PointTimeInput } from './PointTimeInput';
 
 import * as classes from './AddPointModal.module.css';
-import { AddRoadmapPoint, useAddPointModal } from './hooks/useAddPointModal.hook';
+import {
+	AddRoadmapPoint,
+	useAddPointModal,
+} from './hooks/useAddPointModal.hook';
 import { InputErrorDisplay } from './components/InputErrorDisplay/InputErrorDisplay';
 
 type AddPointModalProps = {
@@ -63,6 +66,7 @@ export const AddPointModal = ({
 				onClick={confirmPointHandler}
 				variant='success'
 				className={classes.confirmButton}
+				size='lg'
 			>
 				Confirm roadmap point
 			</Button>

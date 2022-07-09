@@ -123,7 +123,7 @@ const roadmapSlice = createSlice({
 			);
 
 			if (existingPoint) {
-				const existingMidpoint = existingPoint.midpoints.find(
+				const existingMidpoint = existingPoint?.midpoints?.find(
 					(midpoint) => midpoint.id === action.payload.midpointId
 				);
 

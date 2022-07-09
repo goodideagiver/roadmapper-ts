@@ -12,8 +12,12 @@ export const RoadmapPointTimeAdjust = ({
 	label,
 }: RoadmapPoinTimeAdjustProps) => (
 	<div className={classes.root}>
-		<Button onClick={() => onTimeAdjust(-1)}>-1 {label}</Button>
+		<Button size='sm' onClick={() => onTimeAdjust(-1)}>
+			-1 {label}
+		</Button>
 		<p>{label + 's'}</p>
-		<Button onClick={() => onTimeAdjust(1)}>+1 {label}</Button>
+		<Button size='sm' onClick={() => onTimeAdjust(1)}>
+			+1 {label}
+		</Button>
 	</div>
 );

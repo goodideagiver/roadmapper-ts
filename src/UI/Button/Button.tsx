@@ -8,6 +8,8 @@ type ButtonVariants =
 	| 'warning'
 	| 'info';
 
+type ButtonSizes = 'sm' | 'md' | 'lg';
+
 type ButtonProps = {
 	onClick: () => void;
 	children: React.ReactNode | React.ReactNode[];
@@ -15,17 +17,29 @@ type ButtonProps = {
 	variant?: ButtonVariants;
 	roundness?: number;
 	disabled?: boolean;
+	size?: ButtonSizes;
 };
 
 export const Button = ({
 	variant,
 	className,
 	children,
+	size = 'md',
 	...props
 }: ButtonProps) => {
-	const buttonClasses = `${classes.button} ${variant ? classes[variant] : ''} ${
+	let buttonClasses = `${classes.button} ${variant ? classes[variant] : ''} ${
 		className ? className : ''
 	}`;
+
+	if (size === 'sm') {
+		buttonClasses += ` ${classes.sm}`;
+	}
+	if (size === 'lg') {
+		buttonClasses += ` ${classes.lg}`;
+	}
+	if (size === 'md') {
+		buttonClasses += ` ${classes.md}`;
+	}
 
 	return (
 		<button className={buttonClasses} {...props}>
