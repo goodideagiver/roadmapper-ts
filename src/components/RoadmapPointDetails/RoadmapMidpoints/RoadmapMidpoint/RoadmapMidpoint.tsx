@@ -3,7 +3,13 @@ import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
 import { roadmapMidpoint, useRoadmap } from '../../../../store/roadmap-slice';
 import { Button } from '../../../../UI/Button/Button';
 
-import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
+import {
+	FiArrowUp,
+	FiArrowDown,
+	FiCheckCircle,
+	FiCircle,
+	FiTrash,
+} from 'react-icons/fi';
 
 import * as classes from './RoadmapMidpoint.module.css';
 import { useClickOutside } from '../../../../hooks/useClickOutside.hook';
@@ -97,20 +103,23 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 			<div className={classes.info}>
 				<p>{midpoint.title}</p>
 				<p>{formattedDays}</p>
-				<Button onClick={toggleOptions}>Edit</Button>
+				<Button size='sm' onClick={toggleOptions}>
+					Edit
+				</Button>
 			</div>
 			{optionsOpen && (
 				<div className={classes.controls}>
-					<Button onClick={toggleMidpointFinished}>
-						{midpoint.finished ? 'Mark unfinished' : 'Mark finished'}
+					<Button size='sm' onClick={toggleMidpointFinished}>
+						{!midpoint.finished ? <FiCircle /> : <FiCheckCircle />}
 					</Button>
-					<Button onClick={moveMidpointUpHandler}>
+					<Button size='sm' onClick={moveMidpointUpHandler}>
 						<FiArrowUp />
-						Up
 					</Button>
-					<Button onClick={moveMidpointDownHandler}>
+					<Button size='sm' onClick={moveMidpointDownHandler}>
 						<FiArrowDown />
-						Down
+					</Button>
+					<Button size='sm' variant='danger'>
+						<FiTrash />
 					</Button>
 				</div>
 			)}

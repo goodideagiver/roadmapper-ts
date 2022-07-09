@@ -37,7 +37,7 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 					<p>Title: {title}</p>
 					<p>Time: {daysToYrsMthWeekDayString(daysToComplete)}</p>
 				</div>
-				<Button>Edit name and time</Button>
+				<Button size='sm'>Edit name and time</Button>
 			</div>
 			<div className={classes.order}>
 				<p className={classes.info}>{completion}</p>

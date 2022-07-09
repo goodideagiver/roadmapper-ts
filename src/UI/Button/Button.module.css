@@ -22,7 +22,8 @@
 }
 
 .danger {
-	background-color: gray;
+	background-color: transparent;
+	border: 2px gray solid;
 }
 
 .success {

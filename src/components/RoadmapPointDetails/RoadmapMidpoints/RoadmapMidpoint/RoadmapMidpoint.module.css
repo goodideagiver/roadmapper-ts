@@ -16,10 +16,16 @@
 }
 
 .controls {
-	display: flex;
+	display: grid;
 	gap: var(--small-spacing);
 	margin-top: var(--small-spacing);
 	animation: fadeIn 0.2s ease-in-out;
+	grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+}
+
+.controls svg {
+	font-size: 1.5rem;
+	pointer-events: none;
 }
 
 @keyframes fadeIn {
