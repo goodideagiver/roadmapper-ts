@@ -20,7 +20,11 @@ export const RoadmapMidpoints = ({ selectedRoadmapPoint }: Props) => {
 	return (
 		<div className={classes.midpoints}>
 			{midpoints.map((midpoint) => (
-				<RoadmapMidpoint key={midpoint.id} midpoint={midpoint} />
+				<RoadmapMidpoint
+					key={midpoint.id}
+					mainPointId={selectedRoadmapPoint.id}
+					midpoint={midpoint}
+				/>
 			))}
 		</div>
 	);

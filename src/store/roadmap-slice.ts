@@ -95,6 +95,21 @@ const roadmapSlice = createSlice({
 				existingPoint.midpoints.push(action.payload.midpoint);
 			}
 		},
+		setMidpointsByPointId: (
+			state,
+			action: PayloadAction<{
+				pointId: string;
+				midpoints: roadmapMidpoint[];
+			}>
+		) => {
+			const existingPoint = state.mainRoadmapPoints.find(
+				(point) => point.id === action.payload.pointId
+			);
+
+			if (existingPoint) {
+				existingPoint.midpoints = action.payload.midpoints;
+			}
+		},
 	},
 });
 
@@ -125,7 +140,22 @@ export const useRoadmap = () => {
 		);
 	};
 
+	const setMidpointsByPointId = (id: string, midpoints: roadmapMidpoint[]) => {
+		dispatch(
+			roadmapSlice.actions.setMidpointsByPointId({ pointId: id, midpoints })
+		);
+	};
+
+	const getMidpointsByPointId = (id: string) => {
+		const point = mainRoadmapPoints.find((point) => point.id === id);
+		if (point) {
+			return point.midpoints;
+		}
+	};
+
 	return {
+		getMidpointsByPointId,
+		setMidpointsByPointId,
 		addMidpointById,
 		mainRoadmapPoints,
 		daysDuration,
