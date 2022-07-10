@@ -56,6 +56,7 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 					visible={midpointModalVisible}
 					onClose={handleToggleMidpointModal}
 					onConfirmPoint={addMidpoint}
+					techForSuggestions={roadmapPoint.title}
 				/>
 				<Button onClick={handleToggleMidpointModal} variant='success'>
 					Add midpoint

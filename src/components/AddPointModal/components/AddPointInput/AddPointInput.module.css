@@ -6,12 +6,18 @@
 }
 
 .suggestions {
-	display: flex;
-	flex-wrap: wrap;
 	gap: var(--small-spacing);
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(81px, 1fr));
-	word-break: break-all;
+	/* display: grid; */
+	/* grid-template-columns: repeat(auto-fit, minmax(81px, 1fr)); */
+	display: flex;
+	/* word-break: break-all; */
+	overflow-x: auto;
+	padding-bottom: var(--small-spacing);
+}
+
+.suggestions > * {
+	flex-shrink: 0;
+	flex-basis: 70px;
 }
 
 .inputHighlight {

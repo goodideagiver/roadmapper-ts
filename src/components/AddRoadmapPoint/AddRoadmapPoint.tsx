@@ -23,7 +23,15 @@ export const AddRoadmapPoint = () => {
 			<AddPointModal
 				onConfirmPoint={addRoadmapPoint}
 				modalTitle='Add roadmap point'
-				suggestions={['HTML', 'CSS']}
+				suggestions={[
+					'HTML',
+					'CSS',
+					'JavaScript',
+					'TypeScript',
+					'React',
+					'Next.js',
+					'Svelte',
+				]}
 				onClose={handleToggleModal}
 				visible={modalVisible}
 			/>

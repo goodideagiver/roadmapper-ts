@@ -9,6 +9,7 @@ import {
 	useAddPointModal,
 } from './hooks/useAddPointModal.hook';
 import { InputErrorDisplay } from './components/InputErrorDisplay/InputErrorDisplay';
+import { getSuggestedTech } from '../../helpers/getSuggestedTech.helper';
 
 type AddPointModalProps = {
 	visible: boolean;
@@ -16,6 +17,7 @@ type AddPointModalProps = {
 	modalTitle: string;
 	suggestions?: string[];
 	onConfirmPoint: AddRoadmapPoint;
+	techForSuggestions?: string;
 };
 
 export const AddPointModal = ({
@@ -24,6 +26,7 @@ export const AddPointModal = ({
 	suggestions,
 	modalTitle,
 	onConfirmPoint,
+	techForSuggestions,
 }: AddPointModalProps) => {
 	const {
 		cancelHandler,
@@ -38,6 +41,15 @@ export const AddPointModal = ({
 		confirmPointHandler,
 	} = useAddPointModal(onClose, onConfirmPoint);
 
+	let suggestedTech;
+
+	if (suggestions) {
+		suggestedTech = suggestions;
+	}
+	if (!suggestions && techForSuggestions) {
+		suggestedTech = getSuggestedTech(techForSuggestions);
+	}
+
 	return (
 		<Modal onClose={cancelHandler} visible={visible} title={modalTitle}>
 			<InputErrorDisplay
@@ -48,7 +60,7 @@ export const AddPointModal = ({
 			<AddPointInput
 				label='Roadmap point title'
 				value={title}
-				suggestedPoints={suggestions}
+				suggestedPoints={suggestedTech}
 				onInput={handleInputTitle}
 				hasError={error.titleError.length > 0}
 			/>
