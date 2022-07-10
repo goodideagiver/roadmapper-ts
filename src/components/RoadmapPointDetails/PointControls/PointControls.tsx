@@ -1,6 +1,6 @@
 import { roadmapDataPoint } from '../../Roadmap/Roadmap.types';
 import { EditControls } from './EditControls/EditControls';
-import classes from './PointControls.module.css';
+import * as classes from './PointControls.module.css';
 
 //change and display order
 //add midpoint to roadmap point

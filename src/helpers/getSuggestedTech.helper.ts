@@ -33,6 +33,23 @@ const technologys: {
 		'Promises',
 		'Async/await',
 	],
+	TypeScript: [
+		'Inference',
+		'Assertions',
+		'Guards',
+		'Aliases',
+		'Literals',
+		'Intersections',
+		'Generics',
+		'Classes',
+		'Interfaces',
+		'Enums',
+		'Tuples',
+		'Nullables',
+		'Union types',
+		'Function types',
+		'Array types',
+		'Object types',
 };
 
 export const getSuggestedTech = (technology: string) => {
