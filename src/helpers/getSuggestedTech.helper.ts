@@ -50,6 +50,7 @@ const technologys: {
 		'Function types',
 		'Array types',
 		'Object types',
+	],
 };
 
 export const getSuggestedTech = (technology: string) => {
