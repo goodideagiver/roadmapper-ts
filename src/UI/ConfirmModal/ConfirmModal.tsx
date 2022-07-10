@@ -2,28 +2,13 @@ import { Button } from '../Button/Button';
 import { Modal } from '../Modal/Modal';
 
 import * as classes from './ConfirmModal.module.css';
+import { Button as ButtonType, Props } from './ConfirmModal.types';
 
-type Button = {
-	text?: string;
-	type?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
-};
-
-type Props = {
-	onConfirm: () => void;
-	onCancel: () => void;
-	title: string;
-	message: string;
-	confifmButton?: Button;
-	cancelButton?: Button;
-	buttonsSize?: 'sm' | 'md' | 'lg';
-	visible: boolean;
-};
-
-const defaultConfirmButton: Button = {
+const defaultConfirmButton: ButtonType = {
 	text: 'Yes',
 };
 
-const defaultCancelButton: Button = {
+const defaultCancelButton: ButtonType = {
 	text: 'No',
 	type: 'danger',
 };
