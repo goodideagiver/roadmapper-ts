@@ -13,6 +13,7 @@ import {
 
 import * as classes from './RoadmapMidpoint.module.css';
 import { useClickOutside } from '../../../../hooks/useClickOutside.hook';
+import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
 
 type Props = {
 	midpoint: roadmapMidpoint;
@@ -92,6 +93,8 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 		updatePointMidpoints(newMidpoints);
 	};
 
+	const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+
 	return (
 		<div
 			ref={midpointRef}
@@ -118,11 +121,22 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 					<Button size='sm' onClick={moveMidpointDownHandler}>
 						<FiArrowDown />
 					</Button>
-					<Button size='sm' variant='danger'>
+					<Button
+						onClick={() => setDeleteModalVisible(true)}
+						size='sm'
+						variant='danger'
+					>
 						<FiTrash />
 					</Button>
 				</div>
 			)}
+			<ConfirmModal
+				visible={deleteModalVisible}
+				message='Are you sure you want to delete this midpoint?'
+				onCancel={() => setDeleteModalVisible(false)}
+				onConfirm={() => setDeleteModalVisible(false)}
+				title='Delete midpoint'
+			/>
 		</div>
 	);
 };

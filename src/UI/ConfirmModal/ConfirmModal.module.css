@@ -3,3 +3,8 @@
 	grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
 	gap: var(--small-spacing);
 }
+
+.message {
+	margin-bottom: 2rem;
+	font-size: 1rem;
+}

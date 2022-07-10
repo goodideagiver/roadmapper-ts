@@ -15,7 +15,7 @@ type Props = {
 	message: string;
 	confifmButton?: Button;
 	cancelButton?: Button;
-	buttonsSize: 'sm' | 'md' | 'lg';
+	buttonsSize?: 'sm' | 'md' | 'lg';
 	visible: boolean;
 };
 
@@ -35,7 +35,7 @@ export const ConfirmModal = ({
 	message,
 	cancelButton = defaultCancelButton,
 	confifmButton = defaultConfirmButton,
-	buttonsSize,
+	buttonsSize = 'md',
 	visible,
 }: Props) => {
 	const cancelHandler = () => {
@@ -48,7 +48,7 @@ export const ConfirmModal = ({
 
 	return (
 		<Modal visible={visible} title={title} onClose={cancelHandler}>
-			<p>{message}</p>
+			<p className={classes.message}>{message}</p>
 			<div className={classes.actions}>
 				<Button
 					size={buttonsSize}
