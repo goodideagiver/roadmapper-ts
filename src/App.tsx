@@ -5,7 +5,7 @@ import { Roadmap } from './components/Roadmap/Roadmap';
 import { RoadmapSummary } from './components/RoadmapSummary/RoadmapSummary';
 
 import { MainLayout } from './pages/MainLayout/MainLayout';
-import { useRoadmap } from './store/roadmap-slice';
+import { useRoadmap } from './store/useRoadmap';
 
 const App = () => {
 	const { mainRoadmapPoints } = useRoadmap();

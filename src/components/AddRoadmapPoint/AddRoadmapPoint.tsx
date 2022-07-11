@@ -5,7 +5,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { Button } from '../../UI/Button/Button';
 
 import * as classes from './AddRoadmapPoint.module.css';
-import { useRoadmap } from '../../store/roadmap-slice';
+import { useRoadmap } from '../../store/useRoadmap';
 
 export const AddRoadmapPoint = () => {
 	const [modalVisible, setModalVisible] = useState(false);

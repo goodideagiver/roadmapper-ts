@@ -1,4 +1,4 @@
-import { useRoadmap } from '../../store/roadmap-slice';
+import { useRoadmap } from '../../store/useRoadmap';
 import { Modal } from '../../UI/Modal/Modal';
 import { PointControls } from './PointControls/PointControls';
 import { RoadmapMidpoints } from './RoadmapMidpoints/RoadmapMidpoints';

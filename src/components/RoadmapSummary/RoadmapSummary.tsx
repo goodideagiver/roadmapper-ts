@@ -1,5 +1,5 @@
 import { daysToYrsMthWeekDayString } from '../../helpers/timeDiff.helper';
-import { useRoadmap } from '../../store/roadmap-slice';
+import { useRoadmap } from '../../store/useRoadmap';
 
 export const RoadmapSummary = () => {
 	const { mainRoadmapPoints } = useRoadmap();

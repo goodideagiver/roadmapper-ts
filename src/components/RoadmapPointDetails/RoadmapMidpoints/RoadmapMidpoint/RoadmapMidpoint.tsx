@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
-import { roadmapMidpoint, useRoadmap } from '../../../../store/roadmap-slice';
+import { roadmapMidpoint } from '../../../../store/roadmap-slice';
+import { useRoadmap } from '../../../../store/useRoadmap';
 import { Button } from '../../../../UI/Button/Button';
 
 import {

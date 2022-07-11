@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from './store';
 
 export type roadmapMidpoint = {
 	finished: boolean;
@@ -18,7 +16,7 @@ export type roadmapDataPoint = {
 	midpoints?: roadmapMidpoint[];
 };
 
-type roadmapArray = Array<roadmapDataPoint>;
+export type roadmapArray = Array<roadmapDataPoint>;
 
 type roadmapState = {
 	mainRoadmapPoints: roadmapArray;
@@ -30,7 +28,7 @@ const initialState: roadmapState = {
 	daysDuration: 0,
 };
 
-const roadmapSlice = createSlice({
+export const roadmapSlice = createSlice({
 	name: 'roadmap',
 	initialState,
 	reducers: {
@@ -60,20 +58,24 @@ const roadmapSlice = createSlice({
 			const index = state.mainRoadmapPoints.findIndex(
 				(point) => point.id === action.payload
 			);
-			if (index > 0) {
+			if (
+				index >= 0 &&
+				state.mainRoadmapPoints.length > 1 &&
+				index !== state.mainRoadmapPoints.length - 1
+			) {
 				const temp = state.mainRoadmapPoints[index];
-				state.mainRoadmapPoints[index] = state.mainRoadmapPoints[index - 1];
-				state.mainRoadmapPoints[index - 1] = temp;
+				state.mainRoadmapPoints[index] = state.mainRoadmapPoints[index + 1];
+				state.mainRoadmapPoints[index + 1] = temp;
 			}
 		},
 		changeOrderDown: (state, action: PayloadAction<string>) => {
 			const index = state.mainRoadmapPoints.findIndex(
 				(point) => point.id === action.payload
 			);
-			if (index < state.mainRoadmapPoints.length - 1) {
+			if (index > 0 && state.mainRoadmapPoints.length > 1) {
 				const temp = state.mainRoadmapPoints[index];
-				state.mainRoadmapPoints[index] = state.mainRoadmapPoints[index + 1];
-				state.mainRoadmapPoints[index + 1] = temp;
+				state.mainRoadmapPoints[index] = state.mainRoadmapPoints[index - 1];
+				state.mainRoadmapPoints[index - 1] = temp;
 			}
 		},
 		addMidpointByPointId: (
@@ -136,68 +138,3 @@ const roadmapSlice = createSlice({
 });
 
 export const roadmapReducer = roadmapSlice.reducer;
-
-export const useRoadmap = () => {
-	const dispatch = useDispatch();
-
-	const { mainRoadmapPoints, daysDuration } = useSelector(
-		(state: RootState) => state.roadmap
-	);
-
-	const setRoadmap = (roadmap: roadmapArray) => {
-		dispatch(roadmapSlice.actions.setRoadmap(roadmap));
-	};
-
-	const setDaysDuration = (daysDuration: number) => {
-		dispatch(roadmapSlice.actions.setDaysDuration(daysDuration));
-	};
-
-	const addRoadmapPoint = (roadmapPoint: roadmapDataPoint) => {
-		dispatch(roadmapSlice.actions.addRoadmapPoint(roadmapPoint));
-	};
-
-	const addMidpointById = (id: string, midpoint: roadmapMidpoint) => {
-		dispatch(
-			roadmapSlice.actions.addMidpointByPointId({ pointId: id, midpoint })
-		);
-	};
-
-	const setMidpointsByPointId = (id: string, midpoints: roadmapMidpoint[]) => {
-		dispatch(
-			roadmapSlice.actions.setMidpointsByPointId({ pointId: id, midpoints })
-		);
-	};
-
-	const getMidpointsByPointId = (id: string) => {
-		const point = mainRoadmapPoints.find((point) => point.id === id);
-		if (point) {
-			return point.midpoints;
-		}
-	};
-
-	const setMidpointFinishedByPointIdAndMidpointId = (
-		id: string,
-		midpointId: string,
-		finished: boolean
-	) => {
-		dispatch(
-			roadmapSlice.actions.setMidpointFinishedByPointIdAndMidpointId({
-				pointId: id,
-				midpointId,
-				finished,
-			})
-		);
-	};
-
-	return {
-		setMidpointFinishedByPointIdAndMidpointId,
-		getMidpointsByPointId,
-		setMidpointsByPointId,
-		addMidpointById,
-		mainRoadmapPoints,
-		daysDuration,
-		setRoadmap,
-		setDaysDuration,
-		addRoadmapPoint,
-	};
-};

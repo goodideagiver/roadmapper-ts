@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { isPlural } from '../../../../helpers/isPlural.helper';
 import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
-import { roadmapMidpoint, useRoadmap } from '../../../../store/roadmap-slice';
+import { roadmapMidpoint } from '../../../../store/roadmap-slice';
+import { useRoadmap } from '../../../../store/useRoadmap';
 import { Button } from '../../../../UI/Button/Button';
 import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
 import { AddPointModal } from '../../../AddPointModal/AddPointModal';
@@ -18,7 +19,12 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 	const { id, finished, title, midpoints, daysToComplete } = roadmapPoint;
 	const completion = !finished ? 'Not finished' : 'Finished';
 
-	const { mainRoadmapPoints, addMidpointById } = useRoadmap();
+	const {
+		mainRoadmapPoints,
+		addMidpointById,
+		moveRoadmapPointDown,
+		moveRoadmapPointUp,
+	} = useRoadmap();
 
 	const orderInArray = mainRoadmapPoints.findIndex((el) => el.id === id);
 
@@ -43,16 +49,16 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 					<p>Title: {title}</p>
 					<p>Time: {daysToYrsMthWeekDayString(daysToComplete)}</p>
 				</div>
-				<Button size='sm'>Edit name and time</Button>
+				<Button>Edit name and time</Button>
 			</div>
 			<div className={classes.order}>
 				<p className={classes.info}>{completion}</p>
 				<Button>Mark as finished</Button>
 			</div>
 			<div className={classes.order}>
-				<Button>Move up</Button>
+				<Button onClick={() => moveRoadmapPointDown(id)}>Move Down</Button>
 				<p>Order: {orderInArray + 1}</p>
-				<Button>Move Down</Button>
+				<Button onClick={() => moveRoadmapPointUp(id)}>Move up</Button>
 			</div>
 			<div className={classes.order}>
 				{!midpoints || midpoints.length === 0 ? <p>0 midpoints</p> : null}
