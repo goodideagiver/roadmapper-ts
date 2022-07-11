@@ -25,3 +25,15 @@
 	padding: var(--small-spacing) var(--medium-spacing);
 	border-radius: 0.4rem;
 }
+
+.suggestionsAvailable {
+	text-align: center;
+	margin-top: var(--small-spacing);
+}
+
+.suggestionCount {
+	background-color: var(--body-highlight);
+	aspect-ratio: 1/1;
+	border-radius: 5px;
+	padding: 5px;
+}

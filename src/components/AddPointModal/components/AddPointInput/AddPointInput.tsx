@@ -2,6 +2,7 @@ import { uuid } from 'uuidv4';
 import { SuggestedPoint } from './SuggestedPoint';
 import * as classes from './AddPointInput.module.css';
 import { InputWithLabel } from '../../../../UI/InputWithLabel/InputWithLabel';
+import { getSuggestedTech } from '../../../../helpers/getSuggestedTech.helper';
 
 export type Suggestion = string | number;
 
@@ -35,6 +36,8 @@ export const AddPointInput = ({
 		onInput(value);
 	};
 
+	const willHaveSuggestionsIfPicked = !!getSuggestedTech(value);
+
 	return (
 		<div className={classes.root}>
 			<InputWithLabel
@@ -59,6 +62,14 @@ export const AddPointInput = ({
 							))}
 					</div>{' '}
 				</>
+			)}
+			{willHaveSuggestionsIfPicked && (
+				<p className={classes.suggestionsAvailable}>
+					Midpoint suggestions available{' '}
+					<span className={classes.suggestionCount}>
+						{getSuggestedTech(value)?.length}
+					</span>
+				</p>
 			)}
 		</div>
 	);
