@@ -38,9 +38,13 @@
 }
 
 .info {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 	gap: 1rem;
 	align-items: center;
 	justify-items: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.info > * {
+	flex: 1 1 80px;
 }

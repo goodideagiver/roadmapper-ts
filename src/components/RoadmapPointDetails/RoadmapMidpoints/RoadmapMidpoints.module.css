@@ -3,14 +3,22 @@
 	background-color: var(--body-elevated);
 	border-radius: var(--inner-border-radius);
 	overflow: hidden;
-	padding: var(--medium-spacing);
+	padding: var(--small-spacing);
 	display: flex;
 	flex-direction: column;
 	gap: var(--small-spacing);
+	overflow-y: auto;
+	max-height: 60vh;
 }
 
 .noMidpoints {
 	display: grid;
 	place-items: center;
 	text-align: center;
+}
+
+@media (max-width: 600px) {
+	.midpoints {
+		max-height: 38vh;
+	}
 }

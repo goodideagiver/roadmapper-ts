@@ -3,7 +3,13 @@
 }
 
 .content {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	/* display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
 	gap: var(--large-spacing);
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.content > * {
+	flex: 1 1 230px;
 }
