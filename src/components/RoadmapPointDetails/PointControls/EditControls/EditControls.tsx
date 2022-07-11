@@ -102,11 +102,23 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 					Mark as {!finished ? 'finished' : 'not finished'}
 				</Button>
 			</div>
-			<div className={classes.order}>
-				<Button onClick={() => moveRoadmapPointDown(id)}>Move Down</Button>
-				<p>Order: {orderInArray + 1}</p>
-				<Button onClick={() => moveRoadmapPointUp(id)}>Move up</Button>
-			</div>
+			{mainRoadmapPoints.length > 1 && (
+				<div className={classes.order}>
+					<Button
+						disabled={orderInArray === 0}
+						onClick={() => moveRoadmapPointDown(id)}
+					>
+						Move Down
+					</Button>
+					<p>Order: {orderInArray + 1}</p>
+					<Button
+						disabled={orderInArray === mainRoadmapPoints.length - 1}
+						onClick={() => moveRoadmapPointUp(id)}
+					>
+						Move up
+					</Button>
+				</div>
+			)}
 			<div className={classes.order}>
 				{!midpoints || midpoints.length === 0 ? <p>0 midpoints</p> : null}
 				{midpoints && <div>Midpoints: {midpoints.length}</div>}

@@ -9,6 +9,12 @@
 	width: 100%;
 }
 
+.button:disabled {
+	opacity: 0.5;
+	cursor: default;
+	filter: grayscale(50%);
+}
+
 .sm {
 	min-height: var(--min-button-dim);
 }
@@ -36,7 +42,7 @@
 		transition: 0.2s;
 	}
 
-	.button:hover {
+	.button:hover:not(:disabled) {
 		filter: brightness(1.2);
 	}
 }
