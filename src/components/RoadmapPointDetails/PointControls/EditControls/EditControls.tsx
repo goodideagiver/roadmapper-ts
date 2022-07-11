@@ -5,6 +5,7 @@ import { roadmapMidpoint } from '../../../../store/roadmap-slice';
 import { useRoadmap } from '../../../../store/useRoadmap';
 import { Button } from '../../../../UI/Button/Button';
 import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
+import { ModalWithInputs } from '../../../../UI/ModalWithInputs/ModalWithInputs';
 import { AddPointModal } from '../../../AddPointModal/AddPointModal';
 import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
 import classes from './EditControls.module.css';
@@ -38,6 +39,23 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 	};
 
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+	const [editNameAndTitleModalVisible, setEditNameAndTitleModalVisible] =
+		useState(false);
+
+	const [newTitle, setNewTitle] = useState('');
+	const [newDays, setnewDays] = useState(0);
+
+	const handleSetNewDays = (days: string) => {
+		const newDays = parseInt(days);
+
+		if (isNaN(newDays)) {
+			return;
+		}
+		setnewDays(newDays);
+	};
+
+	const validateNewTitle = (value: string) =>
+		!!value && value.trim().length > 0;
 
 	const midpointsCount = midpoints?.length;
 
@@ -52,7 +70,31 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 					<p>Title: {title}</p>
 					<p>Time: {daysToYrsMthWeekDayString(daysToComplete)}</p>
 				</div>
-				<Button>Edit name and time</Button>
+				<Button onClick={() => setEditNameAndTitleModalVisible(true)}>
+					Edit name and time
+				</Button>
+				<ModalWithInputs
+					inputs={[
+						{
+							label: 'New title',
+							value: newTitle,
+							errorMessage: 'Title is required',
+							setState: setNewTitle,
+							validator: validateNewTitle,
+						},
+						{
+							label: 'New days to complete',
+							value: newDays,
+							errorMessage: 'Days is a required field',
+							setState: handleSetNewDays,
+							validator: (value: string) => +value >= 0,
+						},
+					]}
+					visible={editNameAndTitleModalVisible}
+					modalTitle={`Edit ${roadmapPoint.title} time and title`}
+					onClose={() => setEditNameAndTitleModalVisible(false)}
+					onConfirm={() => setEditNameAndTitleModalVisible(false)}
+				/>
 			</div>
 			<div className={`${classes.order} ${finished ? classes.finished : ''}`}>
 				<p className={classes.info}>{completion}</p>
