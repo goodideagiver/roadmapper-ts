@@ -13,8 +13,6 @@ type Props = {
 	roadmapPoint: roadmapDataPoint;
 };
 
-//mark as finished
-
 export const EditControls = ({ roadmapPoint }: Props) => {
 	const { id, finished, title, midpoints, daysToComplete } = roadmapPoint;
 	const completion = !finished ? 'Not finished' : 'Finished';
@@ -24,6 +22,7 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 		addMidpointById,
 		moveRoadmapPointDown,
 		moveRoadmapPointUp,
+		updateRoadmapPoint,
 	} = useRoadmap();
 
 	const orderInArray = mainRoadmapPoints.findIndex((el) => el.id === id);
@@ -42,6 +41,10 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 
 	const midpointsCount = midpoints?.length;
 
+	const toggleFinishedHandler = () => {
+		updateRoadmapPoint({ ...roadmapPoint, finished: !finished });
+	};
+
 	return (
 		<div className={classes.root}>
 			<div className={classes.order}>
@@ -51,9 +54,11 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 				</div>
 				<Button>Edit name and time</Button>
 			</div>
-			<div className={classes.order}>
+			<div className={`${classes.order} ${finished ? classes.finished : ''}`}>
 				<p className={classes.info}>{completion}</p>
-				<Button>Mark as finished</Button>
+				<Button onClick={() => toggleFinishedHandler()}>
+					Mark as {!finished ? 'finished' : 'not finished'}
+				</Button>
 			</div>
 			<div className={classes.order}>
 				<Button onClick={() => moveRoadmapPointDown(id)}>Move Down</Button>

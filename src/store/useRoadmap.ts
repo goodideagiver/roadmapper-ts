@@ -67,7 +67,12 @@ export const useRoadmap = () => {
 		dispatch(roadmapSlice.actions.changeOrderDown(id));
 	};
 
+	const updateRoadmapPoint = (point: roadmapDataPoint) => {
+		dispatch(roadmapSlice.actions.updateRoadmapPoint(point));
+	};
+
 	return {
+		updateRoadmapPoint,
 		moveRoadmapPointDown,
 		moveRoadmapPointUp,
 		setMidpointFinishedByPointIdAndMidpointId,

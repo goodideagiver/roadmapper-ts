@@ -47,12 +47,13 @@ export const roadmapSlice = createSlice({
 			);
 		},
 		updateRoadmapPoint: (state, action: PayloadAction<roadmapDataPoint>) => {
-			state.mainRoadmapPoints = state.mainRoadmapPoints.map((point) => {
-				if (point.id === action.payload.id) {
-					return action.payload;
-				}
-				return point;
-			});
+			const index = state.mainRoadmapPoints.findIndex(
+				(point) => point.id === action.payload.id
+			);
+
+			if (index > -1) {
+				state.mainRoadmapPoints[index] = action.payload;
+			}
 		},
 		changeOrderUp: (state, action: PayloadAction<string>) => {
 			const index = state.mainRoadmapPoints.findIndex(

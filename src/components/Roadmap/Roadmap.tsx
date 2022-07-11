@@ -21,13 +21,13 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 
 	if (roadmapArray && roadmapArray.length > 0) {
 		roadmapData = roadmapArray.map((roadmapPointData: roadmapDataPoint) => {
-			const { title, midpoints, id } = roadmapPointData;
+			const { title, midpoints, id, finished } = roadmapPointData;
 
 			const roadmapPoint = (
 				<RoadmapMainPoint
 					id={id}
 					onChoose={() => pickRoadmapToEditHandler(id)}
-					finished={false}
+					finished={finished}
 					daysToComplete={roadmapPointData.daysToComplete}
 					title={title}
 					midpoints={midpoints}
