@@ -27,7 +27,16 @@ export const Modal = ({
 	}
 
 	return ReactDOM.createPortal(
-		<div style={{ zIndex: 3000, position: 'relative' }}>
+		<>
+			<CSSTransition
+				classNames={BackdropAnimation}
+				in={visible}
+				mountOnEnter
+				unmountOnExit
+				timeout={300}
+			>
+				<Backdrop onClose={onClose} />
+			</CSSTransition>
 			<CSSTransition
 				classNames={ModalAnimation}
 				in={visible}
@@ -39,16 +48,7 @@ export const Modal = ({
 					{children}
 				</ModalContent>
 			</CSSTransition>
-			<CSSTransition
-				classNames={BackdropAnimation}
-				in={visible}
-				mountOnEnter
-				unmountOnExit
-				timeout={300}
-			>
-				<Backdrop onClose={onClose} />
-			</CSSTransition>
-		</div>,
+		</>,
 		overlayRoot
 	);
 };
