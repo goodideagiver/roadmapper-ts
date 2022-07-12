@@ -12,9 +12,10 @@ import classes from './EditControls.module.css';
 
 type Props = {
 	roadmapPoint: roadmapDataPoint;
+	onDelete: () => void;
 };
 
-export const EditControls = ({ roadmapPoint }: Props) => {
+export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 	const { id, finished, title, midpoints, daysToComplete } = roadmapPoint;
 	const completion = !finished ? 'Not finished' : 'Finished';
 
@@ -61,6 +62,11 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 
 	const toggleFinishedHandler = () => {
 		updateRoadmapPoint({ ...roadmapPoint, finished: !finished });
+	};
+
+	const confirmDeleteRoadmapPointHandler = () => {
+		setDeleteModalVisible(false);
+		onDelete();
 	};
 
 	return (
@@ -137,7 +143,7 @@ export const EditControls = ({ roadmapPoint }: Props) => {
 				Delete roadmap point
 			</Button>
 			<ConfirmModal
-				onConfirm={() => setDeleteModalVisible(false)}
+				onConfirm={confirmDeleteRoadmapPointHandler}
 				message={`Do you want to delete roadmap point named ${title}? ${
 					midpointsCount
 						? `You will also loose ${midpointsCount} midpoint${isPlural(

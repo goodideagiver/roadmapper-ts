@@ -71,7 +71,12 @@ export const useRoadmap = () => {
 		dispatch(roadmapSlice.actions.updateRoadmapPoint(point));
 	};
 
+	const deleteRoadmapPointById = (id: string) => {
+		dispatch(roadmapSlice.actions.removeRoadmapPoint(id));
+	};
+
 	return {
+		deleteRoadmapPointById,
 		updateRoadmapPoint,
 		moveRoadmapPointDown,
 		moveRoadmapPointUp,

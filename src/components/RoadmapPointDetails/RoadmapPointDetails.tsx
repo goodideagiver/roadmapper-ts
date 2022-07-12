@@ -1,4 +1,5 @@
 import { useRoadmap } from '../../store/useRoadmap';
+import { Button } from '../../UI/Button/Button';
 import { Modal } from '../../UI/Modal/Modal';
 import { PointControls } from './PointControls/PointControls';
 import { RoadmapMidpoints } from './RoadmapMidpoints/RoadmapMidpoints';
@@ -9,6 +10,7 @@ type Props = {
 	roadmapPointId: string;
 	onClose: () => void;
 	onExited: () => void;
+	onDelete: () => void;
 };
 
 export const RoadmapPointDetails = ({
@@ -16,6 +18,7 @@ export const RoadmapPointDetails = ({
 	onClose,
 	onExited,
 	visible,
+	onDelete,
 }: Props) => {
 	const { mainRoadmapPoints } = useRoadmap();
 	const selectedRoadmapPoint = mainRoadmapPoints.find(
@@ -25,11 +28,12 @@ export const RoadmapPointDetails = ({
 	if (!selectedRoadmapPoint) {
 		return (
 			<Modal
-				visible={roadmapPointId.trim() !== ''}
+				visible={visible && roadmapPointId.trim() !== ''}
 				title='No roadmap point has ben found'
 				onClose={onClose}
 			>
 				<p>No roadmap point to show</p>
+				<Button onClick={onClose}>Close</Button>
 			</Modal>
 		);
 	}
@@ -44,7 +48,7 @@ export const RoadmapPointDetails = ({
 		>
 			<div className={classes.content}>
 				<RoadmapMidpoints selectedRoadmapPoint={selectedRoadmapPoint} />
-				<PointControls point={selectedRoadmapPoint} />
+				<PointControls onDelete={onDelete} point={selectedRoadmapPoint} />
 			</div>
 		</Modal>
 	);

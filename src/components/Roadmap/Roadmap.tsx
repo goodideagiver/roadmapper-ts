@@ -5,10 +5,13 @@ import { roadmapArray, roadmapDataPoint } from './Roadmap.types';
 
 import * as classes from './Roadmap.module.css';
 import { RoadmapPointDetails } from '../RoadmapPointDetails/RoadmapPointDetails';
+import { useRoadmap } from '../../store/useRoadmap';
 
 export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 	const [pickedId, setPickedId] = useState<string>('');
 	const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+	const { deleteRoadmapPointById } = useRoadmap();
 
 	const handleClose = () => {
 		setModalVisible(false);
@@ -17,6 +20,18 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 	const pickRoadmapToEditHandler = (id: string) => {
 		setPickedId(id);
 		setModalVisible(true);
+	};
+
+	const onDelete = () => {
+		setModalVisible(false);
+		deleteRoadmapPointById(pickedId);
+	};
+
+	const onExitedHandler = (callback?: () => void) => {
+		setPickedId('');
+		if (callback) {
+			callback();
+		}
 	};
 
 	let roadmapData;
@@ -46,9 +61,10 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 		<>
 			<div className={classes.root}>{Children.toArray(roadmapData)}</div>
 			<RoadmapPointDetails
-				onExited={() => setPickedId('')}
+				onExited={onExitedHandler}
 				visible={modalVisible}
 				onClose={handleClose}
+				onDelete={onDelete}
 				roadmapPointId={pickedId}
 			/>
 		</>

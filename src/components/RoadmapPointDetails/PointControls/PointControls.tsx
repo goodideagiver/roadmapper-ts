@@ -9,12 +9,13 @@ import * as classes from './PointControls.module.css';
 //mark as finished
 type Props = {
 	point: roadmapDataPoint;
+	onDelete: () => void;
 };
 
-export const PointControls = ({ point }: Props) => {
+export const PointControls = ({ point, onDelete }: Props) => {
 	return (
 		<>
-			<EditControls roadmapPoint={point} />
+			<EditControls onDelete={onDelete} roadmapPoint={point} />
 		</>
 	);
 };
