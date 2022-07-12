@@ -11,6 +11,7 @@ type ModalProps = {
 	title: string;
 	children: React.ReactNode;
 	className?: string;
+	onExited?: () => void;
 };
 
 export const Modal = ({
@@ -19,6 +20,7 @@ export const Modal = ({
 	visible,
 	onClose,
 	className,
+	onExited,
 }: ModalProps) => {
 	const overlayRoot = document.getElementById('overlay-root');
 
@@ -38,6 +40,7 @@ export const Modal = ({
 				<Backdrop onClose={onClose} />
 			</CSSTransition>
 			<CSSTransition
+				onExited={onExited}
 				classNames={ModalAnimation}
 				in={visible}
 				mountOnEnter

@@ -8,13 +8,15 @@ import { RoadmapPointDetails } from '../RoadmapPointDetails/RoadmapPointDetails'
 
 export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 	const [pickedId, setPickedId] = useState<string>('');
+	const [modalVisible, setModalVisible] = useState<boolean>(false);
 
 	const handleClose = () => {
-		setPickedId('');
+		setModalVisible(false);
 	};
 
 	const pickRoadmapToEditHandler = (id: string) => {
 		setPickedId(id);
+		setModalVisible(true);
 	};
 
 	let roadmapData;
@@ -43,7 +45,12 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 	return (
 		<>
 			<div className={classes.root}>{Children.toArray(roadmapData)}</div>
-			<RoadmapPointDetails onClose={handleClose} roadmapPointId={pickedId} />
+			<RoadmapPointDetails
+				onExited={() => setPickedId('')}
+				visible={modalVisible}
+				onClose={handleClose}
+				roadmapPointId={pickedId}
+			/>
 		</>
 	);
 };

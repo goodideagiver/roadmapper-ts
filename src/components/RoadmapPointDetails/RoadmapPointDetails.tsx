@@ -5,11 +5,18 @@ import { RoadmapMidpoints } from './RoadmapMidpoints/RoadmapMidpoints';
 import * as classes from './RoadmapPointDetails.module.css';
 
 type Props = {
+	visible: boolean;
 	roadmapPointId: string;
 	onClose: () => void;
+	onExited: () => void;
 };
 
-export const RoadmapPointDetails = ({ roadmapPointId, onClose }: Props) => {
+export const RoadmapPointDetails = ({
+	roadmapPointId,
+	onClose,
+	onExited,
+	visible,
+}: Props) => {
 	const { mainRoadmapPoints } = useRoadmap();
 	const selectedRoadmapPoint = mainRoadmapPoints.find(
 		(point) => point.id === roadmapPointId
@@ -29,8 +36,9 @@ export const RoadmapPointDetails = ({ roadmapPointId, onClose }: Props) => {
 
 	return (
 		<Modal
+			onExited={onExited}
 			onClose={onClose}
-			visible={!!selectedRoadmapPoint}
+			visible={visible && !!selectedRoadmapPoint}
 			title={selectedRoadmapPoint.title}
 			className={classes.modal}
 		>
