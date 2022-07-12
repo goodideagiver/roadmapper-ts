@@ -4,7 +4,7 @@
 	justify-content: center;
 	gap: 1rem;
 	width: fit-content;
-	margin: 0 auto;
+	margin: var(--large-spacing) auto;
 }
 
 .icon {

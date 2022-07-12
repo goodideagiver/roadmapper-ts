@@ -1,0 +1,19 @@
+.line {
+	border-bottom: 2px var(--body-highlight) solid;
+}
+
+.root {
+	display: flex;
+	align-items: center;
+	padding: var(--medium-spacing);
+}
+
+.root > * {
+	flex: 1 3;
+}
+
+.days {
+	flex: 1 0;
+	text-align: center;
+	margin: 0 var(--medium-spacing);
+}

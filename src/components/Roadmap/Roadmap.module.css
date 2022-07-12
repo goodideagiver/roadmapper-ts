@@ -5,6 +5,7 @@
 	gap: var(--small-spacing);
 	max-width: min(1200px, 100%);
 	margin: 0 auto;
+	overflow-y: auto;
 }
 
 .info {
