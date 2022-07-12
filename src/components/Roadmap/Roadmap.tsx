@@ -1,4 +1,4 @@
-import { Children, useState } from 'react';
+import { Children, useRef, useState } from 'react';
 
 import { RoadmapMainPoint } from './components/RoadmapMainPoint';
 import { roadmapArray, roadmapDataPoint } from './Roadmap.types';
@@ -6,6 +6,7 @@ import { roadmapArray, roadmapDataPoint } from './Roadmap.types';
 import * as classes from './Roadmap.module.css';
 import { RoadmapPointDetails } from '../RoadmapPointDetails/RoadmapPointDetails';
 import { useRoadmap } from '../../store/useRoadmap';
+import { useHasOverflow } from '../../hooks/useHasOverflow.hook';
 
 export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 	const [pickedId, setPickedId] = useState<string>('');
@@ -57,9 +58,17 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 		roadmapData = <div className={classes.info}>No roadmap data</div>;
 	}
 
+	const container = useRef(null);
+
+	const { hasBottomOverflow, hasTopOverflow } = useHasOverflow(container);
+
 	return (
 		<>
-			<div className={classes.root}>{Children.toArray(roadmapData)}</div>
+			{hasBottomOverflow && <p>Bottmo ov</p>}
+			{hasTopOverflow && <p>Top ov</p>}
+			<div ref={container} className={classes.root}>
+				{Children.toArray(roadmapData)}
+			</div>
 			<RoadmapPointDetails
 				onExited={onExitedHandler}
 				visible={modalVisible}
