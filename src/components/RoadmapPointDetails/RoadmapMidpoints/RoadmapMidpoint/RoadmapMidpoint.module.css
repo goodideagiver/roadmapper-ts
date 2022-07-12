@@ -14,15 +14,3 @@
 	color: gray;
 	border-color: gray;
 }
-
-.info {
-	gap: 1rem;
-	align-items: center;
-	justify-items: center;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.info > * {
-	flex: 1 1 80px;
-}

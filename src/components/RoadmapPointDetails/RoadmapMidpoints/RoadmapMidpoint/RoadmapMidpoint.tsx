@@ -16,6 +16,7 @@ import * as classes from './RoadmapMidpoint.module.css';
 import { useClickOutside } from '../../../../hooks/useClickOutside.hook';
 import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
 import { MidpointControls } from './MidpointControls';
+import { MidpointInfo } from './MidpointInfo';
 
 type Props = {
 	midpoint: roadmapMidpoint;
@@ -33,8 +34,6 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 	} = useRoadmap();
 
 	const toggleOptions = () => setOptionsOpen(!optionsOpen);
-
-	const formattedDays = daysToYrsMthWeekDayString(midpoint.daysToComplete);
 
 	useClickOutside(midpointRef, () => setOptionsOpen(false));
 
@@ -111,13 +110,11 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 			}`}
 			key={midpoint.id}
 		>
-			<div className={classes.info}>
-				<p>{midpoint.title}</p>
-				<p>{formattedDays}</p>
-				<Button size='sm' onClick={toggleOptions}>
-					Edit
-				</Button>
-			</div>
+			<MidpointInfo
+				daysToComplete={midpoint.daysToComplete}
+				title={midpoint.title}
+				toggleOptions={toggleOptions}
+			/>
 			{optionsOpen && (
 				<MidpointControls
 					midpointFinished={midpoint.finished}
