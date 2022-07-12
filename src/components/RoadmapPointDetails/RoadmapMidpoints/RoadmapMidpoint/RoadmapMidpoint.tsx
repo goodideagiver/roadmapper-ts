@@ -15,6 +15,7 @@ import {
 import * as classes from './RoadmapMidpoint.module.css';
 import { useClickOutside } from '../../../../hooks/useClickOutside.hook';
 import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
+import { MidpointControls } from './MidpointControls';
 
 type Props = {
 	midpoint: roadmapMidpoint;
@@ -118,24 +119,13 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 				</Button>
 			</div>
 			{optionsOpen && (
-				<div className={classes.controls}>
-					<Button size='sm' onClick={toggleMidpointFinished}>
-						{!midpoint.finished ? <FiCircle /> : <FiCheckCircle />}
-					</Button>
-					<Button size='sm' onClick={moveMidpointUpHandler}>
-						<FiArrowUp />
-					</Button>
-					<Button size='sm' onClick={moveMidpointDownHandler}>
-						<FiArrowDown />
-					</Button>
-					<Button
-						onClick={() => setDeleteModalVisible(true)}
-						size='sm'
-						variant='danger'
-					>
-						<FiTrash />
-					</Button>
-				</div>
+				<MidpointControls
+					midpointFinished={midpoint.finished}
+					moveMidpointDownHandler={moveMidpointDownHandler}
+					moveMidpointUpHandler={moveMidpointUpHandler}
+					toggleMidpointFinished={toggleMidpointFinished}
+					showDeleteModalHandler={() => setDeleteModalVisible(true)}
+				/>
 			)}
 			<ConfirmModal
 				visible={deleteModalVisible}

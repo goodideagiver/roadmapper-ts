@@ -15,28 +15,6 @@
 	border-color: gray;
 }
 
-.controls {
-	display: grid;
-	gap: var(--small-spacing);
-	margin-top: var(--small-spacing);
-	animation: fadeIn 0.2s ease-in-out;
-	grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-}
-
-.controls svg {
-	font-size: 1.5rem;
-	pointer-events: none;
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
 .info {
 	gap: 1rem;
 	align-items: center;
