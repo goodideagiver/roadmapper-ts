@@ -15,6 +15,8 @@ type Props = {
 	moveMidpointDownHandler: () => void;
 	toggleMidpointFinished: () => void;
 	midpointFinished: boolean;
+	midpointsCount: number;
+	midpointIndex: number;
 };
 export const MidpointControls = ({
 	moveMidpointDownHandler,
@@ -22,18 +24,37 @@ export const MidpointControls = ({
 	showDeleteModalHandler,
 	toggleMidpointFinished,
 	midpointFinished,
+	midpointIndex,
+	midpointsCount,
 }: Props) => {
+	const isOnlyMidpoint = midpointsCount === 1;
+
+	const canBeMovedUp = !isOnlyMidpoint && midpointIndex > 0;
+	const canBeMovedDown = !isOnlyMidpoint && midpointIndex < midpointsCount - 1;
+
 	return (
 		<div className={classes.controls}>
 			<Button size='sm' onClick={toggleMidpointFinished}>
 				{!midpointFinished ? <FiCircle /> : <FiCheckCircle />}
 			</Button>
-			<Button size='sm' onClick={moveMidpointUpHandler}>
-				<FiArrowUp />
-			</Button>
-			<Button size='sm' onClick={moveMidpointDownHandler}>
-				<FiArrowDown />
-			</Button>
+			{!isOnlyMidpoint && (
+				<>
+					<Button
+						disabled={!canBeMovedUp}
+						size='sm'
+						onClick={moveMidpointUpHandler}
+					>
+						<FiArrowUp />
+					</Button>
+					<Button
+						disabled={!canBeMovedDown}
+						size='sm'
+						onClick={moveMidpointDownHandler}
+					>
+						<FiArrowDown />
+					</Button>
+				</>
+			)}
 			<Button onClick={showDeleteModalHandler} size='sm' variant='danger'>
 				<FiTrash />
 			</Button>

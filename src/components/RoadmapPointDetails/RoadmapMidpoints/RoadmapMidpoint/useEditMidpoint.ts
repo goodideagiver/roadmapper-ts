@@ -78,7 +78,16 @@ export const useEditMidpoint = (
 		deleteMidpointByPointAndMidpointId(mainPointId, midpoint.id);
 	};
 
+	const midpointsCount = getMidpointsByPointId(mainPointId)?.length ?? 0;
+
+	const midpointIndex =
+		getMidpointsByPointId(mainPointId)?.findIndex(
+			(searchedMidpoint) => searchedMidpoint.id === midpoint.id
+		) || 0;
+
 	return {
+		midpointIndex,
+		midpointsCount,
 		hideDeleteModalHandler: () => setDeleteModalVisible(false),
 		showDeleteModalHandler: () => setDeleteModalVisible(true),
 		deleteModalVisible,

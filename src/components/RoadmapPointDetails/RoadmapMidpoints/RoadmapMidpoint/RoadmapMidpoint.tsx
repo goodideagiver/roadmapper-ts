@@ -1,16 +1,6 @@
 import { useRef, useState } from 'react';
-import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
-import { roadmapMidpoint } from '../../../../store/roadmap-slice';
-import { useRoadmap } from '../../../../store/useRoadmap';
-import { Button } from '../../../../UI/Button/Button';
 
-import {
-	FiArrowUp,
-	FiArrowDown,
-	FiCheckCircle,
-	FiCircle,
-	FiTrash,
-} from 'react-icons/fi';
+import { roadmapMidpoint } from '../../../../store/roadmap-slice';
 
 import * as classes from './RoadmapMidpoint.module.css';
 import { useClickOutside } from '../../../../hooks/useClickOutside.hook';
@@ -39,6 +29,8 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 		toggleMidpointFinished,
 		showDeleteModalHandler,
 		hideDeleteModalHandler,
+		midpointIndex,
+		midpointsCount,
 	} = useEditMidpoint(mainPointId, midpoint);
 
 	return (
@@ -53,6 +45,7 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 				daysToComplete={midpoint.daysToComplete}
 				title={midpoint.title}
 				toggleOptions={toggleOptions}
+				finished={midpoint.finished}
 			/>
 			{optionsOpen && (
 				<MidpointControls
@@ -61,6 +54,8 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 					moveMidpointUpHandler={moveMidpointUpHandler}
 					toggleMidpointFinished={toggleMidpointFinished}
 					showDeleteModalHandler={showDeleteModalHandler}
+					midpointIndex={midpointIndex}
+					midpointsCount={midpointsCount}
 				/>
 			)}
 			<ConfirmModal

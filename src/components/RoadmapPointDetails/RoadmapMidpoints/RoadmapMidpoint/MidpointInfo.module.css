@@ -4,8 +4,16 @@
 	justify-items: center;
 	display: flex;
 	flex-wrap: wrap;
+	text-align: center;
 }
 
 .info > * {
 	flex: 1 1 80px;
+}
+
+.checkmark {
+	color: var(--positive-green);
+
+	aspect-ratio: 1/1;
+	border-radius: 0.5rem;
 }
