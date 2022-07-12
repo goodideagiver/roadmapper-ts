@@ -1,0 +1,90 @@
+import { useState } from 'react';
+import { roadmapMidpoint } from '../../../../store/roadmap-slice';
+import { useRoadmap } from '../../../../store/useRoadmap';
+
+export const useEditMidpoint = (
+	mainPointId: string,
+	midpoint: roadmapMidpoint
+) => {
+	const {
+		getMidpointsByPointId,
+		setMidpointsByPointId,
+		setMidpointFinishedByPointIdAndMidpointId,
+		deleteMidpointByPointAndMidpointId,
+	} = useRoadmap();
+
+	const toggleMidpointFinished = () => {
+		setMidpointFinishedByPointIdAndMidpointId(
+			mainPointId,
+			midpoint.id,
+			!midpoint.finished
+		);
+	};
+
+	const updatePointMidpoints = (newMidpoints: roadmapMidpoint[]) => {
+		setMidpointsByPointId(mainPointId, newMidpoints);
+	};
+
+	const moveMidpointUpHandler = () => {
+		const oldMidpoints = getMidpointsByPointId(mainPointId);
+
+		if (!oldMidpoints || oldMidpoints.length === 1) return;
+
+		const thisPointIndex = oldMidpoints.findIndex(
+			(searchedMidpoint) => searchedMidpoint.id === midpoint.id
+		);
+
+		if (thisPointIndex === 0) {
+			return;
+		}
+
+		const newMidpoints = [...oldMidpoints];
+		const thisPoint = newMidpoints[thisPointIndex];
+		const prevPoint = newMidpoints[thisPointIndex - 1];
+
+		newMidpoints[thisPointIndex] = prevPoint;
+		newMidpoints[thisPointIndex - 1] = thisPoint;
+
+		updatePointMidpoints(newMidpoints);
+	};
+
+	const moveMidpointDownHandler = () => {
+		const oldMidpoints = getMidpointsByPointId(mainPointId);
+
+		if (!oldMidpoints || oldMidpoints.length === 1) return;
+
+		const thisPointIndex = oldMidpoints.findIndex(
+			(searchedMidpoint) => searchedMidpoint.id === midpoint.id
+		);
+
+		if (thisPointIndex === oldMidpoints.length - 1) {
+			return;
+		}
+
+		const newMidpoints = [...oldMidpoints];
+		const thisPoint = newMidpoints[thisPointIndex];
+		const nextPoint = newMidpoints[thisPointIndex + 1];
+
+		newMidpoints[thisPointIndex] = nextPoint;
+		newMidpoints[thisPointIndex + 1] = thisPoint;
+
+		updatePointMidpoints(newMidpoints);
+	};
+
+	const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+
+	const handleMidpointDelete = () => {
+		setDeleteModalVisible(false);
+		deleteMidpointByPointAndMidpointId(mainPointId, midpoint.id);
+	};
+
+	return {
+		hideDeleteModalHandler: () => setDeleteModalVisible(false),
+		showDeleteModalHandler: () => setDeleteModalVisible(true),
+		deleteModalVisible,
+		handleMidpointDelete,
+		toggleMidpointFinished,
+		moveMidpointUpHandler,
+		moveMidpointDownHandler,
+	};
+};

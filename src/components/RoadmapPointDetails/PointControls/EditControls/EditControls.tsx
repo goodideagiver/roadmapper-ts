@@ -126,8 +126,7 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 				</div>
 			)}
 			<div className={classes.order}>
-				{!midpoints || midpoints.length === 0 ? <p>0 midpoints</p> : null}
-				{midpoints && <div>Midpoints: {midpoints.length}</div>}
+				{midpoints && <div>Midpoints: {midpoints.length || 0}</div>}
 				<AddPointModal
 					modalTitle='Add midpoint'
 					visible={midpointModalVisible}
