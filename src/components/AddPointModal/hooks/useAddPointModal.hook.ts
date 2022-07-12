@@ -71,7 +71,6 @@ export const useAddPointModal = (
 
 		if (title.length > 0 && days > 0) {
 			setError({ timeError: '', titleError: '' });
-			console.log(days, title);
 			onAddRoadmapPoint({
 				daysToComplete: days,
 				title,

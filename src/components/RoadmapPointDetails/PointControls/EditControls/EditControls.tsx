@@ -5,7 +5,6 @@ import { roadmapMidpoint } from '../../../../store/roadmap-slice';
 import { useRoadmap } from '../../../../store/useRoadmap';
 import { Button } from '../../../../UI/Button/Button';
 import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
-import { ModalWithInputs } from '../../../../UI/ModalWithInputs/ModalWithInputs';
 import { AddPointModal } from '../../../AddPointModal/AddPointModal';
 import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
 import classes from './EditControls.module.css';
@@ -43,21 +42,6 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 	const [editNameAndTitleModalVisible, setEditNameAndTitleModalVisible] =
 		useState(false);
 
-	const [newTitle, setNewTitle] = useState('');
-	const [newDays, setnewDays] = useState(0);
-
-	const handleSetNewDays = (days: string) => {
-		const newDays = parseInt(days);
-
-		if (isNaN(newDays)) {
-			return;
-		}
-		setnewDays(newDays);
-	};
-
-	const validateNewTitle = (value: string) =>
-		!!value && value.trim().length > 0;
-
 	const midpointsCount = midpoints?.length;
 
 	const toggleFinishedHandler = () => {
@@ -67,6 +51,17 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 	const confirmDeleteRoadmapPointHandler = () => {
 		setDeleteModalVisible(false);
 		onDelete();
+	};
+
+	const handleModifyPointTitleAndDays = ({
+		daysToComplete,
+		title,
+	}: {
+		daysToComplete: number;
+		title: string;
+	}) => {
+		updateRoadmapPoint({ ...roadmapPoint, daysToComplete, title });
+		setEditNameAndTitleModalVisible(false);
 	};
 
 	return (
@@ -79,27 +74,11 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 				<Button onClick={() => setEditNameAndTitleModalVisible(true)}>
 					Edit name and time
 				</Button>
-				<ModalWithInputs
-					inputs={[
-						{
-							label: 'New title',
-							value: newTitle,
-							errorMessage: 'Title is required',
-							setState: setNewTitle,
-							validator: validateNewTitle,
-						},
-						{
-							label: 'New days to complete',
-							value: newDays,
-							errorMessage: 'Days is a required field',
-							setState: handleSetNewDays,
-							validator: (value: string) => +value >= 0,
-						},
-					]}
-					visible={editNameAndTitleModalVisible}
-					modalTitle={`Edit ${roadmapPoint.title} time and title`}
+				<AddPointModal
+					modalTitle='Edit point details'
 					onClose={() => setEditNameAndTitleModalVisible(false)}
-					onConfirm={() => setEditNameAndTitleModalVisible(false)}
+					visible={editNameAndTitleModalVisible}
+					onConfirmPoint={handleModifyPointTitleAndDays}
 				/>
 			</div>
 			<div className={`${classes.order} ${finished ? classes.finished : ''}`}>

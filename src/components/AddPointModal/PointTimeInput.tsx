@@ -55,15 +55,16 @@ export const PointTimeInput = ({
 			/>
 			{adjustTimeButtonsData.map((buttonData) => (
 				<RoadmapPointTimeAdjust
-				
 					key={buttonData.label}
 					label={buttonData.label}
 					onTimeAdjust={buttonData.onClick}
 				/>
 			))}
-			<Button variant='danger' onClick={onReset}>
-				Reset point time
-			</Button>
+			{daysValue > 0 && (
+				<Button variant='danger' onClick={onReset}>
+					Reset point time
+				</Button>
+			)}
 		</div>
 	);
 };

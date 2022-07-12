@@ -13,6 +13,7 @@
 }
 
 .steps {
+	margin-top: var(--small-spacing);
 	background-color: var(--body-highlight);
 	padding: 0.2rem var(--small-spacing);
 	border-radius: 0.6rem;
