@@ -28,6 +28,7 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 		getMidpointsByPointId,
 		setMidpointsByPointId,
 		setMidpointFinishedByPointIdAndMidpointId,
+		deleteMidpointByPointAndMidpointId,
 	} = useRoadmap();
 
 	const toggleOptions = () => setOptionsOpen(!optionsOpen);
@@ -96,6 +97,11 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
+	const handleMidpointDelete = () => {
+		setDeleteModalVisible(false);
+		deleteMidpointByPointAndMidpointId(mainPointId, midpoint.id);
+	};
+
 	return (
 		<div
 			ref={midpointRef}
@@ -135,7 +141,7 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 				visible={deleteModalVisible}
 				message='Are you sure you want to delete this midpoint?'
 				onCancel={() => setDeleteModalVisible(false)}
-				onConfirm={() => setDeleteModalVisible(false)}
+				onConfirm={handleMidpointDelete}
 				title='Delete midpoint'
 			/>
 		</div>

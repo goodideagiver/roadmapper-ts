@@ -69,6 +69,20 @@ export const roadmapSlice = createSlice({
 				state.mainRoadmapPoints[index + 1] = temp;
 			}
 		},
+		deleteMidpointByPointId: (
+			state,
+			action: PayloadAction<{ id: string; midpointId: string }>
+		) => {
+			const point = state.mainRoadmapPoints.find(
+				(point) => point.id === action.payload.id
+			);
+
+			if (point && point.midpoints) {
+				point.midpoints = point.midpoints.filter(
+					(midpoint) => midpoint.id !== action.payload.midpointId
+				);
+			}
+		},
 		changeOrderDown: (state, action: PayloadAction<string>) => {
 			const index = state.mainRoadmapPoints.findIndex(
 				(point) => point.id === action.payload

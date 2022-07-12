@@ -29,7 +29,7 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 
 	const onExitedHandler = (callback?: () => void) => {
 		setPickedId('');
-		if (callback) {
+		if (callback && typeof callback === 'function') {
 			callback();
 		}
 	};

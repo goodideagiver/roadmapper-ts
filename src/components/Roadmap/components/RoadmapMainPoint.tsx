@@ -7,8 +7,6 @@ import * as classes from './RoadmapMainPoint.module.css';
 import { BiTimer } from 'react-icons/bi';
 import { FinishedStatus } from './FinishedStatus';
 
-
-
 export const RoadmapMainPoint = ({
 	finished,
 	daysToComplete,
@@ -24,7 +22,7 @@ export const RoadmapMainPoint = ({
 				<span>To complete: {daysToYrsMthWeekDayString(daysToComplete)}</span>
 			</div>
 			<FinishedStatus finished={finished} />
-			{midpoints && (
+			{midpoints && !!midpoints.length && (
 				<p className={classes.steps}>
 					Has {midpoints.length} step{isPlural(midpoints.length)} inside{' '}
 				</p>
