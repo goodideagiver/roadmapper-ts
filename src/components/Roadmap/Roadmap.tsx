@@ -62,11 +62,23 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 
 	const { hasBottomOverflow, hasTopOverflow } = useHasOverflow(container);
 
+	let overflowCss = '';
+
+	if (hasBottomOverflow && !hasTopOverflow) {
+		overflowCss = classes.bottomOverflow;
+	}
+
+	if (hasTopOverflow && !hasBottomOverflow) {
+		overflowCss = classes.topOverflow;
+	}
+
+	if (hasBottomOverflow && hasTopOverflow) {
+		overflowCss = classes.bothOverflow;
+	}
+
 	return (
 		<>
-			{hasBottomOverflow && <p>Bottmo ov</p>}
-			{hasTopOverflow && <p>Top ov</p>}
-			<div ref={container} className={classes.root}>
+			<div ref={container} className={`${classes.root} ${overflowCss}`}>
 				{Children.toArray(roadmapData)}
 			</div>
 			<RoadmapPointDetails
