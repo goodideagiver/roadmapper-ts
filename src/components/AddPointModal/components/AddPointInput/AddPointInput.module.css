@@ -7,10 +7,7 @@
 
 .suggestions {
 	gap: var(--small-spacing);
-	/* display: grid; */
-	/* grid-template-columns: repeat(auto-fit, minmax(81px, 1fr)); */
 	display: flex;
-	/* word-break: break-all; */
 	overflow-x: auto;
 	padding-bottom: var(--small-spacing);
 }
@@ -29,6 +26,16 @@
 .suggestionsAvailable {
 	text-align: center;
 	margin-top: var(--small-spacing);
+	animation: revealSuggestions 1s forwards;
+}
+
+@keyframes revealSuggestions {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .suggestionCount {
