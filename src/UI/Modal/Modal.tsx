@@ -12,6 +12,7 @@ type ModalProps = {
 	children: React.ReactNode;
 	className?: string;
 	onExited?: () => void;
+	header?: React.ReactNode;
 };
 
 export const Modal = ({
@@ -21,6 +22,7 @@ export const Modal = ({
 	onClose,
 	className,
 	onExited,
+	header,
 }: ModalProps) => {
 	const overlayRoot = document.getElementById('overlay-root');
 
@@ -47,7 +49,12 @@ export const Modal = ({
 				unmountOnExit
 				timeout={300}
 			>
-				<ModalContent className={className} title={title} onClose={onClose}>
+				<ModalContent
+					header={header}
+					className={className}
+					title={title}
+					onClose={onClose}
+				>
 					{children}
 				</ModalContent>
 			</CSSTransition>

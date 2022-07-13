@@ -10,6 +10,10 @@ import {
 } from './hooks/useAddPointModal.hook';
 import { InputErrorDisplay } from './components/InputErrorDisplay/InputErrorDisplay';
 import { getSuggestedTech } from '../../helpers/getSuggestedTech.helper';
+import { TiCog, TiStar } from 'react-icons/ti';
+import { GiStarsStack } from 'react-icons/gi';
+
+type ModalVariants = 'edit' | 'addMainPoint' | 'addSubPoint';
 
 type AddPointModalProps = {
 	visible: boolean;
@@ -20,6 +24,7 @@ type AddPointModalProps = {
 	techForSuggestions?: string;
 	initialTitle?: string;
 	initialDays?: number;
+	variant?: ModalVariants;
 };
 
 export const AddPointModal = ({
@@ -31,6 +36,7 @@ export const AddPointModal = ({
 	techForSuggestions,
 	initialTitle,
 	initialDays,
+	variant,
 }: AddPointModalProps) => {
 	const {
 		cancelHandler,
@@ -45,6 +51,35 @@ export const AddPointModal = ({
 		confirmPointHandler,
 	} = useAddPointModal(onClose, onConfirmPoint, initialTitle, initialDays);
 
+	let header = null;
+
+	if (variant === 'edit') {
+		header = (
+			<>
+				<TiCog />
+				{modalTitle}
+			</>
+		);
+	}
+
+	if (variant === 'addMainPoint') {
+		header = (
+			<>
+				<TiStar />
+				{modalTitle}
+			</>
+		);
+	}
+
+	if (variant === 'addSubPoint') {
+		header = (
+			<>
+				<GiStarsStack />
+				{modalTitle}
+			</>
+		);
+	}
+
 	let suggestedTech;
 
 	if (suggestions) {
@@ -55,7 +90,12 @@ export const AddPointModal = ({
 	}
 
 	return (
-		<Modal onClose={cancelHandler} visible={visible} title={modalTitle}>
+		<Modal
+			header={header}
+			onClose={cancelHandler}
+			visible={visible}
+			title={modalTitle}
+		>
 			<InputErrorDisplay
 				hasError={!!error.titleError}
 				errorMessage={error.titleError}

@@ -81,6 +81,7 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 					onConfirmPoint={handleModifyPointTitleAndDays}
 					initialDays={daysToComplete}
 					initialTitle={title}
+					variant='edit'
 				/>
 			</div>
 			<div className={`${classes.order} ${finished ? classes.finished : ''}`}>
@@ -114,6 +115,7 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 					onClose={handleToggleMidpointModal}
 					onConfirmPoint={addMidpoint}
 					techForSuggestions={roadmapPoint.title}
+					variant='addSubPoint'
 				/>
 				<Button onClick={handleToggleMidpointModal} variant='success'>
 					Add midpoint

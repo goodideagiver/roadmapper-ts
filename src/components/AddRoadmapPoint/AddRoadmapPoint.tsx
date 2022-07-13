@@ -21,6 +21,7 @@ export const AddRoadmapPoint = () => {
 				<span>Add main roadmap point</span>
 			</Button>
 			<AddPointModal
+				variant='addMainPoint'
 				onConfirmPoint={addRoadmapPoint}
 				modalTitle='Add roadmap point'
 				suggestions={[
