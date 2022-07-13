@@ -18,6 +18,8 @@ type AddPointModalProps = {
 	suggestions?: string[];
 	onConfirmPoint: AddRoadmapPoint;
 	techForSuggestions?: string;
+	initialTitle?: string;
+	initialDays?: number;
 };
 
 export const AddPointModal = ({
@@ -27,6 +29,8 @@ export const AddPointModal = ({
 	modalTitle,
 	onConfirmPoint,
 	techForSuggestions,
+	initialTitle,
+	initialDays,
 }: AddPointModalProps) => {
 	const {
 		cancelHandler,
@@ -39,7 +43,7 @@ export const AddPointModal = ({
 		days,
 		handleSetDays,
 		confirmPointHandler,
-	} = useAddPointModal(onClose, onConfirmPoint);
+	} = useAddPointModal(onClose, onConfirmPoint, initialTitle, initialDays);
 
 	let suggestedTech;
 

@@ -79,6 +79,8 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 					onClose={() => setEditNameAndTitleModalVisible(false)}
 					visible={editNameAndTitleModalVisible}
 					onConfirmPoint={handleModifyPointTitleAndDays}
+					initialDays={daysToComplete}
+					initialTitle={title}
 				/>
 			</div>
 			<div className={`${classes.order} ${finished ? classes.finished : ''}`}>

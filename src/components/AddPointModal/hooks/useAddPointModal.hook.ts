@@ -16,10 +16,12 @@ export type AddRoadmapPoint =
 
 export const useAddPointModal = (
 	onClose: () => void,
-	onAddRoadmapPoint: AddRoadmapPoint
+	onAddRoadmapPoint: AddRoadmapPoint,
+	defaultTitle = '',
+	defaultTime = 0
 ) => {
-	const [days, setDays] = useState(0);
-	const [title, setTitle] = useState('');
+	const [days, setDays] = useState(defaultTime);
+	const [title, setTitle] = useState(defaultTitle);
 	const [error, setError] = useState<ModalError>({
 		timeError: '',
 		titleError: '',
