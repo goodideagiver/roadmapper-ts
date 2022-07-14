@@ -7,6 +7,7 @@ import { Button } from '../../../../UI/Button/Button';
 import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
 import { AddPointModal } from '../../../AddPointModal/AddPointModal';
 import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
+import { TitleAndDaysEdit } from './components/TitleAndDaysEdit/TitleAndDaysEdit';
 import classes from './EditControls.module.css';
 
 type Props = {
@@ -67,22 +68,7 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 	return (
 		<div className={classes.root}>
 			<div className={classes.order}>
-				<div className={classes.info}>
-					<p>Title: {title}</p>
-					<p>Time: {daysToYrsMthWeekDayString(daysToComplete)}</p>
-				</div>
-				<Button onClick={() => setEditNameAndTitleModalVisible(true)}>
-					Edit name and time
-				</Button>
-				<AddPointModal
-					modalTitle='Edit point details'
-					onClose={() => setEditNameAndTitleModalVisible(false)}
-					visible={editNameAndTitleModalVisible}
-					onConfirmPoint={handleModifyPointTitleAndDays}
-					initialDays={daysToComplete}
-					initialTitle={title}
-					variant='edit'
-				/>
+				<TitleAndDaysEdit roadmapPoint={roadmapPoint} />
 			</div>
 			<div className={`${classes.order} ${finished ? classes.finished : ''}`}>
 				<p className={classes.info}>{completion}</p>
