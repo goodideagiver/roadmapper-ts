@@ -8,6 +8,7 @@ import { AddMidpointControls } from './components/AddMidpointControls/AddMidpoin
 import { OrderEdit } from './components/OrderEdit/OrderEdit';
 import { TitleAndDaysEdit } from './components/TitleAndDaysEdit/TitleAndDaysEdit';
 import classes from './EditControls.module.css';
+import { EditControlWrapper } from './EditControlWrapper';
 
 type Props = {
 	roadmapPoint: roadmapDataPoint;
@@ -35,23 +36,23 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 
 	return (
 		<div className={classes.root}>
-			<div className={classes.order}>
+			<EditControlWrapper>
 				<TitleAndDaysEdit roadmapPoint={roadmapPoint} />
-			</div>
-			<div className={`${classes.order} ${finished ? classes.finished : ''}`}>
+			</EditControlWrapper>
+			<EditControlWrapper className={`${finished ? classes.finished : ''}`}>
 				<p className={classes.info}>{completion}</p>
 				<Button onClick={() => toggleFinishedHandler()}>
 					Mark as {!finished ? 'finished' : 'not finished'}
 				</Button>
-			</div>
+			</EditControlWrapper>
 			{mainRoadmapPoints.length > 1 && (
-				<div className={classes.order}>
+				<EditControlWrapper>
 					<OrderEdit id={id} />
-				</div>
+				</EditControlWrapper>
 			)}
-			<div className={classes.order}>
+			<EditControlWrapper>
 				<AddMidpointControls roadmapPoint={roadmapPoint} />
-			</div>
+			</EditControlWrapper>
 			<Button onClick={() => setDeleteModalVisible(true)} variant='danger'>
 				Delete roadmap point
 			</Button>

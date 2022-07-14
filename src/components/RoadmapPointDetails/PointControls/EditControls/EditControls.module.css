@@ -4,17 +4,6 @@
 	flex-direction: column;
 }
 
-.order {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-	gap: 0.5rem;
-	align-items: center;
-	text-align: center;
-	background-color: var(--body-elevated);
-	border-radius: var(--inner-border-radius);
-	padding: var(--small-spacing);
-}
-
 .finished {
 	background-color: rgba(18, 196, 45, 0.334);
 	transition: background-color 3.2s ease-in-out;
