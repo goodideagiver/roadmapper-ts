@@ -42,8 +42,8 @@ export const useAddPointModal = (
 			timeError: '',
 			titleError: '',
 		});
-		setTitle('');
-		setDays(0);
+		setTitle(defaultTitle);
+		setDays(defaultTime);
 	};
 
 	const confirmPointHandler = () => {
@@ -79,8 +79,6 @@ export const useAddPointModal = (
 				finished: false,
 				id: uuid(),
 			});
-			setDays(0);
-			setTitle('');
 			onClose();
 		}
 	};
@@ -108,7 +106,7 @@ export const useAddPointModal = (
 	};
 
 	const handleResetDays = () => {
-		setDays(0);
+		setDays(defaultTime);
 	};
 
 	return {
