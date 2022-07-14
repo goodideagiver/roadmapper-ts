@@ -6,6 +6,7 @@ import { Button } from '../../../../UI/Button/Button';
 import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
 import { AddPointModal } from '../../../AddPointModal/AddPointModal';
 import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
+import { AddMidpointControls } from './components/AddMidpointControls/AddMidpointControls';
 import { OrderEdit } from './components/OrderEdit/OrderEdit';
 import { TitleAndDaysEdit } from './components/TitleAndDaysEdit/TitleAndDaysEdit';
 import classes from './EditControls.module.css';
@@ -62,18 +63,7 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 				</div>
 			)}
 			<div className={classes.order}>
-				{midpoints && <div>Midpoints: {midpoints.length || 0}</div>}
-				<AddPointModal
-					modalTitle='Add midpoint'
-					visible={midpointModalVisible}
-					onClose={handleToggleMidpointModal}
-					onConfirmPoint={addMidpoint}
-					techForSuggestions={roadmapPoint.title}
-					variant='addSubPoint'
-				/>
-				<Button onClick={handleToggleMidpointModal} variant='success'>
-					Add midpoint
-				</Button>
+				<AddMidpointControls roadmapPoint={roadmapPoint} />
 			</div>
 			<Button onClick={() => setDeleteModalVisible(true)} variant='danger'>
 				Delete roadmap point
