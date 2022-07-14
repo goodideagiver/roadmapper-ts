@@ -8,6 +8,7 @@ import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
 import { MidpointControls } from './MidpointControls';
 import { MidpointInfo } from './MidpointInfo';
 import { useEditMidpoint } from './useEditMidpoint';
+import { useRoadmap } from '../../../../store/useRoadmap';
 
 type Props = {
 	midpoint: roadmapMidpoint;
@@ -33,11 +34,17 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 		midpointsCount,
 	} = useEditMidpoint(mainPointId, midpoint);
 
+	const { mainRoadmapPoints } = useRoadmap();
+
+	const mainPoint = mainRoadmapPoints.find((point) => point.id === mainPointId);
+
+	const mainPointIsFinished = mainPoint?.finished;
+
 	return (
 		<div
 			ref={midpointRef}
 			className={`${classes.midpoint} ${
-				midpoint.finished ? classes.finished : ''
+				midpoint.finished || mainPointIsFinished ? classes.finished : ''
 			}`}
 			key={midpoint.id}
 		>
@@ -45,11 +52,11 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 				daysToComplete={midpoint.daysToComplete}
 				title={midpoint.title}
 				toggleOptions={toggleOptions}
-				finished={midpoint.finished}
+				finished={midpoint.finished || !!mainPointIsFinished}
 			/>
 			{optionsOpen && (
 				<MidpointControls
-					midpointFinished={midpoint.finished}
+					midpointFinished={midpoint.finished || !!mainPointIsFinished}
 					moveMidpointDownHandler={moveMidpointDownHandler}
 					moveMidpointUpHandler={moveMidpointUpHandler}
 					toggleMidpointFinished={toggleMidpointFinished}
