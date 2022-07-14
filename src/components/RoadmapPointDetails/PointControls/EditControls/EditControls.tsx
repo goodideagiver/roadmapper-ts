@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { isPlural } from '../../../../helpers/isPlural.helper';
-import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
 import { roadmapMidpoint } from '../../../../store/roadmap-slice';
 import { useRoadmap } from '../../../../store/useRoadmap';
 import { Button } from '../../../../UI/Button/Button';
 import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
 import { AddPointModal } from '../../../AddPointModal/AddPointModal';
 import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
+import { OrderEdit } from './components/OrderEdit/OrderEdit';
 import { TitleAndDaysEdit } from './components/TitleAndDaysEdit/TitleAndDaysEdit';
 import classes from './EditControls.module.css';
 
@@ -16,18 +16,11 @@ type Props = {
 };
 
 export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
-	const { id, finished, title, midpoints, daysToComplete } = roadmapPoint;
+	const { id, finished, title, midpoints } = roadmapPoint;
 	const completion = !finished ? 'Not finished' : 'Finished';
 
-	const {
-		mainRoadmapPoints,
-		addMidpointById,
-		moveRoadmapPointDown,
-		moveRoadmapPointUp,
-		updateRoadmapPoint,
-	} = useRoadmap();
-
-	const orderInArray = mainRoadmapPoints.findIndex((el) => el.id === id);
+	const { mainRoadmapPoints, addMidpointById, updateRoadmapPoint } =
+		useRoadmap();
 
 	const [midpointModalVisible, setMidpointModalVisible] = useState(false);
 
@@ -40,8 +33,6 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 	};
 
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false);
-	const [editNameAndTitleModalVisible, setEditNameAndTitleModalVisible] =
-		useState(false);
 
 	const midpointsCount = midpoints?.length;
 
@@ -52,17 +43,6 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 	const confirmDeleteRoadmapPointHandler = () => {
 		setDeleteModalVisible(false);
 		onDelete();
-	};
-
-	const handleModifyPointTitleAndDays = ({
-		daysToComplete,
-		title,
-	}: {
-		daysToComplete: number;
-		title: string;
-	}) => {
-		updateRoadmapPoint({ ...roadmapPoint, daysToComplete, title });
-		setEditNameAndTitleModalVisible(false);
 	};
 
 	return (
@@ -78,19 +58,7 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 			</div>
 			{mainRoadmapPoints.length > 1 && (
 				<div className={classes.order}>
-					<Button
-						disabled={orderInArray === 0}
-						onClick={() => moveRoadmapPointDown(id)}
-					>
-						Move Down
-					</Button>
-					<p>Order: {orderInArray + 1}</p>
-					<Button
-						disabled={orderInArray === mainRoadmapPoints.length - 1}
-						onClick={() => moveRoadmapPointUp(id)}
-					>
-						Move up
-					</Button>
+					<OrderEdit id={id} />
 				</div>
 			)}
 			<div className={classes.order}>
