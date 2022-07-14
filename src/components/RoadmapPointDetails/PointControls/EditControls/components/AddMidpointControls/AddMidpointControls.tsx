@@ -6,6 +6,7 @@ import {
 import { useRoadmap } from '../../../../../../store/useRoadmap';
 import { Button } from '../../../../../../UI/Button/Button';
 import { AddPointModal } from '../../../../../AddPointModal/AddPointModal';
+import { EditControlWrapper } from '../../EditControlWrapper';
 
 type Props = {
 	roadmapPoint: roadmapDataPoint;
@@ -26,7 +27,7 @@ export const AddMidpointControls = ({ roadmapPoint }: Props) => {
 	};
 
 	return (
-		<>
+		<EditControlWrapper>
 			{midpoints && <div>Midpoints: {midpoints.length || 0}</div>}
 			<AddPointModal
 				modalTitle='Add midpoint'
@@ -39,6 +40,6 @@ export const AddMidpointControls = ({ roadmapPoint }: Props) => {
 			<Button onClick={handleToggleMidpointModal} variant='success'>
 				Add midpoint
 			</Button>
-		</>
+		</EditControlWrapper>
 	);
 };

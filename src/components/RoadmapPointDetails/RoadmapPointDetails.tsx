@@ -48,7 +48,11 @@ export const RoadmapPointDetails = ({
 		>
 			<div className={classes.content}>
 				<RoadmapMidpoints selectedRoadmapPoint={selectedRoadmapPoint} />
-				<PointControls onDelete={onDelete} point={selectedRoadmapPoint} />
+				<PointControls
+					onClose={onClose}
+					onDelete={onDelete}
+					point={selectedRoadmapPoint}
+				/>
 			</div>
 		</Modal>
 	);

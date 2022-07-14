@@ -4,7 +4,7 @@ import { roadmapDataPoint } from '../../../../../../store/roadmap-slice';
 import { useRoadmap } from '../../../../../../store/useRoadmap';
 import { Button } from '../../../../../../UI/Button/Button';
 import { AddPointModal } from '../../../../../AddPointModal/AddPointModal';
-import * as classes from './TitleAndDaysEdit.module.css';
+import { EditControlWrapper } from '../../EditControlWrapper';
 
 type Props = {
 	roadmapPoint: roadmapDataPoint;
@@ -29,8 +29,8 @@ export const TitleAndDaysEdit = ({ roadmapPoint }: Props) => {
 	};
 
 	return (
-		<>
-			<div className={classes.info}>
+		<EditControlWrapper>
+			<div>
 				<p>Title: {title}</p>
 				<p>Time: {daysToYrsMthWeekDayString(daysToComplete)}</p>
 			</div>
@@ -46,6 +46,6 @@ export const TitleAndDaysEdit = ({ roadmapPoint }: Props) => {
 				initialTitle={title}
 				variant='edit'
 			/>
-		</>
+		</EditControlWrapper>
 	);
 };

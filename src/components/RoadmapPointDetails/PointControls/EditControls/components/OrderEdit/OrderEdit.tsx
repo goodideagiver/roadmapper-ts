@@ -1,5 +1,6 @@
 import { useRoadmap } from '../../../../../../store/useRoadmap';
 import { Button } from '../../../../../../UI/Button/Button';
+import { EditControlWrapper } from '../../EditControlWrapper';
 
 type Props = {
 	id: string;
@@ -10,7 +11,7 @@ export const OrderEdit = ({ id }: Props) => {
 
 	const orderInArray = mainRoadmapPoints.findIndex((el) => el.id === id);
 	return (
-		<>
+		<EditControlWrapper>
 			<Button
 				disabled={orderInArray === 0}
 				onClick={() => moveRoadmapPointDown(id)}
@@ -24,6 +25,6 @@ export const OrderEdit = ({ id }: Props) => {
 			>
 				Move up
 			</Button>
-		</>
+		</EditControlWrapper>
 	);
 };
