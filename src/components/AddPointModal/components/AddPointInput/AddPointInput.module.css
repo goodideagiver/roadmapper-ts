@@ -8,6 +8,7 @@
 .suggestions {
 	gap: var(--small-spacing);
 	display: flex;
+	flex-direction: row;
 	overflow-x: auto;
 	padding-bottom: var(--small-spacing);
 }
