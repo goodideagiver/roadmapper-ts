@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { isPlural } from '../../../../helpers/isPlural.helper';
-import { roadmapMidpoint } from '../../../../store/roadmap-slice';
 import { useRoadmap } from '../../../../store/useRoadmap';
 import { Button } from '../../../../UI/Button/Button';
 import { ConfirmModal } from '../../../../UI/ConfirmModal/ConfirmModal';
-import { AddPointModal } from '../../../AddPointModal/AddPointModal';
 import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
 import { AddMidpointControls } from './components/AddMidpointControls/AddMidpointControls';
 import { OrderEdit } from './components/OrderEdit/OrderEdit';
@@ -20,18 +18,7 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 	const { id, finished, title, midpoints } = roadmapPoint;
 	const completion = !finished ? 'Not finished' : 'Finished';
 
-	const { mainRoadmapPoints, addMidpointById, updateRoadmapPoint } =
-		useRoadmap();
-
-	const [midpointModalVisible, setMidpointModalVisible] = useState(false);
-
-	const handleToggleMidpointModal = () => {
-		setMidpointModalVisible(!midpointModalVisible);
-	};
-
-	const addMidpoint = (midpoint: roadmapMidpoint) => {
-		addMidpointById(id, midpoint);
-	};
+	const { mainRoadmapPoints, updateRoadmapPoint } = useRoadmap();
 
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
