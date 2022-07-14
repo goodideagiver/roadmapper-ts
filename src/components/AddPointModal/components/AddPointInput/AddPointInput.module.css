@@ -44,3 +44,13 @@
 	border-radius: 5px;
 	padding: 5px;
 }
+
+.infoParagraph {
+	margin-bottom: var(--small-spacing);
+}
+
+.shortInfo {
+	padding: var(--small-spacing);
+	background-color: var(--body-elevated);
+	border-radius: var(--inner-border-radius);
+}

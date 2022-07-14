@@ -46,3 +46,11 @@
 		filter: brightness(1.2);
 	}
 }
+
+.full {
+	width: 100%;
+}
+
+.fit {
+	width: fit-content;
+}

@@ -8,6 +8,8 @@ type ButtonVariants =
 	| 'warning'
 	| 'info';
 
+type WidthVariants = 'full' | 'fit';
+
 type ButtonSizes = 'sm' | 'md' | 'lg';
 
 type ButtonProps = {
@@ -18,6 +20,7 @@ type ButtonProps = {
 	roundness?: number;
 	disabled?: boolean;
 	size?: ButtonSizes;
+	width?: WidthVariants;
 };
 
 export const Button = ({
@@ -25,6 +28,7 @@ export const Button = ({
 	className,
 	children,
 	size = 'md',
+	width,
 	...props
 }: ButtonProps) => {
 	let buttonClasses = `${classes.button} ${variant ? classes[variant] : ''} ${
@@ -39,6 +43,14 @@ export const Button = ({
 	}
 	if (size === 'md') {
 		buttonClasses += ` ${classes.md}`;
+	}
+
+	if (width === 'full') {
+		buttonClasses += ` ${classes.full}`;
+	}
+
+	if (width === 'fit') {
+		buttonClasses += ` ${classes.fit}`;
 	}
 
 	return (

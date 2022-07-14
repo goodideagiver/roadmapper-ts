@@ -3,6 +3,7 @@ import { SuggestedPoint } from './SuggestedPoint';
 import * as classes from './AddPointInput.module.css';
 import { InputWithLabel } from '../../../../UI/InputWithLabel/InputWithLabel';
 import { getSuggestedTech } from '../../../../helpers/getSuggestedTech.helper';
+import { InfoButton } from '../../../../UI/InfoButton/InfoButton';
 
 export type Suggestion = string | number;
 
@@ -69,6 +70,17 @@ export const AddPointInput = ({
 					<span className={classes.suggestionCount}>
 						{getSuggestedTech(value)?.length}
 					</span>
+					<InfoButton title='Midpoint suggestions'>
+						<p className={classes.infoParagraph}>
+							Midpoint suggestions indicator shows you that you will have
+							certain amount of point title suggestions if you decide to add
+							points inside roadmap point of current chosen title.
+						</p>
+						<p className={`${classes.infoParagraph} ${classes.shortInfo}`}>
+							For example: If you choose 'CSS' as title, you will have
+							suggestions like 'CSS Grid', 'CSS Flexbox' etc.
+						</p>
+					</InfoButton>
 				</p>
 			)}
 		</div>
