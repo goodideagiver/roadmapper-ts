@@ -1,4 +1,4 @@
-import styles from './Backdrop.module.css';
+import * as styles from './Backdrop.module.css';
 
 type BackdropProps = {
 	onClose: () => void;
