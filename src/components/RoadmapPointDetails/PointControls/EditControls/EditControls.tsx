@@ -3,9 +3,10 @@ import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
 import { AddMidpointControls } from './components/AddMidpointControls/AddMidpointControls';
 import { CompletionToggle } from './components/CompletionToggle/CompletionToggle';
 import { DeleteRoadmapPoint } from './components/DeleteRoadmapPoint/DeleteRoadmapPoint';
+import { MultiMidpointControls } from './components/MultiMidpointControls/MultiMidpointControls';
 import { OrderEdit } from './components/OrderEdit/OrderEdit';
 import { TitleAndDaysEdit } from './components/TitleAndDaysEdit/TitleAndDaysEdit';
-import classes from './EditControls.module.css';
+import * as classes from './EditControls.module.css';
 
 type Props = {
 	roadmapPoint: roadmapDataPoint;
@@ -17,12 +18,21 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 
 	const { mainRoadmapPoints } = useRoadmap();
 
+	const hasMidpoints =
+		roadmapPoint.midpoints && roadmapPoint.midpoints.length > 0;
+
 	return (
 		<div className={classes.root}>
 			<TitleAndDaysEdit roadmapPoint={roadmapPoint} />
 			<CompletionToggle roadmapPoint={roadmapPoint} />
 			{mainRoadmapPoints.length > 1 && <OrderEdit id={id} />}
 			<AddMidpointControls roadmapPoint={roadmapPoint} />
+			{roadmapPoint.midpoints && roadmapPoint.midpoints.length > 0 && (
+				<MultiMidpointControls
+					mainPointFinished={roadmapPoint.finished}
+					midpoints={roadmapPoint.midpoints}
+				/>
+			)}
 			<DeleteRoadmapPoint roadmapPoint={roadmapPoint} onDelete={onDelete} />
 		</div>
 	);
