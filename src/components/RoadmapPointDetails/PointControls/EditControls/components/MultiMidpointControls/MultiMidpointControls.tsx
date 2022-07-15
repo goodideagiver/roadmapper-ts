@@ -52,12 +52,6 @@ export const MultiMidpointControls = ({
 			(midpoint) => midpoint.finished
 		);
 
-		console.log(
-			allMidpointsReallyFinished
-				? 'All midpoints should be marked as unfinished'
-				: 'All midpoints should be marked as finished'
-		);
-
 		const newMidpointsStatus = !allMidpointsReallyFinished;
 
 		const midpointsCopy = midpoints?.map((midpoint) => ({

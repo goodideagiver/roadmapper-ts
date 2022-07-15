@@ -28,7 +28,9 @@ export const AddMidpointControls = ({ roadmapPoint }: Props) => {
 
 	return (
 		<EditControlWrapper>
-			{midpoints && <div>Midpoints: {midpoints.length || 0}</div>}
+			{midpoints && !!midpoints.length && (
+				<div>Midpoints: {midpoints.length || 0}</div>
+			)}
 			<AddPointModal
 				modalTitle='Add midpoint'
 				visible={midpointModalVisible}
