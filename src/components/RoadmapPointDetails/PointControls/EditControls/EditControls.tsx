@@ -1,3 +1,4 @@
+import { roadmapMidpoint } from '../../../../store/roadmap-slice';
 import { useRoadmap } from '../../../../store/useRoadmap';
 import { roadmapDataPoint } from '../../../Roadmap/Roadmap.types';
 import { AddMidpointControls } from './components/AddMidpointControls/AddMidpointControls';
@@ -27,11 +28,11 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 			<CompletionToggle roadmapPoint={roadmapPoint} />
 			{mainRoadmapPoints.length > 1 && <OrderEdit id={id} />}
 			<AddMidpointControls roadmapPoint={roadmapPoint} />
-			{roadmapPoint.midpoints && roadmapPoint.midpoints.length > 0 && (
+			{hasMidpoints && (
 				<MultiMidpointControls
 					mainPointId={id}
 					mainPointFinished={roadmapPoint.finished}
-					midpoints={roadmapPoint.midpoints}
+					midpoints={roadmapPoint.midpoints as roadmapMidpoint[]}
 				/>
 			)}
 			<DeleteRoadmapPoint roadmapPoint={roadmapPoint} onDelete={onDelete} />
