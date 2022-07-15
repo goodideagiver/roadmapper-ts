@@ -34,6 +34,8 @@ export const AddRoadmapPoint = () => {
 					'Svelte',
 				]}
 				onClose={handleToggleModal}
+				initialDays={0}
+				initialTitle=''
 				visible={modalVisible}
 			/>
 		</>

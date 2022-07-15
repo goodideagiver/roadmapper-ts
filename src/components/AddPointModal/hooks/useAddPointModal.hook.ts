@@ -79,6 +79,8 @@ export const useAddPointModal = (
 				finished: false,
 				id: uuid(),
 			});
+			setDays(defaultTime);
+			setTitle(defaultTitle);
 			onClose();
 		}
 	};
