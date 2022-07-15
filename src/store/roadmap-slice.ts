@@ -110,6 +110,15 @@ export const roadmapSlice = createSlice({
 				}
 
 				existingPoint.midpoints.push(action.payload.midpoint);
+
+				const allDaysInMidpoints = existingPoint.midpoints.reduce(
+					(acc, midpoint) => acc + midpoint.daysToComplete,
+					0
+				);
+
+				if (allDaysInMidpoints > existingPoint.daysToComplete) {
+					existingPoint.daysToComplete = allDaysInMidpoints;
+				}
 			}
 		},
 		setMidpointsByPointId: (
