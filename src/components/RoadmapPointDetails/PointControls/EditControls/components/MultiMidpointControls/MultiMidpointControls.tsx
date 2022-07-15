@@ -25,17 +25,69 @@ export const MultiMidpointControls = ({
 		setMidpointsByPointId(mainPointId, []);
 	};
 
+	const sortAscendingHandler = () => {
+		const midpointsCopy = [...midpoints];
+
+		midpointsCopy.sort((a, b) =>
+			a.title.charCodeAt(0) < b.title.charCodeAt(0) ? 1 : -1
+		);
+		setMidpointsByPointId(mainPointId, midpointsCopy);
+	};
+
+	const sortDescendingHandler = () => {
+		const midpointsCopy = [...midpoints];
+
+		midpointsCopy.sort((a, b) =>
+			a.title.charCodeAt(0) > b.title.charCodeAt(0) ? 1 : -1
+		);
+		setMidpointsByPointId(mainPointId, midpointsCopy);
+	};
+
+	const hasMultipleMidpoints = midpoints?.length > 1;
+
 	const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+
+	const handleToggleAllFinished = () => {
+		const allMidpointsReallyFinished = midpoints?.every(
+			(midpoint) => midpoint.finished
+		);
+
+		console.log(
+			allMidpointsReallyFinished
+				? 'All midpoints should be marked as unfinished'
+				: 'All midpoints should be marked as finished'
+		);
+
+		const newMidpointsStatus = !allMidpointsReallyFinished;
+
+		const midpointsCopy = midpoints?.map((midpoint) => ({
+			...midpoint,
+			finished: newMidpointsStatus,
+		}));
+
+		setMidpointsByPointId(mainPointId, midpointsCopy);
+	};
 
 	return (
 		<div>
 			<p>Control midpoints</p>
 			<EditControlWrapper>
-				<Button disabled={mainPointFinished} variant='success'>
+				<Button
+					onClick={handleToggleAllFinished}
+					disabled={mainPointFinished}
+					variant='success'
+				>
 					Mark all {isAllMidpointsFinished ? 'unfinished' : 'finished'}
 				</Button>
-				<Button>Sort asc</Button>
-				<Button>Sort Desc</Button>
+				<Button
+					onClick={sortDescendingHandler}
+					disabled={!hasMultipleMidpoints}
+				>
+					Sort desc
+				</Button>
+				<Button onClick={sortAscendingHandler} disabled={!hasMultipleMidpoints}>
+					Sort asc
+				</Button>
 				<Button onClick={() => setDeleteModalVisible(true)} variant='danger'>
 					Delete all
 				</Button>
