@@ -6,11 +6,11 @@ import { Button as ButtonType, Props } from './ConfirmModal.types';
 
 const defaultConfirmButton: ButtonType = {
 	text: 'Yes',
+	type: 'danger',
 };
 
 const defaultCancelButton: ButtonType = {
 	text: 'No',
-	type: 'danger',
 };
 
 export const ConfirmModal = ({
