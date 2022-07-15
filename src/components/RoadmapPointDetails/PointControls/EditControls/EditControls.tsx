@@ -29,6 +29,7 @@ export const EditControls = ({ onDelete, roadmapPoint }: Props) => {
 			<AddMidpointControls roadmapPoint={roadmapPoint} />
 			{roadmapPoint.midpoints && roadmapPoint.midpoints.length > 0 && (
 				<MultiMidpointControls
+					mainPointId={id}
 					mainPointFinished={roadmapPoint.finished}
 					midpoints={roadmapPoint.midpoints}
 				/>
