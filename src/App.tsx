@@ -1,6 +1,7 @@
 import './assets/css/index.css';
 import './assets/css/variables.css';
 import { AddRoadmapPoint } from './components/AddRoadmapPoint/AddRoadmapPoint';
+import { MainControls } from './components/MainControls/MainControls';
 import { Roadmap } from './components/Roadmap/Roadmap';
 import { RoadmapSummary } from './components/RoadmapSummary/RoadmapSummary';
 
@@ -14,7 +15,7 @@ const App = () => {
 		<MainLayout>
 			<RoadmapSummary />
 			<Roadmap roadmapArray={mainRoadmapPoints} />
-			<AddRoadmapPoint />
+			<MainControls />
 		</MainLayout>
 	);
 };
