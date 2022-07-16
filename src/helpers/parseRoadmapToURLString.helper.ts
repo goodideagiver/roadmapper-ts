@@ -5,9 +5,11 @@ import {
 	roadmapMidpoint,
 } from '../store/roadmap-slice';
 
+type SimpleMidpoint = { title: string; daysToComplete: number };
+
 export const parseRoadmapToURLString = (roadmap: roadmapArray) => {
 	const simplerRoadmapArray = roadmap.map((item) => {
-		let midpoints = [];
+		let midpoints: SimpleMidpoint[] = [];
 
 		if (item.midpoints) {
 			midpoints = item.midpoints.map((midpoint) => {
@@ -25,14 +27,10 @@ export const parseRoadmapToURLString = (roadmap: roadmapArray) => {
 		};
 	});
 
-	console.log(encodeURIComponent(JSON.stringify(simplerRoadmapArray)));
-
-	console.log(
-		JSON.parse(
-			decodeURIComponent(
-				encodeURIComponent(JSON.stringify(simplerRoadmapArray))
-			)
-		)
+	return (
+		window.origin +
+		'/share/' +
+		encodeURIComponent(JSON.stringify(simplerRoadmapArray))
 	);
 };
 

@@ -1,9 +1,10 @@
+import { ReactNotifications } from 'react-notifications-component';
 import './assets/css/index.css';
 import './assets/css/variables.css';
-import { AddRoadmapPoint } from './components/AddRoadmapPoint/AddRoadmapPoint';
 import { MainControls } from './components/MainControls/MainControls';
 import { Roadmap } from './components/Roadmap/Roadmap';
 import { RoadmapSummary } from './components/RoadmapSummary/RoadmapSummary';
+import 'react-notifications-component/dist/theme.css';
 
 import { MainLayout } from './pages/MainLayout/MainLayout';
 import { useRoadmap } from './store/useRoadmap';
@@ -13,6 +14,7 @@ const App = () => {
 
 	return (
 		<MainLayout>
+			<ReactNotifications />
 			<RoadmapSummary />
 			<Roadmap roadmapArray={mainRoadmapPoints} />
 			<MainControls />

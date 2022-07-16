@@ -10,3 +10,23 @@
 	width: 1.5rem;
 	height: 1.5rem;
 }
+
+.hidden {
+	opacity: 0;
+	transition: 1s;
+}
+
+.bounce {
+	animation: bounce 1s both;
+}
+
+@keyframes bounce {
+	from {
+		transform: scale(0.9);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
