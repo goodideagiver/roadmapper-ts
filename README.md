@@ -10,7 +10,8 @@
 - Redux + toolkit
 - react-transition-group
 - react-icons
-  More info in package.json
+
+More info in package.json
 
 ## Features
 
@@ -24,11 +25,13 @@
 - Add midpoints inside roadmap point
 - Set midpoint name and duration
 - Edit midpoint name and duration
+- Change order of midpoint
 - Mark midpoint as finished
 - Delete midpoint
 - Sort midpoints ascending and descending
 - Delete all midpoints
 - Mark all midpoints as finished/unfinished
+- Midpoint name suggestions based on entered roadmap name
 
 ## Planned
 
