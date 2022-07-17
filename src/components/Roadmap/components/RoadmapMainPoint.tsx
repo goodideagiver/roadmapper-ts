@@ -17,7 +17,12 @@ export const RoadmapMainPoint = ({
 }: roadmapDataPoint) => {
 	return (
 		<button className={classes.root} onClick={onChoose}>
-			<Marquee gradient={false} play={title.length > 15} pauseOnHover={true}>
+			<Marquee
+				gradient={false}
+				play={title.length > 15}
+				pauseOnHover={true}
+				pauseOnClick={true}
+			>
 				<div className={classes.title}>{title}</div>
 			</Marquee>
 			<div className={classes.textAndIcon}>
