@@ -71,7 +71,7 @@ export const useAddPointModal = (
 			});
 		}
 
-		if (title.length > 0 && days > 0) {
+		if (title.trim().length > 0 && days > 0) {
 			setError({ timeError: '', titleError: '' });
 			onAddRoadmapPoint({
 				daysToComplete: days,
