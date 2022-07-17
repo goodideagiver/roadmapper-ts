@@ -6,6 +6,8 @@ import { Button } from '../../../../../../UI/Button/Button';
 import { AddPointModal } from '../../../../../AddPointModal/AddPointModal';
 import { EditControlWrapper } from '../../EditControlWrapper';
 
+import * as classes from './TitleAndDaysEdit.module.css';
+
 type Props = {
 	roadmapPoint: roadmapDataPoint;
 };
@@ -31,7 +33,7 @@ export const TitleAndDaysEdit = ({ roadmapPoint }: Props) => {
 	return (
 		<EditControlWrapper>
 			<div>
-				<p>Title: {title}</p>
+				<p className={classes.title}>Title: {title}</p>
 				<p>Time: {daysToYrsMthWeekDayString(daysToComplete)}</p>
 			</div>
 			<Button onClick={() => setEditNameAndTitleModalVisible(true)}>
