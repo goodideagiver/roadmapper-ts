@@ -21,7 +21,7 @@ export const MidpointInfo = ({
 
 	return (
 		<div className={classes.info}>
-			<p>{title}</p>
+			<p className={classes.title}>{title}</p>
 			{!finished && <p>{formattedDays}</p>}
 			{finished && (
 				<FiCheck

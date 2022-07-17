@@ -10,6 +10,8 @@
 .title {
 	font-weight: bold;
 	margin-bottom: 0.5rem;
+	max-width: 100px;
+	white-space: nowrap;
 }
 
 .steps {
