@@ -6,6 +6,7 @@ import * as classes from './RoadmapMainPoint.module.css';
 
 import { BiTimer } from 'react-icons/bi';
 import { FinishedStatus } from './FinishedStatus';
+import Marquee from 'react-fast-marquee';
 
 export const RoadmapMainPoint = ({
 	finished,
@@ -16,7 +17,9 @@ export const RoadmapMainPoint = ({
 }: roadmapDataPoint) => {
 	return (
 		<button className={classes.root} onClick={onChoose}>
-			<div className={classes.title}>{title}</div>
+			<Marquee gradient={false} play={title.length > 15} pauseOnHover={true}>
+				<div className={classes.title}>{title}</div>
+			</Marquee>
 			<div className={classes.textAndIcon}>
 				<BiTimer />
 				<span>To complete: {daysToYrsMthWeekDayString(daysToComplete)}</span>
