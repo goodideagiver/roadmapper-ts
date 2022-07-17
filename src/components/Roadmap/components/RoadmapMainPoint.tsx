@@ -15,8 +15,12 @@ export const RoadmapMainPoint = ({
 	midpoints,
 	onChoose,
 }: roadmapDataPoint) => {
+	const timePhrase = finished ? 'Completed in:' : 'To complete:';
 	return (
-		<button className={classes.root} onClick={onChoose}>
+		<button
+			className={`${classes.root} ${finished ? classes.finished : ''}`}
+			onClick={onChoose}
+		>
 			<Marquee
 				gradient={false}
 				play={title.length > 15}
@@ -27,7 +31,9 @@ export const RoadmapMainPoint = ({
 			</Marquee>
 			<div className={classes.textAndIcon}>
 				<BiTimer />
-				<span>To complete: {daysToYrsMthWeekDayString(daysToComplete)}</span>
+				<span>
+					{timePhrase} {daysToYrsMthWeekDayString(daysToComplete)}
+				</span>
 			</div>
 			<FinishedStatus finished={finished} />
 			{midpoints && !!midpoints.length && (
