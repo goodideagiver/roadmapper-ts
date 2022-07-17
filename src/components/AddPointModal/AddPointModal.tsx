@@ -95,29 +95,32 @@ export const AddPointModal = ({
 			onClose={cancelHandler}
 			visible={visible}
 			title={modalTitle}
+			contentClassName={classes.modalContent}
 		>
-			<InputErrorDisplay
-				hasError={!!error.titleError}
-				errorMessage={error.titleError}
-				ref={titleErrorRef}
-			/>
-			<AddPointInput
-				label='Roadmap point title'
-				value={title}
-				suggestedPoints={suggestedTech}
-				onInput={handleInputTitle}
-				hasError={error.titleError.length > 0}
-			/>
-			<InputErrorDisplay
-				hasError={!!error.timeError}
-				errorMessage={error.timeError}
-				ref={timeErrorRef}
-			/>
-			<PointTimeInput
-				onReset={handleResetDays}
-				daysValue={days}
-				onChangeDays={handleSetDays}
-			/>
+			<div className={classes.mainContent}>
+				<InputErrorDisplay
+					hasError={!!error.titleError}
+					errorMessage={error.titleError}
+					ref={titleErrorRef}
+				/>
+				<AddPointInput
+					label='Roadmap point title'
+					value={title}
+					suggestedPoints={suggestedTech}
+					onInput={handleInputTitle}
+					hasError={error.titleError.length > 0}
+				/>
+				<InputErrorDisplay
+					hasError={!!error.timeError}
+					errorMessage={error.timeError}
+					ref={timeErrorRef}
+				/>
+				<PointTimeInput
+					onReset={handleResetDays}
+					daysValue={days}
+					onChangeDays={handleSetDays}
+				/>
+			</div>
 			<Button
 				onClick={confirmPointHandler}
 				variant='success'

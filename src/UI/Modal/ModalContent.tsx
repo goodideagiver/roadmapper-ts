@@ -8,6 +8,7 @@ type ModalContentProps = {
 	onClose: () => void;
 	className?: string;
 	header?: React.ReactNode;
+	contentClassName?: string;
 };
 
 export const ModalContent = ({
@@ -16,6 +17,7 @@ export const ModalContent = ({
 	onClose,
 	className,
 	header,
+	contentClassName,
 }: ModalContentProps) => {
 	useKey('Escape', onClose);
 
@@ -24,7 +26,13 @@ export const ModalContent = ({
 	return (
 		<div className={`${classes.root} ${className ? className : ''}`}>
 			<ModalHeader onClose={onClose}>{headerContent}</ModalHeader>
-			<main className={classes.content}>{children}</main>
+			<main
+				className={`${classes.content} ${
+					contentClassName ? contentClassName : ''
+				}`}
+			>
+				{children}
+			</main>
 		</div>
 	);
 };

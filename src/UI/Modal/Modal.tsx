@@ -13,6 +13,7 @@ type ModalProps = {
 	className?: string;
 	onExited?: () => void;
 	header?: React.ReactNode;
+	contentClassName?: string;
 };
 
 export const Modal = ({
@@ -23,6 +24,7 @@ export const Modal = ({
 	className,
 	onExited,
 	header,
+	contentClassName,
 }: ModalProps) => {
 	const overlayRoot = document.getElementById('overlay-root');
 
@@ -54,6 +56,7 @@ export const Modal = ({
 					className={className}
 					title={title}
 					onClose={onClose}
+					contentClassName={contentClassName}
 				>
 					{children}
 				</ModalContent>
