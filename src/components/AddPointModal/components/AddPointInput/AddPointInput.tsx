@@ -1,9 +1,9 @@
-import { uuid } from 'uuidv4';
 import { SuggestedPoint } from './SuggestedPoint';
 import * as classes from './AddPointInput.module.css';
 import { InputWithLabel } from '../../../../UI/InputWithLabel/InputWithLabel';
 import { getSuggestedTech } from '../../../../helpers/getSuggestedTech.helper';
 import { InfoButton } from '../../../../UI/InfoButton/InfoButton';
+import { useId } from 'react';
 
 export type Suggestion = string | number;
 
@@ -22,7 +22,7 @@ export const AddPointInput = ({
 	onInput,
 	hasError,
 }: AddPointInputProps) => {
-	const inputId = uuid();
+	const inputId = useId();
 
 	const pickSuggestionHandler = (label: Suggestion) => {
 		onInput(label.toString());

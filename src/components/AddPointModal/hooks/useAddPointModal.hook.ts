@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 import {
 	roadmapDataPoint,
 	roadmapMidpoint,
@@ -77,7 +77,7 @@ export const useAddPointModal = (
 				daysToComplete: days,
 				title,
 				finished: false,
-				id: uuid(),
+				id: v4(),
 			});
 			setDays(defaultTime);
 			setTitle(defaultTitle);
