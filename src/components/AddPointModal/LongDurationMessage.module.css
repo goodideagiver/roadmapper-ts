@@ -1,0 +1,19 @@
+.message {
+	padding: var(--small-spacing);
+	margin-bottom: var(--small-spacing);
+	background-color: var(--body-elevated);
+	border-radius: var(--inner-border-radius);
+	display: flex;
+	justify-content: center;
+	gap: var(--small-spacing);
+	align-items: center;
+	border: var(--body-highlight) 1px solid;
+}
+
+.text {
+	width: fit-content;
+}
+
+.emoji {
+	font-size: 2rem;
+}
