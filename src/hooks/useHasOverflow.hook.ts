@@ -1,8 +1,6 @@
 import { RefObject, useEffect, useState } from 'react';
 
 export const useHasOverflow = <T extends HTMLElement>(ref: RefObject<T>) => {
-	// let hasTopOverflow = false;
-	// let hasBottomOverflow = false;
 	const [hasTopOverflow, setHasTopOverflow] = useState(false);
 	const [hasBottomOverflow, setHasBottomOverflow] = useState(false);
 
