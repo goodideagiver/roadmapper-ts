@@ -8,6 +8,11 @@
     "deploy": "npm run build && gh-pages -d prod",
     "ts-check": "tsc --noEmit"
   },
+  "browserslist" : [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 11"
+  ],
   "author": "Purple Black",
   "license": "ISC",
   "dependencies": {
