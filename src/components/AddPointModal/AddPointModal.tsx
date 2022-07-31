@@ -10,8 +10,7 @@ import {
 } from './hooks/useAddPointModal.hook';
 import { InputErrorDisplay } from './components/InputErrorDisplay/InputErrorDisplay';
 import { getSuggestedTech } from '../../helpers/getSuggestedTech.helper';
-import { TiCog, TiStar } from 'react-icons/ti';
-import { GiStarsStack } from 'react-icons/gi';
+import { CustomHeader } from './components/CustomHeader/CustomHeader';
 
 type ModalVariants = 'edit' | 'addMainPoint' | 'addSubPoint';
 
@@ -53,31 +52,8 @@ export const AddPointModal = ({
 
 	let header = null;
 
-	if (variant === 'edit') {
-		header = (
-			<>
-				<TiCog />
-				{modalTitle}
-			</>
-		);
-	}
-
-	if (variant === 'addMainPoint') {
-		header = (
-			<>
-				<TiStar />
-				{modalTitle}
-			</>
-		);
-	}
-
-	if (variant === 'addSubPoint') {
-		header = (
-			<>
-				<GiStarsStack />
-				{modalTitle}
-			</>
-		);
+	if (variant) {
+		header = <CustomHeader variant={variant} title={modalTitle} />;
 	}
 
 	let suggestedTech;
