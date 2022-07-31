@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { roadmapMidpoint } from '../../../../../../store/roadmap-slice';
-import { useRoadmap } from '../../../../../../store/useRoadmap';
+import { useMidpoints } from '../../../../../../store/useMidpoints.hook';
 import { Button } from '../../../../../../UI/Button/Button';
 import { ConfirmModal } from '../../../../../../UI/ConfirmModal/ConfirmModal';
 import { EditControlWrapper } from '../../EditControlWrapper';
@@ -19,10 +19,10 @@ export const MultiMidpointControls = ({
 	const isAllMidpointsFinished =
 		midpoints?.every((midpoint) => midpoint.finished) || mainPointFinished;
 
-	const { setMidpointsByPointId } = useRoadmap();
+	const { setMidpoints } = useMidpoints(mainPointId);
 
 	const deleteAllMidpointsHandler = () => {
-		setMidpointsByPointId(mainPointId, []);
+		setMidpoints([]);
 	};
 
 	const sortAscendingHandler = () => {
@@ -31,7 +31,7 @@ export const MultiMidpointControls = ({
 		midpointsCopy.sort((a, b) =>
 			a.title.charCodeAt(0) < b.title.charCodeAt(0) ? 1 : -1
 		);
-		setMidpointsByPointId(mainPointId, midpointsCopy);
+		setMidpoints(midpointsCopy);
 	};
 
 	const sortDescendingHandler = () => {
@@ -40,7 +40,7 @@ export const MultiMidpointControls = ({
 		midpointsCopy.sort((a, b) =>
 			a.title.charCodeAt(0) > b.title.charCodeAt(0) ? 1 : -1
 		);
-		setMidpointsByPointId(mainPointId, midpointsCopy);
+		setMidpoints(midpointsCopy);
 	};
 
 	const hasMultipleMidpoints = midpoints?.length > 1;
@@ -59,7 +59,7 @@ export const MultiMidpointControls = ({
 			finished: newMidpointsStatus,
 		}));
 
-		setMidpointsByPointId(mainPointId, midpointsCopy);
+		setMidpoints(midpointsCopy);
 	};
 
 	return (

@@ -1,32 +1,28 @@
 import { useState } from 'react';
 import { roadmapMidpoint } from '../../../../store/roadmap-slice';
-import { useRoadmap } from '../../../../store/useRoadmap';
+import { useMidpoints } from '../../../../store/useMidpoints.hook';
 
 export const useEditMidpoint = (
 	mainPointId: string,
 	midpoint: roadmapMidpoint
 ) => {
 	const {
-		getMidpointsByPointId,
-		setMidpointsByPointId,
-		setMidpointFinishedByPointIdAndMidpointId,
-		deleteMidpointByPointAndMidpointId,
-	} = useRoadmap();
+		setMidpoints,
+		getMidpoints,
+		setMidpointFinishedByMidpointId,
+		deleteMidpointByMidpointId,
+	} = useMidpoints(mainPointId);
 
 	const toggleMidpointFinished = () => {
-		setMidpointFinishedByPointIdAndMidpointId(
-			mainPointId,
-			midpoint.id,
-			!midpoint.finished
-		);
+		setMidpointFinishedByMidpointId(midpoint.id, !midpoint.finished);
 	};
 
 	const updatePointMidpoints = (newMidpoints: roadmapMidpoint[]) => {
-		setMidpointsByPointId(mainPointId, newMidpoints);
+		setMidpoints(newMidpoints);
 	};
 
 	const moveMidpointUpHandler = () => {
-		const oldMidpoints = getMidpointsByPointId(mainPointId);
+		const oldMidpoints = getMidpoints();
 
 		if (!oldMidpoints || oldMidpoints.length === 1) return;
 
@@ -49,7 +45,7 @@ export const useEditMidpoint = (
 	};
 
 	const moveMidpointDownHandler = () => {
-		const oldMidpoints = getMidpointsByPointId(mainPointId);
+		const oldMidpoints = getMidpoints();
 
 		if (!oldMidpoints || oldMidpoints.length === 1) return;
 
@@ -75,13 +71,13 @@ export const useEditMidpoint = (
 
 	const handleMidpointDelete = () => {
 		setDeleteModalVisible(false);
-		deleteMidpointByPointAndMidpointId(mainPointId, midpoint.id);
+		deleteMidpointByMidpointId(midpoint.id);
 	};
 
-	const midpointsCount = getMidpointsByPointId(mainPointId)?.length ?? 0;
+	const midpointsCount = getMidpoints()?.length ?? 0;
 
 	const midpointIndex =
-		getMidpointsByPointId(mainPointId)?.findIndex(
+		getMidpoints()?.findIndex(
 			(searchedMidpoint) => searchedMidpoint.id === midpoint.id
 		) || 0;
 

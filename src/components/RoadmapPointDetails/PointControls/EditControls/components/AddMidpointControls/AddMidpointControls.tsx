@@ -3,7 +3,7 @@ import {
 	roadmapDataPoint,
 	roadmapMidpoint,
 } from '../../../../../../store/roadmap-slice';
-import { useRoadmap } from '../../../../../../store/useRoadmap';
+import { useMidpoints } from '../../../../../../store/useMidpoints.hook';
 import { Button } from '../../../../../../UI/Button/Button';
 import { AddPointModal } from '../../../../../AddPointModal/AddPointModal';
 import { EditControlWrapper } from '../../EditControlWrapper';
@@ -16,14 +16,14 @@ export const AddMidpointControls = ({ roadmapPoint }: Props) => {
 
 	const [midpointModalVisible, setMidpointModalVisible] = useState(false);
 
-	const { addMidpointById } = useRoadmap();
+	const { addMidpoint } = useMidpoints(id);
 
 	const handleToggleMidpointModal = () => {
 		setMidpointModalVisible(!midpointModalVisible);
 	};
 
-	const addMidpoint = (midpoint: roadmapMidpoint) => {
-		addMidpointById(id, midpoint);
+	const addMidpointHandler = (midpoint: roadmapMidpoint) => {
+		addMidpoint(midpoint);
 	};
 
 	return (
@@ -35,7 +35,7 @@ export const AddMidpointControls = ({ roadmapPoint }: Props) => {
 				modalTitle='Add midpoint'
 				visible={midpointModalVisible}
 				onClose={handleToggleMidpointModal}
-				onConfirmPoint={addMidpoint}
+				onConfirmPoint={addMidpointHandler}
 				techForSuggestions={title}
 				variant='addSubPoint'
 			/>
