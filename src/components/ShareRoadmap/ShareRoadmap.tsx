@@ -52,7 +52,7 @@ export const ShareRoadmap = ({ mainRoadmapPoints }: Props) => {
 	return (
 		<Button className={classes.button} onClick={shareHandler}>
 			<FiShare className={classes.icon} />
-			<span>Share roadmap</span>
+			<span>Share</span>
 		</Button>
 	);
 };

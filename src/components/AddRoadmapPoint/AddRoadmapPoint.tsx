@@ -18,7 +18,7 @@ export const AddRoadmapPoint = () => {
 		<>
 			<Button className={classes.button} onClick={handleToggleModal}>
 				<AiOutlinePlus className={classes.icon} />{' '}
-				<span>Add main roadmap point</span>
+				<span>Add roadmap point</span>
 			</Button>
 			<AddPointModal
 				variant='addMainPoint'

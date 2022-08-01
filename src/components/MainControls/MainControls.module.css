@@ -2,5 +2,11 @@
 	display: flex;
 	gap: 0.5rem;
 	justify-content: center;
-	margin: var(--large-spacing) 0;
+	margin: var(--large-spacing) auto;
+	flex-wrap: wrap;
+	padding: 0 var(--small-spacing);
+}
+
+.root > * {
+	flex: 1 1 0;
 }
