@@ -8,6 +8,7 @@ import 'react-notifications-component/dist/theme.css';
 
 import { MainLayout } from './pages/MainLayout/MainLayout';
 import { useRoadmap } from './store/useRoadmap';
+import { MainFooter } from './components/MainFooter/MainFooter';
 
 const App = () => {
 	const { mainRoadmapPoints } = useRoadmap();
@@ -18,6 +19,7 @@ const App = () => {
 			<RoadmapSummary />
 			<Roadmap roadmapArray={mainRoadmapPoints} />
 			<MainControls />
+			<MainFooter />
 		</MainLayout>
 	);
 };

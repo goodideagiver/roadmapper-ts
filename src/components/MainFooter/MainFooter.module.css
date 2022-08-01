@@ -1,0 +1,22 @@
+.root {
+	padding: 1rem;
+	background-color: var(--body-elevated);
+}
+
+.links {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.links a {
+	color: var(--body-text);
+	text-decoration: none;
+	padding: 0.5rem 0;
+}
+
+.createdBy {
+	margin: 0 auto;
+	width: fit-content;
+}
