@@ -17,17 +17,18 @@ const App = () => {
 
 	const [isFirstLoad, setIsFirstLoad] = useState(true);
 
-	if (window.location.pathname.includes('/share/') && isFirstLoad) {
-		const roadmapFromUrl = parseUrlToRoadmapObject(
-			window.location.pathname.replace('/share/', '')
-		);
+	const pathname = window.location.pathname;
 
-		// window.location.pathname = '/';
-		setRoadmap(roadmapFromUrl);
-
-		console.log(roadmapFromUrl);
-
-		// setRoadmap(roadmapFromUrl);
+	if (pathname.includes('/share/') && isFirstLoad) {
+		window.history.pushState(null, '', '/');
+		try {
+			const roadmapFromUrl = parseUrlToRoadmapObject(
+				pathname.replace('/share/', '')
+			);
+			setRoadmap(roadmapFromUrl);
+		} catch (e) {
+			console.error(e);
+		}
 	}
 
 	if (isFirstLoad) {

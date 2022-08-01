@@ -62,5 +62,35 @@ export const parseUrlToRoadmapObject = (url: string) => {
 		}
 	);
 
+	console.log(roadmap);
+	roadmap.forEach((roadmapItem) => {
+		const { daysToComplete, finished, id, midpoints } = roadmapItem;
+
+		if (
+			daysToComplete === undefined ||
+			midpoints === undefined ||
+			finished === undefined ||
+			id === undefined
+		) {
+			console.log(roadmapItem);
+			throw new Error('Invalid roadmap item');
+		}
+
+		if (midpoints.length === 0) return;
+
+		midpoints.forEach((midpoint) => {
+			const { daysToComplete, finished, id } = midpoint;
+
+			if (
+				daysToComplete === undefined ||
+				finished === undefined ||
+				id === undefined
+			) {
+				console.log(midpoint);
+				throw new Error('Invalid midpoint');
+			}
+		});
+	});
+
 	return roadmap;
 };
