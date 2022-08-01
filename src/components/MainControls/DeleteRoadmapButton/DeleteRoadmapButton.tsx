@@ -5,8 +5,6 @@ import { Button } from '../../../UI/Button/Button';
 import { ConfirmModal } from '../../../UI/ConfirmModal/ConfirmModal';
 import * as classes from './DeleteRoadmapButton.module.css';
 
-type Props = {};
-
 export const DeleteRoadmapButton = () => {
 	const [confirmModalVisible, setConfirmModalVisible] = useState(false);
 
