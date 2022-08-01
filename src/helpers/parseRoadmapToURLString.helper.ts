@@ -63,13 +63,14 @@ export const parseUrlToRoadmapObject = (url: string) => {
 	);
 
 	roadmap.forEach((roadmapItem) => {
-		const { daysToComplete, finished, id, midpoints } = roadmapItem;
+		const { daysToComplete, finished, id, midpoints, title } = roadmapItem;
 
 		if (
 			daysToComplete === undefined ||
 			midpoints === undefined ||
 			finished === undefined ||
-			id === undefined
+			id === undefined ||
+			title === undefined
 		) {
 			throw new Error('Invalid roadmap item');
 		}
@@ -77,14 +78,14 @@ export const parseUrlToRoadmapObject = (url: string) => {
 		if (midpoints.length === 0) return;
 
 		midpoints.forEach((midpoint) => {
-			const { daysToComplete, finished, id } = midpoint;
+			const { daysToComplete, finished, id, title } = midpoint;
 
 			if (
 				daysToComplete === undefined ||
 				finished === undefined ||
-				id === undefined
+				id === undefined ||
+				title === undefined
 			) {
-				console.log(midpoint);
 				throw new Error('Invalid midpoint');
 			}
 		});
