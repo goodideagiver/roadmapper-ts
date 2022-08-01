@@ -1,0 +1,6 @@
+.root {
+	display: flex;
+	gap: var(--small-spacing);
+	align-items: center;
+	justify-content: center;
+}

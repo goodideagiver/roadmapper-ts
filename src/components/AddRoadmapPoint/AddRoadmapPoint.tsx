@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { AddPointModal } from '../AddPointModal/AddPointModal';
 
-import { AiOutlinePlus } from 'react-icons/ai';
 import { Button } from '../../UI/Button/Button';
 
 import * as classes from './AddRoadmapPoint.module.css';
 import { useRoadmap } from '../../store/useRoadmap';
+import { FiPlus } from 'react-icons/fi';
 
 export const AddRoadmapPoint = () => {
 	const [modalVisible, setModalVisible] = useState(false);
@@ -17,8 +17,7 @@ export const AddRoadmapPoint = () => {
 	return (
 		<>
 			<Button className={classes.button} onClick={handleToggleModal}>
-				<AiOutlinePlus className={classes.icon} />{' '}
-				<span>Add roadmap point</span>
+				<FiPlus className={classes.icon} /> <span>Add roadmap point</span>
 			</Button>
 			<AddPointModal
 				variant='addMainPoint'
