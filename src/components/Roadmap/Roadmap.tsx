@@ -77,7 +77,7 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 	}
 
 	return (
-		<>
+		<div className={classes.flex}>
 			<div ref={container} className={`${classes.root} ${overflowCss}`}>
 				{Children.toArray(roadmapData)}
 			</div>
@@ -88,6 +88,6 @@ export const Roadmap = ({ roadmapArray }: { roadmapArray: roadmapArray }) => {
 				onDelete={onDelete}
 				roadmapPointId={pickedId}
 			/>
-		</>
+		</div>
 	);
 };
