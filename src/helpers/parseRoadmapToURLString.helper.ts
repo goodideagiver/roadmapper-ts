@@ -62,7 +62,6 @@ export const parseUrlToRoadmapObject = (url: string) => {
 		}
 	);
 
-	console.log(roadmap);
 	roadmap.forEach((roadmapItem) => {
 		const { daysToComplete, finished, id, midpoints } = roadmapItem;
 
@@ -72,7 +71,6 @@ export const parseUrlToRoadmapObject = (url: string) => {
 			finished === undefined ||
 			id === undefined
 		) {
-			console.log(roadmapItem);
 			throw new Error('Invalid roadmap item');
 		}
 

@@ -14,14 +14,17 @@ import { useState } from 'react';
 
 const App = () => {
 	const { mainRoadmapPoints, setRoadmap } = useRoadmap();
-
 	const [isFirstLoad, setIsFirstLoad] = useState(true);
 
 	const pathname = window.location.pathname;
 
-	if (pathname.includes('/share/') && isFirstLoad) {
-		window.history.pushState(null, '', '/');
+	if (
+		pathname.includes('/share/') &&
+		isFirstLoad &&
+		mainRoadmapPoints.length === 0
+	) {
 		try {
+			window.history.pushState(null, '', '/');
 			const roadmapFromUrl = parseUrlToRoadmapObject(
 				pathname.replace('/share/', '')
 			);
@@ -34,6 +37,7 @@ const App = () => {
 	if (isFirstLoad) {
 		setIsFirstLoad(false);
 	}
+
 	return (
 		<MainLayout>
 			<ReactNotifications />
