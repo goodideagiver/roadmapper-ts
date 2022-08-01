@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { v4 as uuid } from 'uuid';
 import {
 	roadmapArray,
 	roadmapDataPoint,
@@ -46,7 +46,7 @@ export const parseUrlToRoadmapObject = (url: string) => {
 					return {
 						title: midpoint.title,
 						daysToComplete: midpoint.daysToComplete,
-						id: useId(),
+						id: uuid(),
 						finished: false,
 					};
 				});
@@ -56,11 +56,40 @@ export const parseUrlToRoadmapObject = (url: string) => {
 				title: item.title,
 				daysToComplete: item.daysToComplete,
 				midpoints,
-				id: useId(),
+				id: uuid(),
 				finished: false,
 			};
 		}
 	);
+
+	roadmap.forEach((roadmapItem) => {
+		const { daysToComplete, finished, id, midpoints, title } = roadmapItem;
+
+		if (
+			daysToComplete === undefined ||
+			midpoints === undefined ||
+			finished === undefined ||
+			id === undefined ||
+			title === undefined
+		) {
+			throw new Error('Invalid roadmap item');
+		}
+
+		if (midpoints.length === 0) return;
+
+		midpoints.forEach((midpoint) => {
+			const { daysToComplete, finished, id, title } = midpoint;
+
+			if (
+				daysToComplete === undefined ||
+				finished === undefined ||
+				id === undefined ||
+				title === undefined
+			) {
+				throw new Error('Invalid midpoint');
+			}
+		});
+	});
 
 	return roadmap;
 };
