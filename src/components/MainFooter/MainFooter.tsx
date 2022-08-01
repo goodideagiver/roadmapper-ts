@@ -1,14 +1,14 @@
 import * as classes from './MainFooter.module.css';
 
 const links = [
-	{ name: 'Repo', url: '' },
-	{ name: 'GitHub', url: '' },
-	{ name: 'Website', url: '' },
+	{ name: 'Repo', url: 'https://github.com/goodideagiver/roadmapper-ts' },
+	{ name: 'GitHub', url: 'https://github.com/goodideagiver' },
+	{ name: 'Website', url: 'https://purpleblack.dev/' },
 ];
 
 export const MainFooter = () => {
 	const anchors = links.map((link) => (
-		<a key={link.name} href={link.url}>
+		<a key={link.name} href={link.url} target='_blank' rel='noreferrer'>
 			{link.name}
 		</a>
 	));
