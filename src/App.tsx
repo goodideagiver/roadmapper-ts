@@ -10,33 +10,38 @@ import { parseUrlToRoadmapObject } from './helpers/parseRoadmapToURLString.helpe
 import { MainLayout } from './pages/MainLayout/MainLayout';
 import { useRoadmap } from './store/useRoadmap';
 import { MainFooter } from './components/MainFooter/MainFooter';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = () => {
 	const { mainRoadmapPoints, setRoadmap } = useRoadmap();
 	const [isFirstLoad, setIsFirstLoad] = useState(true);
 
-	const pathname = window.location.pathname;
+	useEffect(() => {
+		const pathname = window.location.pathname;
 
-	if (
-		pathname.includes('/share/') &&
-		isFirstLoad &&
-		mainRoadmapPoints.length === 0
-	) {
-		try {
-			window.history.pushState(null, '', '/');
-			const roadmapFromUrl = parseUrlToRoadmapObject(
-				pathname.replace('/share/', '')
-			);
-			setRoadmap(roadmapFromUrl);
-		} catch (e) {
-			console.error(e);
+		if (
+			pathname.includes('/share/') &&
+			isFirstLoad &&
+			mainRoadmapPoints.length === 0
+		) {
+			if (isFirstLoad) {
+				setIsFirstLoad(false);
+			}
+			try {
+				window.history.pushState(null, '', '/');
+				const roadmapFromUrl = parseUrlToRoadmapObject(
+					pathname.replace('/share/', '')
+				);
+				setRoadmap(roadmapFromUrl);
+			} catch (e) {
+				console.error(e);
+			}
 		}
-	}
 
-	if (isFirstLoad) {
-		setIsFirstLoad(false);
-	}
+		if (isFirstLoad) {
+			setIsFirstLoad(false);
+		}
+	}, []);
 
 	return (
 		<MainLayout>

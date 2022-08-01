@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { v4 as uuid } from 'uuid';
 import {
 	roadmapArray,
 	roadmapDataPoint,
@@ -46,7 +46,7 @@ export const parseUrlToRoadmapObject = (url: string) => {
 					return {
 						title: midpoint.title,
 						daysToComplete: midpoint.daysToComplete,
-						id: useId(),
+						id: uuid(),
 						finished: false,
 					};
 				});
@@ -56,7 +56,7 @@ export const parseUrlToRoadmapObject = (url: string) => {
 				title: item.title,
 				daysToComplete: item.daysToComplete,
 				midpoints,
-				id: useId(),
+				id: uuid(),
 				finished: false,
 			};
 		}
