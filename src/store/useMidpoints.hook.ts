@@ -54,7 +54,21 @@ export const useMidpoints = (mainPointId: string) => {
 		);
 	};
 
+	const editMidpointByMidpointId = (
+		midpointId: string,
+		midpoint: roadmapMidpoint
+	) => {
+		dispatch(
+			roadmapSlice.actions.editMidpointByPointIdAndMidpointId({
+				pointId: mainPointId,
+				midpointId,
+				midpoint,
+			})
+		);
+	};
+
 	return {
+		editMidpointByMidpointId,
 		deleteMidpointByMidpointId,
 		setMidpointFinishedByMidpointId,
 		getMidpoints,

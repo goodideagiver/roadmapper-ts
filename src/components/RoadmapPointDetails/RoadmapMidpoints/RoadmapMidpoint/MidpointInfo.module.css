@@ -22,3 +22,15 @@
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+
+.titleInput {
+	background-color: transparent;
+	border: 0;
+	color: white;
+	padding: var(--small-spacing);
+}
+
+.titleInput:focus {
+	outline: var(--body-highlight) 1px solid;
+	border-radius: var(--inner-border-radius);
+}
