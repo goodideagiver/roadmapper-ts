@@ -158,6 +158,31 @@ export const roadmapSlice = createSlice({
 				}
 			}
 		},
+		editMidpointByPointIdAndMidpointId: (
+			state,
+			action: PayloadAction<{
+				pointId: string;
+				midpointId: string;
+				midpoint: roadmapMidpoint;
+			}>
+		) => {
+			const existingPoint = state.mainRoadmapPoints.find(
+				(point) => point.id === action.payload.pointId
+			);
+
+			if (existingPoint) {
+				const existingMidpoint = existingPoint?.midpoints?.find(
+					(midpoint) => midpoint.id === action.payload.midpointId
+				);
+
+				if (existingMidpoint) {
+					existingMidpoint.title = action.payload.midpoint.title;
+					existingMidpoint.finished = action.payload.midpoint.finished;
+					existingMidpoint.daysToComplete =
+						action.payload.midpoint.daysToComplete;
+				}
+			}
+		},
 	},
 });
 

@@ -49,6 +49,8 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 			key={midpoint.id}
 		>
 			<MidpointInfo
+				mainPointId={mainPointId}
+				midpointId={midpoint.id}
 				daysToComplete={midpoint.daysToComplete}
 				title={midpoint.title}
 				toggleOptions={toggleOptions}
