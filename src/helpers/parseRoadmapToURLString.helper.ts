@@ -29,7 +29,7 @@ export const parseRoadmapToURLString = (roadmap: roadmapArray) => {
 
 	return (
 		window.location +
-		'/share/' +
+		'#/share/' +
 		encodeURIComponent(JSON.stringify(simplerRoadmapArray))
 	);
 };

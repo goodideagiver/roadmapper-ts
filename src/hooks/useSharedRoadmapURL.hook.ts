@@ -9,10 +9,10 @@ export const useSharedRoadmapURL = () => {
 	const { mainRoadmapPoints, setRoadmap } = useRoadmap();
 
 	useEffect(() => {
-		const pathname = window.location.pathname;
+		const pathname = window.location.hash;
 
 		if (
-			pathname.includes('/share/') &&
+			pathname.includes('#/share/') &&
 			isFirstLoad &&
 			mainRoadmapPoints.length === 0
 		) {
@@ -22,7 +22,7 @@ export const useSharedRoadmapURL = () => {
 			try {
 				window.history.pushState(null, '', '/');
 				const roadmapFromUrl = parseUrlToRoadmapObject(
-					pathname.replace('/share/', '')
+					pathname.replace('#/share/', '')
 				);
 				setRoadmap(roadmapFromUrl);
 			} catch (err) {

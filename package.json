@@ -8,7 +8,7 @@
     "deploy": "npm run build && gh-pages -d prod",
     "ts-check": "tsc --noEmit"
   },
-  "browserslist" : [
+  "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 11"
@@ -34,7 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
     "buffer": "^6.0.3",
-    "eslint": "^8.18.0",
+    "eslint": "^8.21.0",
     "eslint-plugin-react": "^7.30.0",
     "gh-pages": "^4.0.0",
     "parcel": "^2.6.0",
