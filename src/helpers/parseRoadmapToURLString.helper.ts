@@ -37,12 +37,13 @@ export const parseRoadmapToURLString = (roadmap: roadmapArray) => {
 	return (
 		window.location +
 		'#/share/' +
-		encodeURIComponent(JSON.stringify(simplerRoadmapArray))
+		btoa(encodeURIComponent(JSON.stringify(simplerRoadmapArray)))
 	);
 };
 
 export const parseUrlToRoadmapObject = (url: string) => {
-	const urlObject = JSON.parse(decodeURIComponent(url));
+	const decodedUrl = decodeURIComponent(atob(url));
+	const urlObject = JSON.parse(decodedUrl);
 
 	const roadmap: roadmapDataPoint[] = urlObject.map(
 		(item: roadmapDataPoint) => {
