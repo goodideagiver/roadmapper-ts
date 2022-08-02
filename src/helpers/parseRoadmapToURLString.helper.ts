@@ -11,13 +11,20 @@ export const parseRoadmapToURLString = (roadmap: roadmapArray) => {
 	const simplerRoadmapArray = roadmap.map((item) => {
 		let midpoints: SimpleMidpoint[] = [];
 
-		if (item.midpoints) {
+		if (item.midpoints && item.midpoints.length > 0) {
 			midpoints = item.midpoints.map((midpoint) => {
 				return {
 					title: midpoint.title,
 					daysToComplete: midpoint.daysToComplete,
 				};
 			});
+		}
+
+		if (midpoints.length === 0) {
+			return {
+				title: item.title,
+				daysToComplete: item.daysToComplete,
+			};
 		}
 
 		return {

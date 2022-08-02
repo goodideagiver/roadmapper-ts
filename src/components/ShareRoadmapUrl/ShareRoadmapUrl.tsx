@@ -2,10 +2,18 @@ import { useSharedRoadmapURL } from '../../hooks/useSharedRoadmapURL.hook';
 import { ExplainModal } from '../../UI/ExplainModal/ExplainModal';
 
 export const ShareRoadmapUrl = () => {
-	const { clearError, error } = useSharedRoadmapURL();
+	const { clearError, error, clearMessage, displaySuccessMessage } =
+		useSharedRoadmapURL();
 
-	if (error) {
-		return (
+	return (
+		<>
+			<ExplainModal
+				visible={displaySuccessMessage}
+				onClose={clearMessage}
+				title='Shared roadmap loaded'
+			>
+				<p>Roadmap was loaded from shared link succesfully.</p>
+			</ExplainModal>
 			<ExplainModal
 				visible={!!error}
 				onClose={clearError}
@@ -14,8 +22,6 @@ export const ShareRoadmapUrl = () => {
 				<p>There was an error when loading shared roadmap link.</p>
 				<p>Error message: {error}</p>
 			</ExplainModal>
-		);
-	}
-
-	return null;
+		</>
+	);
 };
