@@ -57,6 +57,15 @@ export const useAddPointModal = (
 				const newError = 'title is a required field';
 				return { ...error, titleError: newError };
 			});
+			return;
+		}
+
+		if (title.trim().length > 15) {
+			setError((error) => {
+				const newError = 'title must be less than 16 characters';
+				return { ...error, titleError: newError };
+			});
+			return;
 		}
 
 		if (error.timeError) {
@@ -69,6 +78,7 @@ export const useAddPointModal = (
 				const newError = 'days is a required field';
 				return { ...error, timeError: newError };
 			});
+			return;
 		}
 
 		if (title.trim().length > 0 && days > 0) {
