@@ -88,7 +88,7 @@ export const useRoadmapLocalStorage = () => {
 	}, []);
 
 	useEffect(() => {
-		if (!mainRoadmapPoints || mainRoadmapPoints.length === 0) return;
+		if (!mainRoadmapPoints) return;
 
 		localStorage.setItem(ROADMAP_KEY, JSON.stringify(mainRoadmapPoints));
 	}, [mainRoadmapPoints]);
