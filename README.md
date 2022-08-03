@@ -34,10 +34,13 @@ More info in package.json
 - Delete all midpoints
 - Mark all midpoints as finished/unfinished
 - Midpoint name suggestions based on entered roadmap name
+- Share roadmap link
+- Save roadmap to localstorage
 
 ## Planned
 
-- Share roadmap link
-- Save roadmap to localstorage
+- Drag and drop (not sure)
+
+
 
 ## You are not allowed to use code of this repository without permission.
