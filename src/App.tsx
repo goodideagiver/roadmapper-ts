@@ -10,9 +10,12 @@ import { MainLayout } from './pages/MainLayout/MainLayout';
 import { useRoadmap } from './store/useRoadmap';
 import { MainFooter } from './components/MainFooter/MainFooter';
 import { ShareRoadmapUrl } from './components/ShareRoadmapUrl/ShareRoadmapUrl';
+import { useRoadmapLocalStorage } from './hooks/useRoadmapLocalStorage.hook';
 
 const App = () => {
 	const { mainRoadmapPoints } = useRoadmap();
+
+	useRoadmapLocalStorage();
 
 	return (
 		<MainLayout>
