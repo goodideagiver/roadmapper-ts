@@ -34,3 +34,8 @@
 	outline: var(--body-highlight) 1px solid;
 	border-radius: var(--inner-border-radius);
 }
+
+.moreButton {
+	display: grid;
+	place-items: center;
+}

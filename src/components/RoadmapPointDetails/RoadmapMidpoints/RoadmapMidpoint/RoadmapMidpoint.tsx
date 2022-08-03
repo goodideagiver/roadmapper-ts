@@ -55,6 +55,7 @@ export const RoadmapMidpoint = ({ midpoint, mainPointId }: Props) => {
 				title={midpoint.title}
 				toggleOptions={toggleOptions}
 				finished={midpoint.finished || !!mainPointIsFinished}
+				optionsAreOpen={optionsOpen}
 			/>
 			{optionsOpen && (
 				<MidpointControls

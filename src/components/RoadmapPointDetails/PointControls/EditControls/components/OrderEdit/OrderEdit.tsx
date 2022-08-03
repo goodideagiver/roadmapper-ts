@@ -1,6 +1,9 @@
+import { FiMinus, FiPlus } from 'react-icons/fi';
 import { useRoadmap } from '../../../../../../store/useRoadmap';
 import { Button } from '../../../../../../UI/Button/Button';
 import { EditControlWrapper } from '../../EditControlWrapper';
+
+import * as classes from './OrderEdit.module.css';
 
 type Props = {
 	id: string;
@@ -12,19 +15,21 @@ export const OrderEdit = ({ id }: Props) => {
 	const orderInArray = mainRoadmapPoints.findIndex((el) => el.id === id);
 	return (
 		<EditControlWrapper>
-			<Button
-				disabled={orderInArray === 0}
-				onClick={() => moveRoadmapPointDown(id)}
-			>
-				Move Down
-			</Button>
 			<p>Order: {orderInArray + 1}</p>
-			<Button
-				disabled={orderInArray === mainRoadmapPoints.length - 1}
-				onClick={() => moveRoadmapPointUp(id)}
-			>
-				Move up
-			</Button>
+			<div className={classes.buttons}>
+				<Button
+					disabled={orderInArray === 0}
+					onClick={() => moveRoadmapPointDown(id)}
+				>
+					<FiMinus aria-label='minus' fontSize='1.6rem' />
+				</Button>
+				<Button
+					disabled={orderInArray === mainRoadmapPoints.length - 1}
+					onClick={() => moveRoadmapPointUp(id)}
+				>
+					<FiPlus aria-label='plus' fontSize='1.6rem' />
+				</Button>
+			</div>
 		</EditControlWrapper>
 	);
 };

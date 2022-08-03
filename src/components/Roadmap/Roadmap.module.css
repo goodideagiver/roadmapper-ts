@@ -5,13 +5,13 @@
 	gap: var(--small-spacing);
 	max-width: min(1200px, 100%);
 	margin: 0 auto;
-	overflow-y: auto;
 }
 
 .flex {
 	flex: 1;
 	display: grid;
 	place-items: center;
+	overflow: auto;
 }
 
 .info {

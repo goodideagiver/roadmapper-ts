@@ -3,6 +3,7 @@ import { FiCheck } from 'react-icons/fi';
 import { daysToYrsMthWeekDayString } from '../../../../helpers/timeDiff.helper';
 import { useMidpoints } from '../../../../store/useMidpoints.hook';
 import { Button } from '../../../../UI/Button/Button';
+import { HiDotsHorizontal } from 'react-icons/hi';
 
 import * as classes from './MidpointInfo.module.css';
 
@@ -10,6 +11,7 @@ type Props = {
 	title: string;
 	daysToComplete: number;
 	toggleOptions: () => void;
+	optionsAreOpen: boolean;
 	finished: boolean;
 	mainPointId: string;
 	midpointId: string;
@@ -22,6 +24,7 @@ export const MidpointInfo = ({
 	finished,
 	mainPointId,
 	midpointId,
+	optionsAreOpen,
 }: Props) => {
 	const [titleEditActive, setTitleEditActive] = useState(false);
 	const [titleEditValue, setTitleEditValue] = useState(title);
@@ -80,8 +83,13 @@ export const MidpointInfo = ({
 					fontSize={'1.5rem'}
 				/>
 			)}
-			<Button size='sm' onClick={toggleOptions}>
-				Edit
+			<Button
+				disabled={optionsAreOpen}
+				className={classes.moreButton}
+				size='sm'
+				onClick={toggleOptions}
+			>
+				<HiDotsHorizontal aria-label='Three dots' fontSize='1.4rem' />
 			</Button>
 		</div>
 	);
