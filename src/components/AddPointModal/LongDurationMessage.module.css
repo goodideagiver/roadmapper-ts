@@ -8,6 +8,7 @@
 	gap: var(--small-spacing);
 	align-items: center;
 	border: var(--body-highlight) 1px solid;
+	animation: messageReveal 1s forwards;
 }
 
 .text {
@@ -16,4 +17,13 @@
 
 .emoji {
 	font-size: 2rem;
+}
+
+@keyframes messageReveal {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }

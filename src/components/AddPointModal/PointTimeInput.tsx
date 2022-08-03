@@ -2,7 +2,7 @@ import { Button } from '../../UI/Button/Button';
 
 import { RoadmapPointTimeAdjust } from './components/RoadmapPointTimeAdjust/RoadmapPointTimeAdjust';
 import { TimeInputDisplay } from './components/TimeInputDisplay/TimeInputDisplay';
-import { LongDurationMessage } from './LongDurationMessage';
+import { TooLongTimeHint } from './TooLongTimeHint';
 
 type PointTimeInputProps = {
 	onChangeDays: (daysAmount: number) => void;
@@ -61,15 +61,7 @@ export const PointTimeInput = ({
 					onTimeAdjust={buttonData.onClick}
 				/>
 			))}
-			{daysValue > 3285 && daysValue < 6285 && (
-				<LongDurationMessage message='React was released in 2013' />
-			)}
-			{daysValue > 26280 ? (
-				<LongDurationMessage message='Entered number of days is longer than average human life expectancy.' />
-			) : null}
-			{daysValue > 9855 && daysValue < 11000 ? (
-				<LongDurationMessage message='JavaScript was invented in 1995' />
-			) : null}
+			<TooLongTimeHint daysValue={daysValue} />
 			{daysValue > 0 && (
 				<Button variant='danger' onClick={onReset}>
 					Reset point time
