@@ -18,6 +18,7 @@ export const InfoButton = ({ children, title }: Props) => {
 				className={classes.button}
 				width='fit'
 				onClick={() => setVisible(true)}
+				size='sm'
 			>
 				<AiFillQuestionCircle fontSize='1.2rem' aria-label='question mark' />
 			</Button>

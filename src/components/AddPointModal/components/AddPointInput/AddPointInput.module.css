@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--small-spacing);
-	margin-bottom: var(--large-spacing);
+	margin-bottom: var(--medium-spacing);
 }
 
 .suggestions {
@@ -28,6 +28,11 @@
 	text-align: center;
 	margin-top: var(--small-spacing);
 	animation: revealSuggestions 1s forwards;
+
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	justify-content: center;
 }
 
 @keyframes revealSuggestions {
