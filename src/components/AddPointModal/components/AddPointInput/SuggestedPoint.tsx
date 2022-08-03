@@ -11,5 +11,9 @@ export const SuggestedPoint = ({ label, onChoose }: SuggestedPointProps) => {
 		onChoose(label);
 	};
 
-	return <Button onClick={buttonClickHandler}>{label}</Button>;
+	return (
+		<Button size='sm' onClick={buttonClickHandler}>
+			{label}
+		</Button>
+	);
 };
