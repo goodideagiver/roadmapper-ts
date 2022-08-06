@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-// import { v4 as uuid } from 'uuid';
-import v24 from 'uuid';
-const { v4: uuid } = v24;
+import { v4 as uuid } from 'uuid';
 
 import {
 	roadmapDataPoint,
