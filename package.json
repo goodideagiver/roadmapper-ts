@@ -55,5 +55,23 @@
     "typescript-eslint": "^0.0.1-alpha.0",
     "typescript-plugin-css-modules": "^3.4.0",
     "util": "^0.12.4"
+  },
+    "jest": {
+    "preset": "ts-jest",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "moduleNameMapper": {
+      ".+\\.css$": "<rootDir>/src/styleMock.ts",
+      "*.css$": "<rootDir>/src/styleMock.ts"
+    },
+    "testMatch": [
+      "**/__tests__/*.(test|spec).(ts|tsx|js)"
+    ]
   }
 }
