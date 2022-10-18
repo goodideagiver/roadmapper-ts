@@ -1,8 +1,10 @@
-# [Live](https://goodideagiver.github.io/roadmapper-ts/)
-
 # Roadmapper
 
-## Create your own roadmap
+[Live](https://goodideagiver.github.io/roadmapper-ts/)
+
+## Preview
+
+![animations2](https://user-images.githubusercontent.com/55458485/196441926-12cce77a-4c53-428c-85fe-bec5fc88c405.gif)
 
 ## Used stuff
 
